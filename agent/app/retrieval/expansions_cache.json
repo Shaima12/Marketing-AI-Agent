@@ -1,0 +1,116 @@
+{
+ "Which products should I push in my next campaign?": [
+  "Which products should I push in my next campaign?",
+  "ROI, margin, conversion rate metrics for product selection",
+  "CLV, segmentation, purchase frequency methods for prioritization",
+  "Inventory turnover, stock availability trade-offs in campaign planning"
+ ],
+ "Why are customers unhappy with a category?": [
+  "Why are customers unhappy with a category?",
+  "Category CSAT, NPS, and churn metrics for unhappy customers",
+  "Sentiment analysis and root cause methods for category dissatisfaction",
+  "Price-quality trade-offs impacting category customer satisfaction"
+ ],
+ "Who are my best customers and how do I keep them?": [
+  "Who are my best customers and how do I keep them?",
+  "Customer Lifetime Value (CLV) calculation methods and segmentation for high\u2011value customers",
+  "Retention cohort analysis and churn rate metrics for top customers",
+  "CAC to CLV ratio trade\u2011offs and profitability optimization"
+ ],
+ "What message should I use to sell product Y?": [
+  "What message should I use to sell product Y?",
+  "Conversion rate lift from messaging changes for product Y",
+  "A/B testing best practices for product Y messaging",
+  "Segmentation and personalization trade-offs in product Y messaging"
+ ],
+ "Why did revenue drop in March?": [
+  "Why did revenue drop in March?",
+  "March revenue drop: conversion rate vs traffic volume",
+  "March revenue decline: attribution model impact on sales",
+  "March revenue decrease: seasonality vs marketing spend"
+ ],
+ "Which customers are about to churn and what should I send them?": [
+  "Which customers are about to churn and what should I send them?",
+  "Churn prediction metrics: churn rate, survival analysis, logistic regression trade\u2011offs",
+  "RFM cohort analysis for churn risk segmentation",
+  "A/B testing re\u2011engagement offers: lift, ROI, frequency capping"
+ ],
+ "Which acquisition channel brings the best customers and should I move budget?": [
+  "Which acquisition channel brings the best customers and should I move budget?",
+  "CAC vs LTV by acquisition channel",
+  "Multi-touch attribution for high-ROI channels",
+  "Cost vs churn trade-off in budget reallocation"
+ ],
+ "Did my promotion actually work?": [
+  "Did my promotion actually work?",
+  "Conversion rate lift from promotion",
+  "Attribution modeling for promo effectiveness",
+  "ROI trade-offs of promotional campaigns"
+ ],
+ "What should I bundle or cross-sell?": [
+  "What should I bundle or cross-sell?",
+  "Cross\u2011sell conversion rate analysis",
+  "Bundle recommendation algorithm trade\u2011offs",
+  "Customer lifetime value segmentation for upsell"
+ ],
+ "How do my prices compare with my competitors?": [
+  "How do my prices compare with my competitors?",
+  "Competitive price index calculation method",
+  "Price elasticity vs competitor pricing trade-offs",
+  "Benchmarking price points and margin impact"
+ ],
+ "facets-v2|Which products should I push in my next campaign?": [
+  "Which products should I push in my next campaign?",
+  "product performance metrics: conversion rate, ROAS, AOV by SKU",
+  "segmentation & predictive modeling: cohort analysis, propensity scoring for upsell",
+  "campaign bias & attribution pitfalls: data leakage, cross-channel attribution errors"
+ ],
+ "facets-v2|Why are customers unhappy with a category?": [
+  "Why are customers unhappy with a category?",
+  "category CSAT, NPS, and complaint rate metrics",
+  "sentiment analysis and root cause analysis of negative feedback",
+  "sampling bias, seasonal variation, and data quality pitfalls in category satisfaction analysis"
+ ],
+ "facets-v2|Who are my best customers and how do I keep them?": [
+  "Who are my best customers and how do I keep them?",
+  "customer lifetime value (CLV) definition, segmentation thresholds, and weighting factors",
+  "retention cohort analysis, churn prediction modeling, and RFM segmentation techniques",
+  "attribution bias in loyalty metrics, data quality pitfalls, and overfitting risk"
+ ],
+ "facets-v2|What message should I use to sell product Y?": [
+  "What message should I use to sell product Y?",
+  "copy performance metric: lift, CTR, conversion rate",
+  "multivariate testing methodology for ad copy optimization",
+  "message fatigue and overfitting pitfalls in A/B testing"
+ ],
+ "facets-v2|Which customers are about to churn and what should I send them?": [
+  "Which customers are about to churn and what should I send them?",
+  "customer churn metric: churn rate, churn probability, churn cohort analysis",
+  "predictive churn modeling: logistic regression, survival analysis, machine learning classifiers",
+  "churn prediction pitfalls: data leakage, class imbalance, overfitting, feature drift"
+ ],
+ "facets-v2|Which acquisition channel brings the best customers and should I move budget?": [
+  "Which acquisition channel brings the best customers and should I move budget?",
+  "CAC vs LTV ratio by acquisition channel",
+  "multi-touch attribution model selection and implementation",
+  "budget shift risk: diminishing marginal returns and channel cannibalization"
+ ],
+ "facets-v2|Did my promotion actually work?": [
+  "Did my promotion actually work?",
+  "promotion lift: conversion rate change attributable to campaign",
+  "difference-in-differences analysis for promotional impact",
+  "seasonality confounding in promotion evaluation"
+ ],
+ "facets-v2|What should I bundle or cross-sell?": [
+  "What should I bundle or cross-sell?",
+  "bundle conversion rate definition and calculation",
+  "market basket analysis methodology for cross-sell optimization",
+  "bundle cannibalization risk and customer fatigue caveat"
+ ],
+ "facets-v2|How do my prices compare with my competitors?": [
+  "How do my prices compare with my competitors?",
+  "price competitiveness metric: price index, relative price positioning, price elasticity",
+  "competitive price benchmarking methodology: market price mapping, competitor price extraction, price differential analysis",
+  "price comparison pitfalls: data freshness, channel mix bias, discounting effects"
+ ]
+}

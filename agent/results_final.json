@@ -1,0 +1,1022 @@
+{
+ "Q01": [
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Win-Back Design"
+  },
+  {
+   "chapter": "Chapter 26: Artificial Intelligence in Marketing",
+   "section": "Personalization and Recommendation"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Availability and Inventory Constraints"
+  },
+  {
+   "chapter": "Chapter 18: Email Marketing in Depth",
+   "section": "Core Automated Flows"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Paid Social"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "List Margin Versus Realized Margin"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Replenishment Cycles by Category"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Why Products Differ in Their Value to a Business"
+  },
+  {
+   "chapter": "Chapter 14: Experimentation and Causal Inference",
+   "section": "Worked Example: Measuring an Email Campaign with a Holdout"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "New Product Launches and the Cold-Start Problem"
+  },
+  {
+   "chapter": "Chapter 20: Conversion Rate Optimization and Site Experience",
+   "section": "Product Pages"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Pull-Forward and Post-Promotion Dips"
+  },
+  {
+   "chapter": "Chapter 13: Basket Analysis, Bundling and Cross-Sell",
+   "section": "Cross-Sell Placement"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Email and SMS"
+  },
+  {
+   "chapter": "Chapter 19: Paid Search and Paid Social in Depth",
+   "section": "Campaign Structure in Search"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Positioning and Value Propositions"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Combining Signals: A Multi-Criteria View of Product Priority"
+  },
+  {
+   "chapter": "Chapter 24: Privacy, Consent and Regulation",
+   "section": "Worked Example: The Effect of Partial Consent"
+  },
+  {
+   "chapter": "Chapter 19: Paid Search and Paid Social in Depth",
+   "section": "Worked Example: Retargeting and Prospecting"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Lifecycle Marketing"
+  },
+  {
+   "chapter": "Chapter 18: Email Marketing in Depth",
+   "section": "Subject Lines and Testing"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Markdown Cadence and Clearance"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Writing Headlines"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Cannibalization and Customer Mix in Promotions"
+  }
+ ],
+ "Q02": [
+  {
+   "chapter": "Chapter 7: Voice of the Customer: Reviews, Ratings and Feedback",
+   "section": "Root-Cause Drill-Down"
+  },
+  {
+   "chapter": "Chapter 7: Voice of the Customer: Reviews, Ratings and Feedback",
+   "section": "Worked Example: Tracing Dissatisfaction in a Category"
+  },
+  {
+   "chapter": "Chapter 7: Voice of the Customer: Reviews, Ratings and Feedback",
+   "section": "Product Issues Versus Fulfillment Issues"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Segmentation Beyond Transactions"
+  },
+  {
+   "chapter": "Chapter 7: Voice of the Customer: Reviews, Ratings and Feedback",
+   "section": "Returns Data as a Complement"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Volume, Share and Exposure"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Assortment Breadth and Depth"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Category-Level and Product-Level Analysis"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Characteristics of High-Value Customers"
+  },
+  {
+   "chapter": "Chapter 7: Voice of the Customer: Reviews, Ratings and Feedback",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 7: Voice of the Customer: Reviews, Ratings and Feedback",
+   "section": "What Reviews Measure and What They Do Not"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Win-Back Design"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Customer Ratings as a Quality Signal"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Identifying Customers at Risk"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 7: Voice of the Customer: Reviews, Ratings and Feedback",
+   "section": "Reading Rating Distributions"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Approaches to Segmentation"
+  },
+  {
+   "chapter": "Chapter 2: Core Metrics and How They Are Defined",
+   "section": "Retention Rate and Repeat Purchase Rate"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Promotion Frequency and Reference Prices"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Worked Example: Flagging Customers at Risk"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Cannibalization and Customer Mix in Promotions"
+  },
+  {
+   "chapter": "Chapter 7: Voice of the Customer: Reviews, Ratings and Feedback",
+   "section": "Theme and Topic Analysis of Review Text"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Customer Quality Patterns by Channel"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Common Misreadings"
+  }
+ ],
+ "Q03": [
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Loyalty Mechanisms and Discount Dependence"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Characteristics of High-Value Customers"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Segmentation Beyond Transactions"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Customer Quality Patterns by Channel"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Retention Economics"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Worked Example: RFM Scoring for Ten Customers"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Identifying Customers at Risk"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Approaches to Segmentation"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Referral and Affiliate"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Worked Example: Matching Win-Back Offers to Segments"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Cohort Analysis"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Customer Lifetime Value"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Segment Naming and Activation"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Worked Example: Flagging Customers at Risk"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Win-Back Design"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Using Customer Language"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Revenue Concentration and the Pareto Pattern"
+  },
+  {
+   "chapter": "Chapter 22: Marketplaces and Multichannel Selling",
+   "section": "Customer Ownership"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "RFM Analysis"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Probabilistic Models of Repeat Purchase"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Lifecycle Marketing"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Cannibalization and Customer Mix in Promotions"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Churn in Non-Contractual Settings"
+  }
+ ],
+ "Q04": [
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Worked Example: Building Messaging from Review Themes"
+  },
+  {
+   "chapter": "Chapter 18: Email Marketing in Depth",
+   "section": "Segmentation and Personalization"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Lifecycle Marketing"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Writing Headlines"
+  },
+  {
+   "chapter": "Chapter 13: Basket Analysis, Bundling and Cross-Sell",
+   "section": "Cross-Sell Placement"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Using Customer Language"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Message Hierarchy"
+  },
+  {
+   "chapter": "Chapter 18: Email Marketing in Depth",
+   "section": "Core Automated Flows"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Features, Benefits and Outcomes"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Social Proof and Objection Handling"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Positioning and Value Propositions"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Worked Example: Brand Voice in Practice"
+  },
+  {
+   "chapter": "Chapter 22: Marketplaces and Multichannel Selling",
+   "section": "Worked Example: Contribution by Channel"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Availability and Inventory Constraints"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Message Testing"
+  },
+  {
+   "chapter": "Chapter 24: Privacy, Consent and Regulation",
+   "section": "Email, SMS and Advertising Rules"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Email and SMS"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Copywriting Frameworks"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Combining Signals: A Multi-Criteria View of Product Priority"
+  },
+  {
+   "chapter": "Chapter 20: Conversion Rate Optimization and Site Experience",
+   "section": "Product Pages"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Brand Voice and Brand Guidelines"
+  },
+  {
+   "chapter": "Chapter 22: Marketplaces and Multichannel Selling",
+   "section": "How Marketplaces Work"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Volume, Share and Exposure"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Why Discounted Best-Sellers Can Mislead"
+  }
+ ],
+ "Q05": [
+  {
+   "chapter": "Chapter 2: Core Metrics and How They Are Defined",
+   "section": "Worked Example: Decomposing a Revenue Change"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "Supply-Side Causes: Stockouts and Lost Sales"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "Worked Example: A Monthly Revenue Shortfall"
+  },
+  {
+   "chapter": "Chapter 23: International Expansion and Localization",
+   "section": "Worked Example: Constant-Currency Comparison"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "Acquisition Inflow Changes"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "Leading and Lagging Indicators"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "Mix and Price Effects"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Worked Example: Evaluating a Seven-Day Sale"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "Baselines and Counterfactuals"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "Demand-Side Causes"
+  },
+  {
+   "chapter": "Chapter 16: Data Quality, Governance and Analytical Pitfalls",
+   "section": "Worked Example: Reconciling Two Revenue Figures"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "The Revenue Identity"
+  },
+  {
+   "chapter": "Chapter 16: Data Quality, Governance and Analytical Pitfalls",
+   "section": "Order Status and Revenue"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Why Discounted Best-Sellers Can Mislead"
+  },
+  {
+   "chapter": "Chapter 25: Forecasting, Budgeting and Goal Setting",
+   "section": "Worked Example: A Bottom-Up Budget and a Seasonal Forecast"
+  },
+  {
+   "chapter": "Chapter 21: Subscriptions, Memberships and Replenishment Models",
+   "section": "Subscription Economics"
+  },
+  {
+   "chapter": "Chapter 14: Experimentation and Causal Inference",
+   "section": "Worked Example: Measuring an Email Campaign with a Holdout"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "Worked Example: Distinguishing a Stockout from a Demand Decline"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Worked Example: Right-Censoring in Channel Comparison"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "Reporting Uncertainty and Assumptions"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "Normalizing Time Periods"
+  },
+  {
+   "chapter": "Chapter 2: Core Metrics and How They Are Defined",
+   "section": "Revenue, Net Revenue and What Counts"
+  },
+  {
+   "chapter": "Chapter 18: Email Marketing in Depth",
+   "section": "Worked Example: A Welcome Flow"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Common Misreadings"
+  }
+ ],
+ "Q06": [
+  {
+   "chapter": "Chapter 21: Subscriptions, Memberships and Replenishment Models",
+   "section": "Voluntary and Involuntary Churn"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Churn in Non-Contractual Settings"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Lifecycle Marketing"
+  },
+  {
+   "chapter": "Chapter 21: Subscriptions, Memberships and Replenishment Models",
+   "section": "Worked Example: Churn and Lifetime Value"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Probabilistic Models of Repeat Purchase"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Worked Example: Matching Win-Back Offers to Segments"
+  },
+  {
+   "chapter": "Chapter 21: Subscriptions, Memberships and Replenishment Models",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 18: Email Marketing in Depth",
+   "section": "Core Automated Flows"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Retention Versus Subscription"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Worked Example: Flagging Customers at Risk"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Worked Example: Right-Censoring in Channel Comparison"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Identifying Customers at Risk"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Worked Example: RFM Scoring for Ten Customers"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Customer Quality Patterns by Channel"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Cannibalization and Customer Mix in Promotions"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Win-Back Design"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Email and SMS"
+  },
+  {
+   "chapter": "Chapter 18: Email Marketing in Depth",
+   "section": "Segmentation and Personalization"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Segmentation Beyond Transactions"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Characteristics of High-Value Customers"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "Acquisition Inflow Changes"
+  },
+  {
+   "chapter": "Chapter 21: Subscriptions, Memberships and Replenishment Models",
+   "section": "Subscription Economics"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Cohort Analysis"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Common Misreadings"
+  }
+ ],
+ "Q07": [
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Diminishing Returns and Budget Reallocation"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Worked Example: Comparing Channel Economics"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Customer Quality Patterns by Channel"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Budget Allocation in Practice"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Worked Example: Right-Censoring in Channel Comparison"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "Acquisition Inflow Changes"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Customer Acquisition Cost: Blended and by Channel"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Cohort-Based Channel Evaluation and Censoring"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Worked Example: Average Versus Marginal Acquisition Cost"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Return Rates and Net Value by Channel"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Attribution Models and Their Limits"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Data Coverage Caveats"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 2: Core Metrics and How They Are Defined",
+   "section": "Customer Acquisition Cost and Return on Ad Spend"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Blended Versus Channel Metrics"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Characteristics of High-Value Customers"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Retention Economics"
+  },
+  {
+   "chapter": "Chapter 25: Forecasting, Budgeting and Goal Setting",
+   "section": "Building a Budget"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "LTV to CAC Ratio and Payback Period"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Paid Search"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Paid Social"
+  },
+  {
+   "chapter": "Chapter 25: Forecasting, Budgeting and Goal Setting",
+   "section": "Worked Example: A Bottom-Up Budget and a Seasonal Forecast"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Direct and Brand Traffic"
+  },
+  {
+   "chapter": "Chapter 5: Customer Segmentation and Lifetime Value",
+   "section": "Cohort Analysis"
+  }
+ ],
+ "Q08": [
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Worked Example: Evaluating a Seven-Day Sale"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Measuring a Promotion: Baseline, Lift and Incremental Profit"
+  },
+  {
+   "chapter": "Chapter 14: Experimentation and Causal Inference",
+   "section": "Worked Example: Measuring an Email Campaign with a Holdout"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Worked Example: Realized Margin Under a Standing Discount"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Pull-Forward and Post-Promotion Dips"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Cannibalization and Customer Mix in Promotions"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Promotion Measurement Windows"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Worked Example: Brand Voice in Practice"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Promotion Frequency and Reference Prices"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Discount Mechanics and Their Cost"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Lifecycle Marketing"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Email and SMS"
+  },
+  {
+   "chapter": "Chapter 18: Email Marketing in Depth",
+   "section": "Worked Example: A Welcome Flow"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Availability and Inventory Constraints"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Why Discounted Best-Sellers Can Mislead"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Paid Social"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Markdown Cadence and Clearance"
+  },
+  {
+   "chapter": "Chapter 14: Experimentation and Causal Inference",
+   "section": "Marketing Mix Modeling"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Worked Example: Matching Win-Back Offers to Segments"
+  },
+  {
+   "chapter": "Chapter 19: Paid Search and Paid Social in Depth",
+   "section": "Worked Example: Retargeting and Prospecting"
+  },
+  {
+   "chapter": "Chapter 24: Privacy, Consent and Regulation",
+   "section": "Worked Example: The Effect of Partial Consent"
+  },
+  {
+   "chapter": "Chapter 11: Content, SEO and Social Media",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Why Products Differ in Their Value to a Business"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Referral and Affiliate"
+  }
+ ],
+ "Q09": [
+  {
+   "chapter": "Chapter 13: Basket Analysis, Bundling and Cross-Sell",
+   "section": "Bundle Design and Pricing"
+  },
+  {
+   "chapter": "Chapter 13: Basket Analysis, Bundling and Cross-Sell",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 13: Basket Analysis, Bundling and Cross-Sell",
+   "section": "Worked Example: Evaluating a Bundle"
+  },
+  {
+   "chapter": "Chapter 13: Basket Analysis, Bundling and Cross-Sell",
+   "section": "Worked Example: Computing Support, Confidence and Lift"
+  },
+  {
+   "chapter": "Chapter 13: Basket Analysis, Bundling and Cross-Sell",
+   "section": "Basket Analysis Across Categories"
+  },
+  {
+   "chapter": "Chapter 13: Basket Analysis, Bundling and Cross-Sell",
+   "section": "Cross-Sell Placement"
+  },
+  {
+   "chapter": "Chapter 13: Basket Analysis, Bundling and Cross-Sell",
+   "section": "Measuring Cross-Sell Impact"
+  },
+  {
+   "chapter": "Chapter 13: Basket Analysis, Bundling and Cross-Sell",
+   "section": "Complements and Substitutes"
+  },
+  {
+   "chapter": "Chapter 13: Basket Analysis, Bundling and Cross-Sell",
+   "section": "Why Raw Co-Occurrence Counts Mislead"
+  },
+  {
+   "chapter": "Chapter 13: Basket Analysis, Bundling and Cross-Sell",
+   "section": "Measuring Co-Purchase: Support, Confidence and Lift"
+  },
+  {
+   "chapter": "Chapter 13: Basket Analysis, Bundling and Cross-Sell",
+   "section": "Minimum Support and Stability"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Discount Mechanics and Their Cost"
+  },
+  {
+   "chapter": "Chapter 22: Marketplaces and Multichannel Selling",
+   "section": "Pricing Consistency and Channel Conflict"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Worked Example: A Portfolio Review for a Skincare Label"
+  },
+  {
+   "chapter": "Chapter 22: Marketplaces and Multichannel Selling",
+   "section": "Worked Example: Contribution by Channel"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Price Testing"
+  },
+  {
+   "chapter": "Chapter 6: Retention, Loyalty and Win-Back",
+   "section": "Worked Example: Matching Win-Back Offers to Segments"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Assortment Breadth and Depth"
+  },
+  {
+   "chapter": "Chapter 22: Marketplaces and Multichannel Selling",
+   "section": "Inventory and Operations"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Availability and Inventory Constraints"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "List Margin Versus Realized Margin"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Why Discounted Best-Sellers Can Mislead"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Seasonality in Merchandising"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Cannibalization and Customer Mix in Promotions"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Combining Signals: A Multi-Criteria View of Product Priority"
+  }
+ ],
+ "Q10": [
+  {
+   "chapter": "Chapter 15: Competitive Intelligence and the Limits of Internal Data",
+   "section": "How Competitor Pricing Is Typically Observed"
+  },
+  {
+   "chapter": "Chapter 15: Competitive Intelligence and the Limits of Internal Data",
+   "section": "Worked Example: What a Competitor Comparison Requires"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Pricing Fundamentals"
+  },
+  {
+   "chapter": "Chapter 15: Competitive Intelligence and the Limits of Internal Data",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Price Testing"
+  },
+  {
+   "chapter": "Chapter 15: Competitive Intelligence and the Limits of Internal Data",
+   "section": "Worked Example: A Price Ladder From Internal Data"
+  },
+  {
+   "chapter": "Chapter 15: Competitive Intelligence and the Limits of Internal Data",
+   "section": "Types of External Data"
+  },
+  {
+   "chapter": "Chapter 15: Competitive Intelligence and the Limits of Internal Data",
+   "section": "What Internal Data Can Support"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Common Misreadings"
+  },
+  {
+   "chapter": "Chapter 22: Marketplaces and Multichannel Selling",
+   "section": "Worked Example: Contribution by Channel"
+  },
+  {
+   "chapter": "Chapter 3: Product Portfolios and Merchandising",
+   "section": "Worked Example: A Portfolio Review for a Skincare Label"
+  },
+  {
+   "chapter": "Chapter 15: Competitive Intelligence and the Limits of Internal Data",
+   "section": "What Internal Data Cannot Support"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Psychological Pricing"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Worked Example: Realized Margin Under a Standing Discount"
+  },
+  {
+   "chapter": "Chapter 22: Marketplaces and Multichannel Selling",
+   "section": "Pricing Consistency and Channel Conflict"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Measuring a Promotion: Baseline, Lift and Incremental Profit"
+  },
+  {
+   "chapter": "Chapter 12: Diagnosing Performance Changes",
+   "section": "Demand-Side Causes"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Why Discounted Best-Sellers Can Mislead"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Promotion Measurement Windows"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Cannibalization and Customer Mix in Promotions"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Promotion Frequency and Reference Prices"
+  },
+  {
+   "chapter": "Chapter 9: Acquisition Economics and Attribution",
+   "section": "Worked Example: Right-Censoring in Channel Comparison"
+  },
+  {
+   "chapter": "Chapter 8: Marketing Channels Overview",
+   "section": "Worked Example: Comparing Channel Economics"
+  },
+  {
+   "chapter": "Chapter 10: Positioning, Messaging and Brand Voice",
+   "section": "Positioning and Value Propositions"
+  },
+  {
+   "chapter": "Chapter 4: Pricing, Discounts and Promotions",
+   "section": "Discount Mechanics and Their Cost"
+  }
+ ]
+}
