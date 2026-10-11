@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { discoverPostgresSchema } from "@/lib/database/postgres";
+import { encrypt } from "@/lib/database/crypto";
 
 export async function POST(request: Request) {
   let connectionId: string | null = null;
@@ -284,7 +285,11 @@ export async function POST(request: Request) {
       );
     }
 
-    connectionId = connection.id;
+    await admin.from("data_connection_secrets").upsert({
+      connection_id: connection.id,
+      admin_secret: encrypt(password),
+      admin_expires_at: new Date(Date.now() + 30 * 60 * 1000).toISOString(),
+    });
 
     console.log(
       "[DATA CONNECTION] Connection saved:",
