@@ -17,7 +17,7 @@ EMBED_DIM    = 1024
 INDEX_NAME   = "marketing-kb-jina"
 MD_NAMESPACE = "handbook-md-jina-v5-small"
 RERANK_MODEL = "jina-reranker-v2-base-multilingual"
-GROQ_MODEL   = "openai/gpt-oss-20b"                  # only used to write the rewrites
+GROQ_MODEL   = "openai/gpt-oss-120b"                  # only used to write the rewrites
 EXP_PATH     = os.path.join(os.path.dirname(os.path.abspath(__file__)), "expansions_cache.json")
 
 JH = {"Authorization": f"Bearer {os.environ['JINA_API_KEY']}", "Content-Type": "application/json"}

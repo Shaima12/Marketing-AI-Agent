@@ -1,7 +1,6 @@
-
 from langgraph.graph import END
 
-from agent.config.settings import MAX_REJECTIONS, MAX_STEPS
+from agent.config.settings import MAX_REPORT_CALLS, MAX_REPORT_REJECTIONS
 
 
 def _tool_calls(state):
@@ -28,8 +27,6 @@ def route_after_select_step(state):
     return "abort"
 
 
-
-
 def route_after_execute(state):
     """Route executor outcomes explicitly."""
     action = state.get("next_action")
@@ -51,42 +48,58 @@ def route_after_execute(state):
         return "decide"
 
     if action == "abort":
-        return "abort"
+        # Evidence already collected is worth a report attempt.
+        # With no evidence there is nothing to report.
+        return "decide" if state.get("evidence") else "abort"
 
     # Unknown actions should fail safely and visibly.
     return "abort"
 
 
 def route_after_replan(state):
-    if state.get("next_action") == "select_step":
+    action = state.get("next_action")
+
+    if action == "select_step":
         return "select_step"
+    if action == "finalize":
+        return "decide"
 
     return "abort"
 
 
 def route_after_finalize(state):
-    """
-    The existing decide node is retained for final report submission.
-    It must call submit_report; other tool calls are not accepted here.
-    """
-    calls = _tool_calls(state)
+    """After `decide`: verify a submitted report, or recover via salvage."""
+    action = state.get("next_action")
 
-    if any(call.get("name") == "submit_report" for call in calls):
-        return "verify"
+    if action == "salvage":
+        return "salvage"
+    if action == "abort":
+        return "abort"
 
-    return "abort"
+    # Inspect the latest AI message, not an older message.
+    for message in reversed(state.get("messages") or []):
+        if getattr(message, "type", "") != "ai":
+            continue
+
+        tool_calls = getattr(message, "tool_calls", []) or []
+        if any(call.get("name") == "submit_report" for call in tool_calls):
+            return "verify"
+
+        return "salvage"
+
+    return "salvage"
 
 
 def after_verify(state):
-    """Keep the existing verify -> accept, abort, or revise-report behavior."""
+    """Accepted report -> END. Otherwise retry, or salvage when spent."""
     if state.get("report"):
         return END
 
     if (
-        state.get("rejections", 0) >= MAX_REJECTIONS
-        or state.get("steps", 0) >= MAX_STEPS
+        int(state.get("report_rejections", 0)) >= MAX_REPORT_REJECTIONS
+        or int(state.get("report_calls", 0)) >= MAX_REPORT_CALLS
     ):
-        return "abort"
+        return "salvage"
 
-    # Reuse the existing decide node to submit a corrected report.
+    # Reuse `decide` to submit a corrected report.
     return "decide"

@@ -4,6 +4,12 @@ import hashlib
 import json
 from typing import Any
 
+from agent.config.settings import (
+    DEFAULT_MAX_SQL_CALLS,
+    DEFAULT_MAX_TOOL_CALLS,
+    SQL_TOOL_NAMES,
+)
+
 
 class ExecutionBudgetExceeded(RuntimeError):
     pass
@@ -23,16 +29,15 @@ def fingerprint_tool_call(tool_name: str, args: dict[str, Any]) -> str:
 
 
 def is_sql_tool(tool_name: str) -> bool:
-    # Prefer an explicit set from settings if your tool names differ.
-    return tool_name.lower() in {"run_sql", "query_database", "execute_sql"}
+    return tool_name in SQL_TOOL_NAMES
 
 
 def check_budgets(state: dict[str, Any], tool_name: str) -> None:
     plan = state.get("plan") or {}
     limits = plan.get("execution_limits") or {}
 
-    max_tools = int(limits.get("max_tool_calls", 10))
-    max_sql = int(limits.get("max_sql_calls", 4))
+    max_tools = int(limits.get("max_tool_calls", DEFAULT_MAX_TOOL_CALLS))
+    max_sql = int(limits.get("max_sql_calls", DEFAULT_MAX_SQL_CALLS))
 
     if int(state.get("tool_calls", 0)) >= max_tools:
         raise ExecutionBudgetExceeded(
@@ -57,7 +62,7 @@ def validate_tool_allowed_for_step(
         raise PermissionError("No active analytical step.")
 
     candidates = set(step.get("tool_candidates") or [])
-    # An empty candidate list should not mean unrestricted access.
+    # An empty candidate list must not mean unrestricted access.
     if not candidates:
         raise PermissionError(
             f"Step {step.get('id')} has no allowed tool_candidates."
@@ -136,21 +141,39 @@ def validate_plan_catalog(
     registered_tool_names: set[str],
     available_knowledge_ids: set[str],
 ) -> None:
-    """Reject references the runtime cannot honor."""
+    """Reject references the runtime cannot honor.
+
+    Raises ValueError for unusable steps. Unknown handbook IDs are advisory
+    hints, so they are dropped instead of failing the whole plan.
+    """
     for step in plan.get("steps", []):
         candidates = set(step.get("tool_candidates") or [])
-        # Tool-free synthesis steps are valid. If the model attempts a tool call
-        # from such a step, validate_tool_allowed_for_step rejects it.
+
+        if not candidates:
+            raise ValueError(
+                f"{step['id']} has no tool_candidates. Every step must use "
+                "at least one registered tool. Do not plan synthesis, "
+                "summary, or reporting steps."
+            )
+
+        if "submit_report" in candidates:
+            raise ValueError(
+                f"{step['id']} uses submit_report. Reporting is automatic "
+                "after the investigation; do not plan a reporting step."
+            )
+
         unknown_tools = candidates - registered_tool_names
         if unknown_tools:
             raise ValueError(
-                f"{step['id']} references unregistered tools: {sorted(unknown_tools)}"
+                f"{step['id']} references unregistered tools: "
+                f"{sorted(unknown_tools)}"
             )
-        unknown_kb = set(step.get("guide_ids") or []) - available_knowledge_ids
-        if unknown_kb:
-            raise ValueError(
-                f"{step['id']} references unknown handbook IDs: {sorted(unknown_kb)}"
-            )
+
+        step["guide_ids"] = [
+            kid
+            for kid in (step.get("guide_ids") or [])
+            if kid in available_knowledge_ids
+        ]
 
 
 def clamp_execution_limits(
@@ -162,25 +185,22 @@ def clamp_execution_limits(
     max_replans: int,
     max_llm_calls: int,
 ) -> dict[str, Any]:
-    """Application policy wins over limits proposed by the model."""
+    """Enforce application-defined execution limits."""
+
     result = dict(plan)
     limits = dict(result.get("execution_limits") or {})
-    limits["max_plan_steps"] = min(
-        int(limits.get("max_plan_steps", max_steps)), max_steps
-    )
-    limits["max_tool_calls"] = min(
-        int(limits.get("max_tool_calls", max_tool_calls)), max_tool_calls
-    )
-    limits["max_sql_calls"] = min(
-        int(limits.get("max_sql_calls", max_sql_calls)), max_sql_calls
-    )
-    limits["max_replans"] = min(
-        int(limits.get("max_replans", max_replans)), max_replans
-    )
-    limits["max_llm_calls"] = min(
-        int(limits.get("max_llm_calls", max_llm_calls)), max_llm_calls
-    )
+
+    # The application defines the hard limits.
+    # Do not let the planner accidentally choose a smaller LLM budget.
+    limits["max_plan_steps"] = max_steps
+    limits["max_tool_calls"] = max_tool_calls
+    limits["max_sql_calls"] = max_sql_calls
+    limits["max_replans"] = max_replans
+    limits["max_llm_calls"] = max_llm_calls
+
     result["execution_limits"] = limits
-    if len(result.get("steps", [])) > limits["max_plan_steps"]:
+
+    if len(result.get("steps", [])) > max_steps:
         raise ValueError("Plan exceeds the application step limit.")
+
     return result

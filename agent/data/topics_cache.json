@@ -1,0 +1,30 @@
+{
+  "8c7b45508cae3303b9f13b5164f020ff00079a42b637fc572e93c7c5832d0557": [
+    "promotions_pricing"
+  ],
+  "aa6eb4f3e3382ebafbf74809930b88076a5586d2cce954270d3d98cb13d80ca5": [
+    "customers_retention"
+  ],
+  "b981d03d3d49b8a5786d300793340bee6553cd912dc7ea423871657339925382": [
+    "promotions_pricing",
+    "customers_retention"
+  ],
+  "1bdee7af572cd02b598e248ed6b06518522263fb01d155baaaa717df36f453f9": [
+    "promotions_pricing"
+  ],
+  "ff136401f178f7c03f94cf3d53519bd1ab827ef0510707ce07bdfe40f3de2650": [
+    "customers_retention"
+  ],
+  "640af4f0be6328805db598bccac319fa69d4f627bfa2320975db6492f6a81643": [
+    "customers_retention"
+  ],
+  "97fc0b0d3c1b7bb0edf63396b0d0c5fe444a5b2df6210c2206327106ea2f0ef8": [
+    "acquisition_economics"
+  ],
+  "848a338ad0a397b260b06a754c5ee7111ff19c509d6bbddb2d2acc25fb084209": [
+    "promotions_pricing"
+  ],
+  "2e8dcedb07625d196ef655dd624baa7acb4c925430b35be80cd4920b39a1d586": [
+    "customers_retention"
+  ]
+}

@@ -84,7 +84,7 @@ def traced(fn):
     def wrapper(state):
         dest = fn(state)
         print(f"  ROUTE {fn.__name__}: steps={state['steps']} replans={state['replans']} "
-              f"rejections={state['rejections']}  ->  {dest}")
+                    f"rejections={state.get('rejections', 0)}  ->  {dest}")
         return dest
     return wrapper
 

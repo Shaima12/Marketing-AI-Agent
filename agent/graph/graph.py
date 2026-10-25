@@ -1,4 +1,3 @@
-
 from langgraph.graph import StateGraph, START, END
 from langgraph.types import RetryPolicy
 
@@ -20,21 +19,59 @@ from agent.graph.nodes.replan import make_replan_node
 from agent.graph.nodes.select_step import make_select_step_node
 from agent.graph.nodes.verify import make_verify_node
 from agent.graph.nodes.abort import abort
+from agent.graph.nodes.salvage import make_salvage_node
 from agent.graph.nodes.guide import make_guide_node
 from agent.observability.tracing import traced
 from agent.retrieval.retrieval import search_handbook
 
 
-def build_graph(ctx):
-    system, banned = build_system_prompt(ctx.brand_id)
+# LangGraph's default retry skips ValueError, but our plan validation raises
+# ValueError for bad model output, which is worth retrying. Only obvious
+# programming bugs are excluded.
+_PROGRAMMING_ERRORS = (TypeError, AttributeError, KeyError, NameError, ImportError)
+
+
+def _retry_planning(exc: Exception) -> bool:
+    return not isinstance(exc, _PROGRAMMING_ERRORS)
+
+
+PLANNER_RETRY = RetryPolicy(max_attempts=3, retry_on=_retry_planning)
+
+
+def build_graph(ctx,user_question: str):
+    system, banned = build_system_prompt(
+        brand_id=ctx.brand_id,
+        user_question=user_question,
+    )
     tools = make_tools(ctx)
-    llm = get_llm()
-    llm_with_tools = llm.bind_tools(tools)
+
+    # submit_report must exist, but ONLY the report model may use it.
+    report_tool = next(
+        (t for t in tools if getattr(t, "name", None) == "submit_report"),
+        None,
+    )
+    if report_tool is None:
+        raise ValueError("The tool catalog must include submit_report.")
+
+    # Investigation tools: everything except submit_report. The planner and
+    # the executor never see it, so no "synthesis" step can be planned.
+    investigation_tools = [
+        t for t in tools if getattr(t, "name", None) != "submit_report"
+    ]
+
+    llm = get_llm(thinking_level="low")
+    llm_with_tools = llm.bind_tools(investigation_tools)
 
     tool_catalog = "\n".join(
         f"- {tool.name}: {getattr(tool, 'description', '')}; "
         f"args={getattr(tool, 'args_schema', None)}"
-        for tool in tools
+        for tool in investigation_tools
+    )
+
+    # Separate report model: lower reasoning overhead, only one tool.
+    llm_for_report = get_llm(thinking_level="low").bind_tools(
+        [report_tool],
+        tool_choice="submit_report",
     )
 
     g = StateGraph(AgentState)
@@ -44,30 +81,28 @@ def build_graph(ctx):
     g.add_node(
         "plan",
         make_plan_node(llm, system, tool_catalog),
-        retry_policy=RetryPolicy(max_attempts=3),
+        retry_policy=PLANNER_RETRY,
     )
 
     g.add_node("select_step", make_select_step_node())
 
     g.add_node(
         "execute",
-        make_execute_node(tools, llm_with_tools, system),
+        make_execute_node(investigation_tools, llm_with_tools, system),
     )
 
     g.add_node(
         "replan",
         make_replan_node(llm, system, tool_catalog),
-        retry_policy=RetryPolicy(max_attempts=3),
+        retry_policy=PLANNER_RETRY,
     )
 
-    # Used only to submit or revise the final report.
-    g.add_node(
-        "decide",
-        make_decide_node(llm_with_tools, system),
-        retry_policy=RetryPolicy(max_attempts=3),
-    )
+    # No retry_policy: decide handles its own failures and reports through
+    # next_action. A framework retry would bypass the report_calls budget.
+    g.add_node("decide", make_decide_node(llm_for_report, system))
 
     g.add_node("verify", make_verify_node(banned))
+    g.add_node("salvage", make_salvage_node(banned))
     g.add_node("abort", abort)
 
     g.add_edge(START, "guide")
@@ -103,6 +138,7 @@ def build_graph(ctx):
         {
             "select_step": "select_step",
             "abort": "abort",
+            "decide": "decide",
         },
     )
 
@@ -111,6 +147,7 @@ def build_graph(ctx):
         traced(route_after_finalize),
         {
             "verify": "verify",
+            "salvage": "salvage",
             "abort": "abort",
         },
     )
@@ -120,11 +157,12 @@ def build_graph(ctx):
         traced(after_verify),
         {
             END: END,
-            "abort": "abort",
             "decide": "decide",
+            "salvage": "salvage",
         },
     )
 
+    g.add_edge("salvage", END)
     g.add_edge("abort", END)
 
     return g.compile()

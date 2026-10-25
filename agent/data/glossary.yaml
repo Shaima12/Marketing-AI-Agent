@@ -1,0 +1,184 @@
+
+version: 1
+
+# ============================================================
+# GLOBAL CONVENTIONS — included for every question and brand
+# ============================================================
+
+topics:
+  promotions_pricing: "Promotions, discounts, sales, pricing, and promotion performance."
+  customers_retention: "Customer value, segmentation, acquisition, repeat purchases, loyalty, and retention."
+  acquisition_economics: "Acquisition channels, CAC, channel customer quality, payback, and budget allocation between channels."
+
+
+global:
+  metrics:
+    net_revenue:
+      definition: >-
+        SUM(order_items.quantity * order_items.unit_price) for orders
+        with status = 'delivered', excluding internal customers.
+        Cancelled and returned orders are NOT revenue.
+
+    gross_profit:
+      definition: >-
+        Net revenue minus SUM(quantity * products.unit_cost) over
+        the same delivered order lines and customer scope.
+
+    realized_margin:
+      definition: >-
+        1 - cost / net revenue, using the price actually paid after
+        discounts and the cost of the same delivered order lines.
+        Undefined when net revenue is zero.
+    
+    return_rate 
+      definition: >-
+        returned orders ÷ (delivered orders + returned orders), counting distinct orders, excluding internal customers.
+
+  definitions:
+    internal_customers:
+      definition: >-
+        customers.is_internal = true identifies staff or test accounts.
+        Always exclude internal customers from all business metrics and customer
+        analyses.
+
+    acquisition_channel:
+      definition: >-
+        The acquisition channel recorded at customer signup.
+        Marketing spend exists only for customers acquired in 2025.
+        Customers who signed up before 2025 form the legacy base and
+        have no acquisition spend recorded in this dataset.
+
+    late_order:
+      definition: >-
+        An order is late when ship_days > promised_days.
+
+    review_text:
+      definition: >-
+        Review text may be empty even when a rating exists.
+        Do not treat empty review text as a missing rating.
+
+  rules:
+    comparison:
+      rule: >-
+        When comparing periods of different lengths, compare per-day
+        averages, not raw totals. State the periods compared.
+
+    assumptions:
+      rule: >-
+        Finish the report with the analysis conventions and assumptions
+        used, including the relevant time windows and limitations.
+
+    postgres:
+      rule: >-
+        Cast to numeric before ROUND(x, n). Do not use reserved words
+        such as do, order, or user as SQL aliases.
+    numbers:
+      rule: >-
+        Every number the report may need must be returned by a query:
+        totals, denominators, counts, percentages, day counts and
+        differences. Compute them in SQL, never by hand. If a total is
+        needed (for example all buyers = existing + new), add it as a
+        column.
+# ============================================================
+# TOPIC: PROMOTIONS AND PRICING
+# Retrieve the complete block when this topic is selected.
+# ============================================================
+promotions_pricing:
+  metrics:
+    discount_cost:
+      definition: >-
+        SUM(quantity * (products.list_price - order_items.unit_price))
+        over delivered order lines in the promotion analysis scope.
+        Lines sold at list price contribute zero. Exclude internal
+        customers. This measures the list-price gap, not the causal
+        profit loss attributable to a promotion.
+
+  definitions:
+    existing_customer:
+      definition: >-
+        A non-internal customer with at least one delivered order
+        BEFORE the analysis window start.
+
+    new_customer:
+      definition: >-
+        A non-internal customer whose first delivered order falls
+        inside the analysis window.
+
+  rules:
+    windows:
+      rule: >-
+        Use the brand's analysis_settings (baseline_days, post_sale_days,
+        lookback_days) if they are set. If not, choose a default, say that
+        it is an assumption, and state who chose it. Default baseline is
+        the 28 days before the sale start; default post-sale length is the
+        median days between repeat orders, rounded up to whole weeks, capped
+        by the end of the data and the next promotion. Derive every window
+        boundary by date arithmetic from the sale dates and count days as
+        end - start + 1.
+    post_sale_horizons:
+      rule: >-
+        Report the post-sale change at three horizons: a short one (14 days),
+        a medium one (28 days), and the cadence window. State the start date,
+        end date and day count of each.
+    reporting:
+      rule: >-
+        Report revenue lift and gross-profit lift side by side, plus the
+        discount cost. Do not declare a promotion successful on revenue
+        lift alone. Distinguish observed results from causal claims.
+
+# ============================================================
+# TOPIC: CUSTOMERS AND RETENTION
+# Retrieve the complete block when this topic is selected.
+# ============================================================
+
+customers_retention:
+  metrics: {}
+
+  definitions:
+    segmentation_base:
+      definition: >-
+        Non-internal customers with at least one delivered order.
+        Signups without a delivered order are excluded from customer
+        value rankings and buyer segmentation.
+
+    top_decile:
+      definition: >-
+        The top  of segmentation_base ranked by net_revenue within
+        the specified analysis scope and period. Use customer_id as
+        a deterministic tie-breaker for equal net_revenue values.
+
+  rules: {}
+# ============================================================
+# TOPIC: acquisition_economics
+# Retrieve the complete block when this topic is selected.
+# ============================================================
+acquisition_economics:
+  metrics: {}
+  definitions:
+    acquisition_cohort:
+      definition: >-
+        Non-internal customers who signed up from the first day with
+        recorded acquisition spend through cohort_end.
+    cohort_end:
+      definition: >-
+        When analysis_settings.acquisition_cohort_cutoff is "auto":
+        MAX(orders.order_date) minus acquisition_value_window_days, rounded
+        down to the end of the last complete calendar month, because
+        marketing spend is recorded per calendar month. Otherwise use the
+        configured date.
+    
+    observation_window:
+      definition: >-
+        Per-customer windows start at signup_date. Per-customer averages
+        divide by all cohort members, including those with no orders.
+
+  rules:
+    consistent_scope:
+      rule: >-
+        Within one comparison, use the same cohort, window and denominator
+        for every group and every metric. Label any figure from a different
+        scope.
+    all_groups:
+      rule: >-
+        Include every group in the compared dimension. Do not drop groups
+        because they have little or no spend.

@@ -17,20 +17,25 @@ def make_select_step_node():
                 "last_error": "The investigation plan has no steps.",
             }
 
-        # Reflect the recorded execution status in the plan.
+        # Initialize missing statuses and synchronize completed results.
         for step in steps:
             result = results.get(step["id"], {})
-            if result.get("status"):
-                step["status"] = result["status"]
+            step["status"] = result.get(
+                "status",
+                step.get("status", "pending"),
+            )
 
         plan["steps"] = steps
 
+        # Finish only when every required step is complete or validly skipped.
         if required_steps_complete(plan, results):
             return {
                 "plan": plan,
                 "ready": True,
                 "current_step_id": None,
                 "next_action": "finalize",
+                "investigation_complete": True,
+                "stop_reason": None,
                 "last_error": None,
             }
 
@@ -42,6 +47,7 @@ def make_select_step_node():
                 "ready": False,
                 "current_step_id": None,
                 "next_action": "replan",
+                "investigation_complete": False,
                 "last_error": (
                     "No eligible step remains, but required work is incomplete."
                 ),
@@ -52,6 +58,7 @@ def make_select_step_node():
             "current_step_id": next_step["id"],
             "ready": False,
             "next_action": "execute",
+            "investigation_complete": False,
             "last_error": None,
         }
 

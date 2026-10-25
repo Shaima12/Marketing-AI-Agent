@@ -30,16 +30,25 @@ class AgentState(TypedDict, total=False):
 
     # Final validated report
     report: dict[str, Any] | None
-
     # Counters
     steps: int
     completed_steps: int
-    llm_calls: int
+    llm_calls: int            # investigation: plan + replan + execute
+    report_calls: int         # report: decide only (separate budget)
     tool_calls: int
     sql_calls: int
-    rejections: int
+    tool_rejections: int      # tool errors/duplicates in execute
+    report_rejections: int    # verifier rejections of the report
     replans: int
+    tokens_used: int          # running total (executor + decide)
+    coverage_checks: int      # coverage-gate runs (used in a later step)
 
     # Routing/control
     next_action: str
     last_error: str | None
+    verifier_feedback: str | None   # only the verifier's rejection text
+    run_status: str
+    partial_result: dict[str, Any] | None
+    investigation_complete: bool
+    stop_reason: str | None
+    coverage: dict[str, Any]        # coverage-gate result (used in a later step)

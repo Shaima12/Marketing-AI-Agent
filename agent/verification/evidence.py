@@ -20,10 +20,19 @@ def claim_numbers(text: str) -> list[tuple[float, bool]]:
         out.append((v, is_pct))
     return out
 
-def close(a: float, b: float) -> bool:
-    a, b = abs(a), abs(b)
-    return abs(a - b) <= max(0.01 * max(a, b), 0.005)
+def _tol(v: float) -> float:
+    """Half a unit of the last significant digit the claim wrote."""
+    s = f"{round(abs(v), 6):.6f}".rstrip("0")
+    if s.endswith("."):                       # whole number
+        digits = s[:-1]
+        if abs(v) >= 1000:                    # 619000 -> approximation, tol 500
+            zeros = len(digits) - len(digits.rstrip("0"))
+            return 0.5 * 10 ** zeros
+        return 0.5
+    return 0.5 * 10 ** -len(s.split(".")[1])  # 38.3 -> 0.05, 57.57 -> 0.005
+
 
 def supported(value: float, is_pct: bool, evidence_nums: list[float]) -> bool:
-    candidates = [value] + ([value / 100] if is_pct else [])
-    return any(close(c, e) for c in candidates for e in evidence_nums)
+    t = _tol(value)
+    cands = [(value, t)] + ([(value / 100, t / 100)] if is_pct else [])
+    return any(abs(abs(c) - abs(e)) <= tol + 1e-9 for c, tol in cands for e in evidence_nums)

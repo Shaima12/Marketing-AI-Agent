@@ -23,6 +23,15 @@ class PlanStep(BaseModel):
     ] = "pending"
     optional: bool = False
     skip_if_data_unavailable: bool = False
+    auto_complete_on_success: bool = Field(
+        default=False,
+        description=(
+            "Set true ONLY for a simple lookup step that a single successful "
+            "tool call fully answers (for example reading a promotions table). "
+            "The step then completes without an extra model call. Leave false "
+            "for analytical steps that may need follow-up queries."
+        ),
+    )
 
 
 class ExecutionLimits(BaseModel):
@@ -30,7 +39,7 @@ class ExecutionLimits(BaseModel):
     max_tool_calls: int = Field(default=10, ge=1, le=50)
     max_sql_calls: int = Field(default=4, ge=0, le=20)
     max_replans: int = Field(default=1, ge=0, le=3)
-    max_llm_calls: int = Field(default=6, ge=1, le=20)
+    max_llm_calls: int = Field(default=16, ge=1, le=20)
 
 
 class InvestigationPlan(BaseModel):

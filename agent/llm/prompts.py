@@ -1,9 +1,7 @@
 import json
 
-
-
+from agent.data.glossary import glossary_block
 from agent.data.brand_profile import load_profile, banned_claims
-
 from agent.data.introspection import schema_text
 
 
@@ -168,7 +166,7 @@ competitor prices, market benchmarks, or traffic that is not recorded):
 
   (for example, one search of customer reviews).
 
-- Then call submit_report and state the gap in cannot_determine.
+- Then stop investigating. The final report will state the gap in cannot_determine.
 
 - You may add what the brand CAN offer instead (for example, its own price
 
@@ -233,7 +231,19 @@ retrieved from the marketing handbook.
 
   the data has been read.
 
-- Do not repeat a query you already ran. Change the approach or submit.
+- Do not run exploratory queries (date ranges, row counts, existence checks)
+
+  that the schema or the plan already answers.
+
+- Prefer ONE query (using CTEs) that returns everything a step needs over
+
+  several small queries.
+
+- Do not repeat a query you already ran. Change the approach, or stop and
+
+  let the report be written with the limitation stated.
+
+- Every model call and tool call spends a limited budget.
 
 
 
@@ -315,7 +325,19 @@ This includes:
 
 - period comparisons
 
+- combined-window totals (for example sale plus post-sale versus baseline)
+
 - aggregations
+
+
+
+The final report is NOT allowed to do arithmetic. Every number it cites must
+
+appear verbatim in a tool result. Before a step is finished, SQL must already
+
+have returned every figure the report may need: absolute values, differences,
+
+and percentage changes.
 
 
 
@@ -331,7 +353,11 @@ Do not round intermediate values.
 
 
 
-Round only the final value presented to the user when appropriate.
+Round only in the final SELECT (for example ROUND(x, 2)), so the rounded value
+
+is what the evidence contains and the report copies it. Never round or
+
+reformat numbers in prose.
 
 
 
@@ -579,6 +605,16 @@ state that it cannot be determined.
 
 
 
+- Cite ALL evidence records that contain a number used in a claim. If a claim
+
+  combines numbers from different records, cite each of them.
+
+- A verifier checks every number in the report against the cited evidence.
+
+  A number that is not in the cited evidence causes the report to be rejected.
+
+
+
 
 
 # UNCERTAINTY
@@ -647,31 +683,38 @@ A recommendation should explain:
 
 Do not recommend actions that depend on information that is unavailable.
 
-
-
-
-
 # BRAND ALIGNMENT
 
 
 
-Respect the brand profile provided below.
+-Respect the brand profile provided below.
 
 
 
-Never recommend messaging, positioning, campaigns, or claims that conflict
+- Never recommend messaging, positioning, campaigns, or claims that conflict
 
 with the brand's positioning, audience, tone, or restrictions.
 
 
 
-Never use banned claims or words the brand asked to avoid.
+- Never use banned claims or words the brand asked to avoid.
 
 
 
-Brand context constrains recommendations; it does not override factual
+- Brand context constrains recommendations; it does not override factual
 
 evidence.
+
+- Check every recommendation against the brand's policies , - Check every recommendation against the brand's policy fields (for example
+  discount_policy, shipping_policy, constraints). If the brand's own offers
+  or current practice break a policy, say so and cite the policy.
+- Never recommend an action that depends on data the brand says it does not
+  collect. , restrictions  (for example
+  discount_policy, shipping_policy). If the brand's own offers
+  or current practice break a policy, say so and cite the policy.
+
+- Never recommend an action that depends on data the brand says it does not
+  collect.
 
 
 
@@ -727,7 +770,9 @@ Do not hide uncertainty merely to produce a more convincing answer.
 
 # FINAL REPORT
 
-
+The final report is written in a separate step with its own requirements.
+Keep the answer proportional to the question, answer every part of it, and
+make sure every number comes from a tool result.
 
 The final response should normally contain:
 
@@ -793,7 +838,19 @@ Before submitting the final report, verify:
 
 
 
-Finish by calling submit_report alone.
+# PHASES
+
+
+
+Investigation phase: use only the investigation tools you are given. Never
+
+call submit_report during investigation.
+
+
+
+Finalization phase: the final report is submitted in a separate step, by
+
+calling submit_report alone.
 
 """
 
@@ -932,15 +989,6 @@ Why should customers choose you?
 Meaning:
 
 The concrete value or reason customers should choose this brand instead of alternatives.
-
-
-
-### positioning_statement
-
-Question:
-
-How do you position your brand?
-
 
 
 ### differentiators
@@ -1265,39 +1313,40 @@ How to use this guide:
 - Cite the ids (KB1, KB2...) you actually relied on in knowledge_citations."""
 
 
-
-
-
-def guide_block(knowledge: dict | None, max_total: int = 7000) -> str:
-    """Render retrieved handbook material safely within a size limit.
+def guide_block(knowledge: dict | None, max_total: int = 80000) -> str:
+    """Render retrieved handbook material within a size limit.
 
     Handbook content is methodology, not business evidence.
+    Methodology comes first and worked examples last. A section that does not
+    fit is skipped, and later (shorter) sections can still be included.
     """
     if not isinstance(knowledge, dict) or not knowledge:
         return GUIDE_HEADER + "\n\n(no guide retrieved for this question)"
 
-    parts: list[str] = []
-    used = 0
-
-    for kid, item in knowledge.items():
+    def render(kid, item):
         if isinstance(item, dict):
-            ref = item.get("ref", "Unknown reference")
+            ref = item.get("ref") or " > ".join(
+                str(item[key]) for key in ("chapter", "section") if item.get(key)
+            ) or "Unknown reference"
             content = item.get("text", item.get("content", ""))
-            is_example = bool(item.get("example", False))
+            is_example = bool(item.get("is_invented_example", item.get("example", False))) or "worked example" in ref.lower()
         else:
             ref = "Unknown reference"
             content = str(item) if item is not None else ""
             is_example = False
 
         tag = " [INVENTED EXAMPLE]" if is_example else ""
-        chunk = f"[{kid}] {ref}{tag}\n{content}".strip()
-        remaining = max_total - used
-        if remaining <= 0:
-            break
-        if len(chunk) > remaining:
-            if not parts:
-                parts.append(chunk[:remaining])
-            break
+        return f"[{kid}] {ref}{tag}\n{content}".strip(), is_example
+
+    rendered = [render(kid, item) for kid, item in knowledge.items()]
+    rendered.sort(key=lambda pair: pair[1])  # stable: methodology first, examples last
+
+    parts: list[str] = []
+    used = 0
+
+    for chunk, _ in rendered:
+        if used + len(chunk) > max_total:
+            continue
         parts.append(chunk)
         used += len(chunk)
 
@@ -1305,31 +1354,61 @@ def guide_block(knowledge: dict | None, max_total: int = 7000) -> str:
         return GUIDE_HEADER + "\n\n(no usable guide content retrieved)"
     return GUIDE_HEADER + "\n\n" + "\n\n".join(parts)
 
+def add_glossary_to_prompt(
+    system_prompt: str,
+    question: str,
+) -> tuple[str, dict]:
+    """Append question-relevant business semantics to the system prompt."""
 
-def build_system_prompt(brand_id: str) -> tuple[str, list[str]]:
+    glossary, metadata = glossary_block(question)
+
+    section = (
+        "# BUSINESS GLOSSARY\n\n"
+        "This section defines the business metrics, terminology, "
+        "and analytical rules relevant to the user's question.\n\n"
+        "Instructions:\n"
+        "- Apply the relevant metric definitions exactly.\n"
+        "- Apply the relevant business rules when planning and querying.\n"
+        "- Treat definitions as semantic guidance, not as database evidence.\n"
+        "- Generate SQL using the actual database schema and available columns.\n"
+        "- Never assume a column or table exists just because a glossary "
+        "definition mentions a business concept.\n"
+        "- If the schema cannot support a definition, disclose the limitation "
+        "instead of guessing.\n\n"
+        f"{glossary}"
+    )
+
+    updated_prompt = f"{system_prompt}\n\n{section}"
+
+    return updated_prompt, metadata
+
+
+def build_system_prompt(
+    brand_id: str,
+    user_question: str,
+) -> tuple[str, list[str]]:
+    """Build the base system prompt with the relevant business glossary."""
 
     profile = load_profile(brand_id)
 
-
-
     system = (
-
         CORE_RULES
-
         + "\n\n"
-
         + BRAND_PROFILE_FIELD_DEFINITIONS
-
         + "\n\n# BRAND PROFILE\n"
-
         + json.dumps(profile, indent=2, default=str)
-
         + "\n\n# DATABASE SCHEMA\n"
-
         + schema_text(brand_id)
-
     )
 
+    # Inject the global glossary and question-relevant topic blocks.
+    glossary, metadata = glossary_block(user_question)
 
+    system = (
+        system
+        + "\n\n"
+        + glossary
+    )
 
+    # Keep the existing return contract.
     return system, banned_claims(profile)

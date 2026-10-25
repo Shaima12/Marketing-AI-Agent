@@ -154,5 +154,17 @@
   "Feature-benefit analysis metrics in digital marketing",
   "Measuring advertising claim ROI and conversion trade-offs",
   "Outcome KPIs for advertising claims: definitions and methods"
+ ],
+ "How do I evaluate a promotion: baseline, lift, pull-forward and measurement window?": [
+  "How do I evaluate a promotion: baseline, lift, pull-forward and measurement window?",
+  "Baseline, lift, and pull-forward metrics for promotion evaluation",
+  "Pull-forward effect measurement methods and trade-offs",
+  "Measurement window selection impact on promotion lift analysis"
+ ],
+ "Which acquisition channel brings the best customers, and should I move budget?": [
+  "Which acquisition channel brings the best customers, and should I move budget?",
+  "channel CAC vs CLV comparison methods and definitions",
+  "acquisition channel performance metrics (conversion rate, ROI, churn) trade\u2011offs",
+  "budget reallocation criteria based on ROI, LTV, and cost\u2011effectiveness analysis"
  ]
 }
