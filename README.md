@@ -1,14 +1,37 @@
 # Marketing Intelligence Platform
 
-Marketing Intelligence Platform is a web application for collecting a brand's marketing context, connecting its data, and exploring marketing questions with an AI assistant. The repository contains a Next.js web app and a separate Python investigation agent.
+Marketing Intelligence Platform is a workspace for organizing a brand's marketing knowledge and making its business data available for structured analysis. It combines a Next.js web application for account setup and brand onboarding with a separate Python agent designed to investigate marketing questions using approved database data and marketing guidance.
 
 ## Features
 
-- Brand onboarding for positioning, audience, market, marketing, measurement, and brand voice.
-- Account registration and sign-in backed by Supabase Auth.
-- PostgreSQL connection setup, including schema discovery and selection of tables and columns for agent access.
-- A brand assistant experience backed by a Python agent that can retrieve marketing knowledge and query approved data.
-- Retrieval and evaluation utilities for the marketing handbook and agent workflows.
+- **Brand workspace:** Create a brand profile with its positioning, target customers, brand voice, market, marketing priorities, constraints, and success measures. Onboarding also includes business-data, channel, and document steps.
+- **Accounts and saved context:** Sign up and sign in with Supabase Auth. The dashboard loads the signed-in user's brand information for display and contextual lookup.
+- **Guided database access:** Connect a PostgreSQL database, discover its schema, and choose which tables and columns are relevant. The setup flow creates a restricted database role for the agent rather than giving it the owner's general database credentials.
+- **Marketing investigation agent:** The Python agent can build a bounded investigation plan, inspect the allowed schema, run read-only SQL queries, and search a marketing handbook for analytical methods and recommendations.
+- **Evidence-based reporting:** Agent findings are expected to cite evidence returned by its tools. The report is validated before it is returned, and the report schema supports summaries, findings, recommended actions, knowledge citations, and explicit unknowns.
+- **Knowledge retrieval and evaluation:** The agent includes handbook retrieval and evaluation scripts to assess retrieval and investigation behavior.
+
+## What the agent does
+
+The Python agent is an analytical assistant for answering questions about a brand's marketing and business data. It does not launch or change campaigns. It gathers relevant evidence, applies marketing guidance, and returns a structured answer.
+
+For a question such as “How did our marketing performance change last month?”, the agent:
+
+1. **Loads relevant marketing guidance.** It searches its knowledge base for handbook material that may help with the analysis. This guidance can inform methods and recommendations, but it is not treated as evidence about the brand's actual results.
+2. **Plans an investigation.** A language model turns the question into a small, bounded plan. Steps identify what evidence is needed and can depend on earlier results. The plan is checked against the tools and data available to that brand.
+3. **Checks the available data.** The agent can inspect the permitted database schema and its descriptions to understand which tables and columns are available.
+4. **Queries approved business data.** When needed, it runs read-only `SELECT` queries against the configured PostgreSQL connection. Queries are checked by a SQL guard, run in a read-only transaction, and have a timeout and result-size cap.
+5. **Builds and verifies the answer.** The final report can include a summary, evidence-linked findings, suggested actions, handbook citations, and questions the data could not answer. A verification step checks the report against collected evidence before accepting it.
+
+This design separates **what the brand's data shows** from **general marketing advice**, and is intended to avoid presenting unsupported numbers as facts. The agent runs independently from the web server.
+
+## How the project works
+
+1. A user creates an account and enters the brand's business and marketing context during onboarding.
+2. The user can connect a PostgreSQL data source, inspect the discovered schema, and select approved tables and columns.
+3. The Python agent uses a brand ID and question to investigate, as described above. Its database access is restricted to the configured agent role and approved data.
+
+The repository currently contains two related but separate experiences: the web dashboard's assistant is a saved-brand-profile lookup and explicitly notes that generative replies are not connected; the Python investigation agent is run independently from the command line. Starting the Next.js app does not start the Python agent.
 
 ## Technology
 
