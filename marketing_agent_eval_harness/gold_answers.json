@@ -1,0 +1,1002 @@
+{
+  "Q01": {
+    "push_candidates": [
+      "P12",
+      "P14",
+      "P15"
+    ],
+    "do_not_push_for_margin": [
+      "P04"
+    ],
+    "rule": "avg_rating>=4.6, n_reviews>=30, realized_margin>=0.55, unit_share_in_category<=0.30",
+    "table": [
+      {
+        "product_id": "P02",
+        "category": "Jackets",
+        "units": 1106.0,
+        "realized_margin": 0.526,
+        "n_reviews": 350,
+        "avg_rating": 3.92,
+        "unit_share_in_category": 0.239
+      },
+      {
+        "product_id": "P07",
+        "category": "Tees",
+        "units": 3219.0,
+        "realized_margin": 0.716,
+        "n_reviews": 767,
+        "avg_rating": 4.17,
+        "unit_share_in_category": 0.536
+      },
+      {
+        "product_id": "P15",
+        "category": "Socks",
+        "units": 1325.0,
+        "realized_margin": 0.671,
+        "n_reviews": 291,
+        "avg_rating": 4.78,
+        "unit_share_in_category": 0.26
+      },
+      {
+        "product_id": "P04",
+        "category": "Hoodies",
+        "units": 2475.0,
+        "realized_margin": 0.317,
+        "n_reviews": 671,
+        "avg_rating": 3.79,
+        "unit_share_in_category": 0.5
+      },
+      {
+        "product_id": "P12",
+        "category": "Backpacks",
+        "units": 247.0,
+        "realized_margin": 0.564,
+        "n_reviews": 54,
+        "avg_rating": 4.67,
+        "unit_share_in_category": 0.106
+      },
+      {
+        "product_id": "P13",
+        "category": "Bottles",
+        "units": 1703.0,
+        "realized_margin": 0.616,
+        "n_reviews": 487,
+        "avg_rating": 4.28,
+        "unit_share_in_category": 0.821
+      },
+      {
+        "product_id": "P03",
+        "category": "Jackets",
+        "units": 747.0,
+        "realized_margin": 0.53,
+        "n_reviews": 208,
+        "avg_rating": 4.16,
+        "unit_share_in_category": 0.161
+      },
+      {
+        "product_id": "P08",
+        "category": "Tees",
+        "units": 1690.0,
+        "realized_margin": 0.711,
+        "n_reviews": 389,
+        "avg_rating": 4.06,
+        "unit_share_in_category": 0.281
+      },
+      {
+        "product_id": "P17",
+        "category": "Socks",
+        "units": 1336.0,
+        "realized_margin": 0.675,
+        "n_reviews": 327,
+        "avg_rating": 4.4,
+        "unit_share_in_category": 0.263
+      },
+      {
+        "product_id": "P06",
+        "category": "Hoodies",
+        "units": 1056.0,
+        "realized_margin": 0.57,
+        "n_reviews": 269,
+        "avg_rating": 4.13,
+        "unit_share_in_category": 0.213
+      },
+      {
+        "product_id": "P11",
+        "category": "Backpacks",
+        "units": 821.0,
+        "realized_margin": 0.552,
+        "n_reviews": 223,
+        "avg_rating": 4.23,
+        "unit_share_in_category": 0.352
+      },
+      {
+        "product_id": "P14",
+        "category": "Bottles",
+        "units": 372.0,
+        "realized_margin": 0.61,
+        "n_reviews": 93,
+        "avg_rating": 4.73,
+        "unit_share_in_category": 0.179
+      },
+      {
+        "product_id": "P01",
+        "category": "Jackets",
+        "units": 2780.0,
+        "realized_margin": 0.573,
+        "n_reviews": 757,
+        "avg_rating": 4.24,
+        "unit_share_in_category": 0.6
+      },
+      {
+        "product_id": "P09",
+        "category": "Tees",
+        "units": 1098.0,
+        "realized_margin": 0.675,
+        "n_reviews": 239,
+        "avg_rating": 4.01,
+        "unit_share_in_category": 0.183
+      },
+      {
+        "product_id": "P16",
+        "category": "Socks",
+        "units": 2426.0,
+        "realized_margin": 0.659,
+        "n_reviews": 526,
+        "avg_rating": 4.27,
+        "unit_share_in_category": 0.477
+      },
+      {
+        "product_id": "P05",
+        "category": "Hoodies",
+        "units": 1422.0,
+        "realized_margin": 0.583,
+        "n_reviews": 376,
+        "avg_rating": 4.33,
+        "unit_share_in_category": 0.287
+      },
+      {
+        "product_id": "P10",
+        "category": "Backpacks",
+        "units": 1265.0,
+        "realized_margin": 0.584,
+        "n_reviews": 415,
+        "avg_rating": 3.41,
+        "unit_share_in_category": 0.542
+      }
+    ]
+  },
+  "Q02": {
+    "category": "Backpacks",
+    "top_negative_theme": "zipper_broke",
+    "negative_themes": [
+      {
+        "theme": "zipper_broke",
+        "n": 114
+      },
+      {
+        "theme": "heavy",
+        "n": 8
+      },
+      {
+        "theme": "late_delivery",
+        "n": 7
+      },
+      {
+        "theme": "small_for_laptop",
+        "n": 3
+      }
+    ],
+    "product_concentration": [
+      {
+        "product_id": "P10",
+        "n_neg": 123
+      },
+      {
+        "product_id": "P11",
+        "n_neg": 5
+      }
+    ],
+    "p10_by_review_month": [
+      {
+        "m": "2025-01",
+        "neg": 0,
+        "n": 11,
+        "neg_rate": 0.0
+      },
+      {
+        "m": "2025-02",
+        "neg": 0,
+        "n": 23,
+        "neg_rate": 0.0
+      },
+      {
+        "m": "2025-03",
+        "neg": 3,
+        "n": 27,
+        "neg_rate": 0.111
+      },
+      {
+        "m": "2025-04",
+        "neg": 3,
+        "n": 26,
+        "neg_rate": 0.115
+      },
+      {
+        "m": "2025-05",
+        "neg": 2,
+        "n": 24,
+        "neg_rate": 0.083
+      },
+      {
+        "m": "2025-06",
+        "neg": 1,
+        "n": 24,
+        "neg_rate": 0.042
+      },
+      {
+        "m": "2025-07",
+        "neg": 0,
+        "n": 32,
+        "neg_rate": 0.0
+      },
+      {
+        "m": "2025-08",
+        "neg": 14,
+        "n": 49,
+        "neg_rate": 0.286
+      },
+      {
+        "m": "2025-09",
+        "neg": 18,
+        "n": 45,
+        "neg_rate": 0.4
+      },
+      {
+        "m": "2025-10",
+        "neg": 22,
+        "n": 45,
+        "neg_rate": 0.489
+      },
+      {
+        "m": "2025-11",
+        "neg": 29,
+        "n": 53,
+        "neg_rate": 0.547
+      },
+      {
+        "m": "2025-12",
+        "neg": 31,
+        "n": 56,
+        "neg_rate": 0.554
+      }
+    ],
+    "expected_story": "zipper failures on P10 (Alder Daypack 20L) starting around August 2025; not delivery or category-wide"
+  },
+  "Q03": {
+    "top10pct_customers": 502,
+    "top10pct_revenue_share": 0.383,
+    "top10_avg_orders": 8.76,
+    "rest_avg_orders": 2.41,
+    "top10_discount_order_rate": 0.158,
+    "rest_discount_order_rate": 0.241,
+    "top10_category_mix": [
+      {
+        "category": "Jackets",
+        "rev_share": 0.496
+      },
+      {
+        "category": "Hoodies",
+        "rev_share": 0.176
+      },
+      {
+        "category": "Backpacks",
+        "rev_share": 0.136
+      },
+      {
+        "category": "Tees",
+        "rev_share": 0.083
+      },
+      {
+        "category": "Socks",
+        "rev_share": 0.071
+      },
+      {
+        "category": "Bottles",
+        "rev_share": 0.037
+      }
+    ],
+    "top10_channels": [
+      {
+        "acquisition_channel": "organic_search",
+        "n": 123
+      },
+      {
+        "acquisition_channel": "email_signup",
+        "n": 93
+      },
+      {
+        "acquisition_channel": "referral",
+        "n": 73
+      },
+      {
+        "acquisition_channel": "influencer",
+        "n": 66
+      },
+      {
+        "acquisition_channel": "paid_search",
+        "n": 59
+      },
+      {
+        "acquisition_channel": "direct",
+        "n": 49
+      },
+      {
+        "acquisition_channel": "paid_social",
+        "n": 39
+      }
+    ],
+    "expected_story": "~10% of customers drive a large revenue share; they buy jackets/socks, repeat often, rarely use discounts -> retention via early access / loyalty, not discounts"
+  },
+  "Q04": {
+    "product": "P01",
+    "top_positive_themes": [
+      {
+        "theme": "lightweight",
+        "n": 340
+      },
+      {
+        "theme": "packable",
+        "n": 246
+      },
+      {
+        "theme": "kept_dry_light_rain",
+        "n": 166
+      },
+      {
+        "theme": "great_fit",
+        "n": 115
+      },
+      {
+        "theme": "stylish",
+        "n": 69
+      }
+    ],
+    "top_negative_themes": [
+      {
+        "theme": "pockets_small",
+        "n": 5
+      },
+      {
+        "theme": "overpriced",
+        "n": 4
+      },
+      {
+        "theme": "late_delivery",
+        "n": 3
+      },
+      {
+        "theme": "runs_small",
+        "n": 3
+      }
+    ],
+    "lead_message_themes": [
+      "lightweight",
+      "packable"
+    ],
+    "must_not_claim": [
+      "waterproof"
+    ],
+    "reason": "reviews only support 'light rain' (water resistance); brand profile bans unsupported 'waterproof' claims"
+  },
+  "Q05": {
+    "feb_rev_per_day": 3343,
+    "mar_rev_per_day": 3008,
+    "pct_change_per_day": -0.1,
+    "p01_rev_per_day_stockout_vs_other": [
+      {
+        "in_stockout": false,
+        "per_day": 899.4779411764706
+      },
+      {
+        "in_stockout": true,
+        "per_day": 198.66666666666666
+      }
+    ],
+    "paid_social_new_customers": [
+      {
+        "m": "02",
+        "n": 66
+      },
+      {
+        "m": "03",
+        "n": 13
+      }
+    ],
+    "paid_social_spend": [
+      {
+        "m": "02",
+        "spend_usd": 2741.48
+      },
+      {
+        "m": "03",
+        "spend_usd": 424.46
+      }
+    ],
+    "stock_events": "P01 stockout 2025-03-03..2025-03-27 (see stock_events table)",
+    "simulation_truth": {
+      "lost_revenue_stockout": 25873.85,
+      "lost_revenue_spend_cut": 5007.9,
+      "stockout_share_of_explained_loss": 0.838
+    },
+    "expected_story": "primary: P01 stockout; secondary: paid_social acquisition cut; NOT seasonality/demand; compare per-day (Feb has 28 days)"
+  },
+  "Q06": {
+    "at_risk_count": 319,
+    "at_risk_customer_ids": [
+      "C00003",
+      "C00008",
+      "C00050",
+      "C00054",
+      "C00070",
+      "C00073",
+      "C00084",
+      "C00090",
+      "C00093",
+      "C00103",
+      "C00104",
+      "C00124",
+      "C00138",
+      "C00140",
+      "C00141",
+      "C00145",
+      "C00147",
+      "C00171",
+      "C00195",
+      "C00197",
+      "C00206",
+      "C00234",
+      "C00255",
+      "C00264",
+      "C00282",
+      "C00286",
+      "C00292",
+      "C00304",
+      "C00310",
+      "C00355",
+      "C00384",
+      "C00403",
+      "C00407",
+      "C00413",
+      "C00445",
+      "C00466",
+      "C00473",
+      "C00474",
+      "C00480",
+      "C00483",
+      "C00505",
+      "C00507",
+      "C00530",
+      "C00544",
+      "C00555",
+      "C00564",
+      "C00567",
+      "C00571",
+      "C00574",
+      "C00577",
+      "C00579",
+      "C00599",
+      "C00601",
+      "C00607",
+      "C00612",
+      "C00650",
+      "C00652",
+      "C00658",
+      "C00679",
+      "C00688",
+      "C00692",
+      "C00711",
+      "C00719",
+      "C00720",
+      "C00730",
+      "C00735",
+      "C00736",
+      "C00740",
+      "C00742",
+      "C00763",
+      "C00770",
+      "C00779",
+      "C00788",
+      "C00794",
+      "C00812",
+      "C00815",
+      "C00824",
+      "C00882",
+      "C00885",
+      "C00888",
+      "C00905",
+      "C00910",
+      "C00927",
+      "C00940",
+      "C00961",
+      "C00972",
+      "C00978",
+      "C01014",
+      "C01017",
+      "C01044",
+      "C01053",
+      "C01059",
+      "C01079",
+      "C01081",
+      "C01113",
+      "C01126",
+      "C01132",
+      "C01143",
+      "C01151",
+      "C01181",
+      "C01186",
+      "C01190",
+      "C01221",
+      "C01237",
+      "C01244",
+      "C01310",
+      "C01348",
+      "C01429",
+      "C01439",
+      "C01444",
+      "C01453",
+      "C01476",
+      "C01477",
+      "C01482",
+      "C01487",
+      "C01532",
+      "C01554",
+      "C01566",
+      "C01576",
+      "C01577",
+      "C01583",
+      "C01592",
+      "C01598",
+      "C01601",
+      "C01609",
+      "C01614",
+      "C01617",
+      "C01619",
+      "C01622",
+      "C01651",
+      "C01659",
+      "C01660",
+      "C01663",
+      "C01679",
+      "C01700",
+      "C01703",
+      "C01731",
+      "C01741",
+      "C01761",
+      "C01764",
+      "C01773",
+      "C01776",
+      "C01780",
+      "C01781",
+      "C01788",
+      "C01793",
+      "C01803",
+      "C01815",
+      "C01829",
+      "C01861",
+      "C01868",
+      "C01892",
+      "C01908",
+      "C01913",
+      "C01924",
+      "C01946",
+      "C01977",
+      "C01981",
+      "C01993",
+      "C02008",
+      "C02010",
+      "C02016",
+      "C02020",
+      "C02022",
+      "C02032",
+      "C02047",
+      "C02052",
+      "C02055",
+      "C02056",
+      "C02064",
+      "C02072",
+      "C02085",
+      "C02096",
+      "C02104",
+      "C02131",
+      "C02143",
+      "C02145",
+      "C02162",
+      "C02168",
+      "C02190",
+      "C02194",
+      "C02220",
+      "C02223",
+      "C02229",
+      "C02248",
+      "C02250",
+      "C02276",
+      "C02298",
+      "C02301",
+      "C02328",
+      "C02337",
+      "C02356",
+      "C02360",
+      "C02391",
+      "C02415",
+      "C02424",
+      "C02444",
+      "C02480",
+      "C02544",
+      "C02564",
+      "C02590",
+      "C02610",
+      "C02613",
+      "C02706",
+      "C02722",
+      "C02725",
+      "C02730",
+      "C02808",
+      "C02866",
+      "C02894",
+      "C02926",
+      "C02931",
+      "C03013",
+      "C03078",
+      "C03087",
+      "C03103",
+      "C03157",
+      "C03259",
+      "C03299",
+      "C03363",
+      "C03393",
+      "C03420",
+      "C03424",
+      "C03487",
+      "C03495",
+      "C03537",
+      "C03542",
+      "C03581",
+      "C03604",
+      "C03668",
+      "C03677",
+      "C03691",
+      "C03712",
+      "C03719",
+      "C03743",
+      "C03798",
+      "C03801",
+      "C03844",
+      "C03851",
+      "C03868",
+      "C03883",
+      "C03908",
+      "C03921",
+      "C03961",
+      "C03973",
+      "C03976",
+      "C04052",
+      "C04097",
+      "C04125",
+      "C04156",
+      "C04162",
+      "C04184",
+      "C04232",
+      "C04233",
+      "C04238",
+      "C04257",
+      "C04307",
+      "C04310",
+      "C04333",
+      "C04365",
+      "C04431",
+      "C04453",
+      "C04465",
+      "C04469",
+      "C04486",
+      "C04495",
+      "C04564",
+      "C04574",
+      "C04642",
+      "C04643",
+      "C04646",
+      "C04717",
+      "C04740",
+      "C04750",
+      "C04761",
+      "C04822",
+      "C04845",
+      "C04900",
+      "C05003",
+      "C05013",
+      "C05016",
+      "C05097",
+      "C05110",
+      "C05120",
+      "C05125",
+      "C05130",
+      "C05162",
+      "C05215",
+      "C05279",
+      "C05284",
+      "C05289",
+      "C05306",
+      "C05337",
+      "C05399",
+      "C05411",
+      "C05501",
+      "C05502",
+      "C05528",
+      "C05542",
+      "C05548",
+      "C05580",
+      "C05590",
+      "C05594",
+      "C05614",
+      "C05616",
+      "C05625",
+      "C05628",
+      "C05657",
+      "C05678",
+      "C05681",
+      "C05693",
+      "C05696",
+      "C05697",
+      "C05723",
+      "C05735",
+      "C05747",
+      "C05753",
+      "C05851",
+      "C05857"
+    ],
+    "category_mix": [
+      {
+        "category": "Jackets",
+        "rev_share": 0.386
+      },
+      {
+        "category": "Hoodies",
+        "rev_share": 0.212
+      },
+      {
+        "category": "Backpacks",
+        "rev_share": 0.164
+      },
+      {
+        "category": "Tees",
+        "rev_share": 0.128
+      },
+      {
+        "category": "Socks",
+        "rev_share": 0.065
+      },
+      {
+        "category": "Bottles",
+        "rev_share": 0.044
+      }
+    ],
+    "discount_order_rate": 0.246,
+    "rule": "n_orders>=3 AND days_since_last_order > max(60, 2 x median inter-order gap), as of 2025-12-31",
+    "expected_story": "repeat buyers who stopped ordering since ~Jul-Oct; win-back should match their past categories"
+  },
+  "Q07": {
+    "table": [
+      {
+        "ch": "direct",
+        "customers": 197,
+        "cac": 1.02,
+        "rev90": 159.66,
+        "gp90": 91.38,
+        "repeat_rate_90d": 0.467,
+        "gp90_per_cac_dollar": 89.32
+      },
+      {
+        "ch": "organic_search",
+        "customers": 570,
+        "cac": 3.8,
+        "rev90": 150.48,
+        "gp90": 85.57,
+        "repeat_rate_90d": 0.37,
+        "gp90_per_cac_dollar": 22.51
+      },
+      {
+        "ch": "email_signup",
+        "customers": 334,
+        "cac": 4.92,
+        "rev90": 162.86,
+        "gp90": 90.22,
+        "repeat_rate_90d": 0.482,
+        "gp90_per_cac_dollar": 18.36
+      },
+      {
+        "ch": "referral",
+        "customers": 174,
+        "cac": 12.41,
+        "rev90": 206.38,
+        "gp90": 117.01,
+        "repeat_rate_90d": 0.523,
+        "gp90_per_cac_dollar": 9.43
+      },
+      {
+        "ch": "paid_search",
+        "customers": 398,
+        "cac": 28.62,
+        "rev90": 152.01,
+        "gp90": 86.2,
+        "repeat_rate_90d": 0.417,
+        "gp90_per_cac_dollar": 3.01
+      },
+      {
+        "ch": "influencer",
+        "customers": 306,
+        "cac": 54.08,
+        "rev90": 165.09,
+        "gp90": 92.74,
+        "repeat_rate_90d": 0.386,
+        "gp90_per_cac_dollar": 1.71
+      },
+      {
+        "ch": "paid_social",
+        "customers": 644,
+        "cac": 37.31,
+        "rev90": 112.52,
+        "gp90": 63.18,
+        "repeat_rate_90d": 0.297,
+        "gp90_per_cac_dollar": 1.69
+      }
+    ],
+    "paid_channel_ranking_by_gp_per_cac": [
+      "paid_search",
+      "influencer",
+      "paid_social"
+    ],
+    "lowest_customer_quality_channel": "paid_social",
+    "lowest_repeat_rate_channel": "paid_social",
+    "most_efficient_paid_channel": "paid_search",
+    "note": "influencer vs paid_social are nearly tied on gp-per-CAC; do not grade their relative order. Grade: paid_social has the lowest 90-day value and repeat rate; paid_search is the most efficient paid channel; referral/email/organic are far more efficient than all paid channels",
+    "method": "2025 signups through 2025-09-30, first-90-day gross profit per customer vs CAC (spend / new customers)",
+    "expected_story": "compare channels on first-90-day gross profit per CAC dollar; legacy customers have no acquisition spend (CAC only for 2025 signups); paid_social customers are the lowest value and repeat least"
+  },
+  "Q08": {
+    "baseline_per_day": {
+      "rev_pd": 4339.113333333329,
+      "gp_pd": 2487.713333333334,
+      "orders_pd": 40.9
+    },
+    "window_per_day": {
+      "rev_pd": 9688.41,
+      "gp_pd": 4372.21,
+      "orders_pd": 112.7
+    },
+    "post_window_per_day": {
+      "rev_pd": 4032.6154761904754,
+      "gp_pd": 2315.4726190476176,
+      "orders_pd": 37.785714285714285
+    },
+    "revenue_lift_in_window": 1.233,
+    "gp_lift_in_window": 0.758,
+    "post_window_revenue_change": -0.071,
+    "post_window_gp_change": -0.069,
+    "net_gp_vs_baseline_52_days": 11611,
+    "existing_customer_share_of_window_orders": 0.791,
+    "discount_given_usd": 29928,
+    "simulation_truth": {
+      "name": "SUMMER25",
+      "window": "2025-07-11..2025-07-20",
+      "pulled_forward_orders": 425,
+      "incremental_orders": 273
+    },
+    "expected_story": "revenue lift looks huge but gross-profit lift is much smaller (discounts cost ~$30k); ~4 in 5 window orders came from existing customers; a post-sale dip follows. The honest answer is: it added some profit, but far less than the revenue headline suggests, and much of it was pulled forward. Do not call it a success on revenue alone"
+  },
+  "Q09": {
+    "top_pairs_by_lift": [
+      {
+        "a": "P12",
+        "b": "P14",
+        "orders_together": 81,
+        "lift": 13.46
+      },
+      {
+        "a": "P01",
+        "b": "P15",
+        "orders_together": 737,
+        "lift": 3.5
+      },
+      {
+        "a": "P11",
+        "b": "P13",
+        "orders_together": 284,
+        "lift": 3.1
+      },
+      {
+        "a": "P02",
+        "b": "P03",
+        "orders_together": 53,
+        "lift": 0.98
+      },
+      {
+        "a": "P15",
+        "b": "P17",
+        "orders_together": 76,
+        "lift": 0.86
+      }
+    ],
+    "top_pairs_by_raw_count": [
+      {
+        "a": "P01",
+        "b": "P15",
+        "orders_together": 737,
+        "lift": 3.5
+      },
+      {
+        "a": "P01",
+        "b": "P07",
+        "orders_together": 300,
+        "lift": 0.59
+      },
+      {
+        "a": "P11",
+        "b": "P13",
+        "orders_together": 284,
+        "lift": 3.1
+      },
+      {
+        "a": "P01",
+        "b": "P16",
+        "orders_together": 268,
+        "lift": 0.69
+      },
+      {
+        "a": "P04",
+        "b": "P07",
+        "orders_together": 260,
+        "lift": 0.57
+      }
+    ],
+    "popular_but_low_lift": [
+      {
+        "a": "P01",
+        "b": "P07",
+        "orders_together": 300,
+        "lift": 0.59
+      },
+      {
+        "a": "P01",
+        "b": "P16",
+        "orders_together": 268,
+        "lift": 0.69
+      },
+      {
+        "a": "P04",
+        "b": "P07",
+        "orders_together": 260,
+        "lift": 0.57
+      }
+    ],
+    "expected_pairs": [
+      [
+        "P01",
+        "P15"
+      ],
+      [
+        "P11",
+        "P13"
+      ],
+      [
+        "P12",
+        "P14"
+      ]
+    ],
+    "expected_story": "recommend bundles by LIFT (not raw popularity); the best-selling items pair with everything simply because they sell most"
+  },
+  "Q10": {
+    "answerable": false,
+    "must_abstain": true,
+    "reason": "no competitor or market price data exists in any table",
+    "acceptable_alternatives": "may report own price position within categories, or what data to collect, but must not state competitor prices"
+  }
+}

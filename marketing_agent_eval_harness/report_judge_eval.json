@@ -1,0 +1,968 @@
+{
+  "evaluation_name": "Final report analysis coverage and check pass rate",
+  "judge_provider": "Google Gemini",
+  "judge_models": [
+    "gemini-flash-latest"
+  ],
+  "questions_evaluated": 10,
+  "questions_not_yet_judged": [],
+  "judge_failures": 0,
+  "total_checks": 47,
+  "summary": {
+    "analysis_coverage_percent": 92.0,
+    "check_pass_rate_percent": 93.62
+  },
+  "per_question": [
+    {
+      "qid": "Q01",
+      "analysis_coverage_percent": 60.0,
+      "check_pass_rate_percent": 100.0,
+      "judge_error": null,
+      "checks": [
+        {
+          "check": "recall of push_candidates >= 2/3",
+          "score": 1,
+          "reason": "The report identifies and recommends all three qualifying push candidates (P15, P14, and P12), achieving 3/3 recall.",
+          "report_refs": [
+            "claims_or_findings[0].claim",
+            "claims_or_findings[1].claim",
+            "claims_or_findings[2].claim",
+            "actions_or_recommendations[0]"
+          ],
+          "evidence_refs": [
+            "ev_1"
+          ]
+        },
+        {
+          "check": "does not recommend do_not_push_for_margin products as the main push",
+          "score": 1,
+          "reason": "The report explicitly recommends P15, P14, and P12 as focal campaign products and advises avoiding low-margin products such as Everyday Hoodie (P04).",
+          "report_refs": [
+            "actions_or_recommendations[0]",
+            "actions_or_recommendations[2]"
+          ],
+          "evidence_refs": [
+            "ev_1"
+          ]
+        },
+        {
+          "check": "cites margin AND rating AND volume evidence",
+          "score": 1,
+          "reason": "Each push candidate finding explicitly reports realized margin percentage, average rating, review count, and units sold.",
+          "report_refs": [
+            "claims_or_findings[0].claim",
+            "claims_or_findings[1].claim",
+            "claims_or_findings[2].claim"
+          ],
+          "evidence_refs": [
+            "ev_1"
+          ]
+        },
+        {
+          "check": "numbers match recomputed values",
+          "score": 1,
+          "reason": "All reported ratings, review counts, realized margins, unit sales, and category unit shares for P15, P14, and P12 match the underlying database evidence.",
+          "report_refs": [
+            "claims_or_findings[0].claim",
+            "claims_or_findings[1].claim",
+            "claims_or_findings[2].claim"
+          ],
+          "evidence_refs": [
+            "ev_1"
+          ]
+        },
+        {
+          "check": "recommendation cites a marketing principle from the KB",
+          "score": 1,
+          "reason": "The actions recommend pairing lower-price high-satisfaction entry products with premium items in merchandising bundles to lift order value while preserving margin, supported by KB citations.",
+          "report_refs": [
+            "actions_or_recommendations[1]",
+            "knowledge_citations"
+          ],
+          "evidence_refs": []
+        }
+      ],
+      "analysis_dimensions": {
+        "expected_story": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report clearly identifies Merino Everyday Sock 3-Pack (P15), Insulated Bottle 1L (P14), and Summit Pack 40L (P12) as the products to push."
+        },
+        "rule": {
+          "applicable": true,
+          "score": 0,
+          "reason": "The final report mentions 'meets all brand selection thresholds' but omits the actual threshold criteria (rating >= 4.6, reviews >= 30, margin >= 55%, category share <= 30%)."
+        },
+        "reason": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report explains selection based on high customer ratings, strong realized margin percentages, steady volume, and absence of stockout events."
+        },
+        "note": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report documents explicit limitations regarding live inventory on hand and product-level acquisition costs."
+        },
+        "method": {
+          "applicable": true,
+          "score": 0,
+          "reason": "The final report does not define the calculation logic, exclusion of internal customers, or filtering method applied across delivered orders."
+        }
+      },
+      "consistency_issues": []
+    },
+    {
+      "qid": "Q02",
+      "analysis_coverage_percent": 60.0,
+      "check_pass_rate_percent": 60.0,
+      "judge_error": null,
+      "checks": [
+        {
+          "check": "names zipper failures as the main theme",
+          "score": 0,
+          "reason": "The report explicitly states in cannot_determine that review text analysis was not completed, listing zipper failures only as a hypothetical example rather than identifying it as the main driver of customer unhappiness.",
+          "report_refs": [
+            "cannot_determine_or_notes[0]"
+          ],
+          "evidence_refs": []
+        },
+        {
+          "check": "isolates product P10 (Alder Daypack 20L)",
+          "score": 1,
+          "reason": "The report clearly identifies that dissatisfaction is overwhelmingly concentrated in product P10 (Alder Daypack 20L), accounting for 123 of the category's 128 negative reviews.",
+          "report_refs": [
+            "summary",
+            "claims_or_findings[1]"
+          ],
+          "evidence_refs": [
+            "ev_2"
+          ]
+        },
+        {
+          "check": "identifies that it started around August 2025",
+          "score": 0,
+          "reason": "The report does not analyze negative reviews or ratings over time and does not mention August 2025 as the onset date.",
+          "report_refs": [],
+          "evidence_refs": []
+        },
+        {
+          "check": "does not blame delivery or the whole category",
+          "score": 1,
+          "reason": "The report demonstrates that other backpack models perform well and shows that on-time orders had higher negative review rates than late orders, concluding fulfillment timing and category-wide factors are not the primary drivers.",
+          "report_refs": [
+            "summary",
+            "claims_or_findings[2]",
+            "claims_or_findings[4]"
+          ],
+          "evidence_refs": [
+            "ev_2",
+            "ev_3"
+          ]
+        },
+        {
+          "check": "numbers match",
+          "score": 1,
+          "reason": "The metrics reported for Backpacks overall and individual products (e.g., 123 negative reviews out of 415 for P10, 5 negative reviews out of 223 for P11, 128 total category negative reviews across 692 reviews) precisely match the evidence and gold reference.",
+          "report_refs": [
+            "summary",
+            "claims_or_findings[0]",
+            "claims_or_findings[1]",
+            "claims_or_findings[2]"
+          ],
+          "evidence_refs": [
+            "ev_1",
+            "ev_2",
+            "ev_3"
+          ]
+        }
+      ],
+      "analysis_dimensions": {
+        "expected_story": {
+          "applicable": true,
+          "score": 0,
+          "reason": "The expected story requires identifying zipper failures on P10 starting around August 2025; while P10 is isolated, the specific root defect (zippers) and timeline (August 2025) are missing."
+        },
+        "rule": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report details applicable business rules including internal customer exclusion (is_internal = false) and standard fulfilled order status definitions ('delivered' and 'returned')."
+        },
+        "reason": {
+          "applicable": true,
+          "score": 0,
+          "reason": "The report does not provide the underlying qualitative reason (zipper failure defect) for customer unhappiness, admitting in cannot_determine that text analysis was omitted."
+        },
+        "note": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report provides explicit cannot_determine notes explaining that qualitative review text analysis was not completed and stockout events were absent."
+        },
+        "method": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The analytical methodology evaluates product-level splits and cross-tabulates delivery punctuality (on-time vs late) with review sentiment."
+        }
+      },
+      "consistency_issues": []
+    },
+    {
+      "qid": "Q03",
+      "analysis_coverage_percent": 100.0,
+      "check_pass_rate_percent": 100.0,
+      "judge_error": null,
+      "checks": [
+        {
+          "check": "top-10% share of revenue within +/-3 pts",
+          "score": 1,
+          "reason": "The report explicitly identifies that the top decile generates 38.35% of total net revenue, perfectly within +/-3 percentage points of the gold reference (38.3%).",
+          "report_refs": [
+            "findings[0]",
+            "summary"
+          ],
+          "evidence_refs": [
+            "ev_1"
+          ]
+        },
+        {
+          "check": "notes they use fewer discounts",
+          "score": 1,
+          "reason": "The report notes that top decile customers use fewer discounts (15.80% discount usage rate vs. 24.15% for the rest of the base).",
+          "report_refs": [
+            "findings[2]",
+            "summary"
+          ],
+          "evidence_refs": [
+            "ev_1"
+          ]
+        },
+        {
+          "check": "identifies jackets as their top category",
+          "score": 1,
+          "reason": "The report identifies Jackets as the leading revenue category for the top decile at $307,044.20 (49.59% revenue share).",
+          "report_refs": [
+            "findings[6]",
+            "summary"
+          ],
+          "evidence_refs": [
+            "ev_3"
+          ]
+        },
+        {
+          "check": "retention actions are NOT blanket discounts",
+          "score": 1,
+          "reason": "Retention actions explicitly instruct to avoid discount-driven retention campaigns and instead propose non-monetary value such as early product access, VIP concierge care, repair services, and cadence-based re-engagement.",
+          "report_refs": [
+            "actions[1]",
+            "summary"
+          ],
+          "evidence_refs": []
+        },
+        {
+          "check": "excludes internal test customers",
+          "score": 1,
+          "reason": "The report notes the exclusion of internal accounts ('total non-internal customers with delivered orders'), matching the filter in SQL queries.",
+          "report_refs": [
+            "summary"
+          ],
+          "evidence_refs": [
+            "ev_1",
+            "ev_2",
+            "ev_3"
+          ]
+        }
+      ],
+      "analysis_dimensions": {
+        "expected_story": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report clearly establishes that the top decile generates a disproportionate revenue share (~38.35%), relies less on discounts, heavily buys Jackets, and should be retained through cadence-aligned, non-discount VIP and early access strategies."
+        },
+        "rule": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report defines the segmentation criteria explicitly: top decile by net revenue ranking with customer ID tie-breaker among non-internal customers with delivered orders."
+        },
+        "reason": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report explains that discounts should be avoided because top customers already exhibit lower discount affinity (15.80% vs 24.15%) and higher realized margin, and identifies specific product feedback (zipper issues on Alder Daypack 20L) that risks churn."
+        },
+        "note": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report documents explicit limitations including inability to determine longitudinal retention cohorts beyond aggregate transaction history and missing pre-2025 acquisition marketing spend."
+        },
+        "method": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report outlines the decile ranking method via net revenue and the inter-purchase interval calculation (30.0-day median interval) used to determine active versus at-risk retention thresholds."
+        }
+      },
+      "consistency_issues": []
+    },
+    {
+      "qid": "Q04",
+      "analysis_coverage_percent": 100.0,
+      "check_pass_rate_percent": 100.0,
+      "judge_error": null,
+      "checks": [
+        {
+          "check": "leads with lightweight / packable (customer language)",
+          "score": 1,
+          "reason": "The report explicitly recommends leading product messaging with its lightweight feel and compact packability, matching customer language from reviews.",
+          "report_refs": [
+            "summary",
+            "actions_or_recommendations[0]"
+          ],
+          "evidence_refs": [
+            "ev_4"
+          ]
+        },
+        {
+          "check": "does not use the banned claim 'waterproof'",
+          "score": 1,
+          "reason": "The report does not assert that the product is waterproof; rather, it explicitly instructs avoiding the banned claim 'waterproof'.",
+          "report_refs": [
+            "summary",
+            "actions_or_recommendations[1]"
+          ],
+          "evidence_refs": []
+        },
+        {
+          "check": "mentions light-rain handling only as water resistance",
+          "score": 1,
+          "reason": "The report frames weather capability strictly as light-rain protection and light rain resistance.",
+          "report_refs": [
+            "summary",
+            "actions_or_recommendations[1]"
+          ],
+          "evidence_refs": [
+            "ev_3",
+            "ev_4"
+          ]
+        },
+        {
+          "check": "addresses the pockets objection or avoids contradicting it",
+          "score": 1,
+          "reason": "The report highlights recurring complaints about small pocket size and recommends transparent pocket dimension specs without claiming spacious pockets.",
+          "report_refs": [
+            "summary",
+            "claims_or_findings[3]",
+            "actions_or_recommendations[2]"
+          ],
+          "evidence_refs": [
+            "ev_3",
+            "ev_4"
+          ]
+        },
+        {
+          "check": "grounded in review evidence + brand tone",
+          "score": 1,
+          "reason": "Recommendations are directly substantiated by SQL-derived review sentiment metrics and adhere to brand messaging tone guidelines.",
+          "report_refs": [
+            "summary",
+            "claims_or_findings[1]",
+            "claims_or_findings[2]",
+            "claims_or_findings[3]"
+          ],
+          "evidence_refs": [
+            "ev_2",
+            "ev_3",
+            "ev_4"
+          ]
+        }
+      ],
+      "analysis_dimensions": {
+        "expected_story": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report delivers the core recommended messaging centered on lightweight packability and honest light-weather protection."
+        },
+        "rule": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report identifies and enforces the brand rule prohibiting unsupported claims such as 'waterproof' and superlatives."
+        },
+        "reason": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report explains that lightweight and packable are the dominant customer-praised themes, while customer reviews only validate light-rain performance."
+        },
+        "note": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report notes limitations including the inability to benchmark external competitor pricing and notes customer friction points like small pockets and sizing."
+        },
+        "method": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report details keyword-based review theme analysis across positive (4-5 star) and critical (2-3 star) review subsets."
+        }
+      },
+      "consistency_issues": []
+    },
+    {
+      "qid": "Q05",
+      "analysis_coverage_percent": 100.0,
+      "check_pass_rate_percent": 100.0,
+      "judge_error": null,
+      "checks": [
+        {
+          "check": "compares per-day revenue (Feb has 28 days)",
+          "score": 1,
+          "reason": "The report explicitly normalizes revenue on a per-day basis, noting February has 28 days (3,343.44/day) and March has 31 days (3,008.45/day), showing a -10.02% daily drop.",
+          "report_refs": [
+            "findings[0]",
+            "summary"
+          ],
+          "evidence_refs": [
+            "ev_3"
+          ]
+        },
+        {
+          "check": "names the Trail Shell Jacket stockout as the primary cause",
+          "score": 1,
+          "reason": "The report identifies the 25-day stockout of the Trail Shell Jacket (P01) as the leading cause, quantifying the product's revenue collapse and estimated counterfactual lost revenue of 20,426.25 to 25,348.75.",
+          "report_refs": [
+            "findings[4]",
+            "findings[5]",
+            "findings[6]",
+            "summary"
+          ],
+          "evidence_refs": [
+            "ev_2",
+            "ev_4",
+            "ev_6"
+          ]
+        },
+        {
+          "check": "names the paid-social acquisition cut as secondary",
+          "score": 1,
+          "reason": "The report identifies the 84.52% cut in paid social spend (and the resulting collapse in paid social signups from 66 to 13) as the secondary interacting cause reducing new customer revenue.",
+          "report_refs": [
+            "findings[7]",
+            "findings[8]",
+            "summary"
+          ],
+          "evidence_refs": [
+            "ev_7",
+            "ev_8"
+          ]
+        },
+        {
+          "check": "does not attribute it to seasonality or lower demand",
+          "score": 1,
+          "reason": "The report does not claim broader organic seasonality or general market demand drop; it specifically attributes the decline to the specific inventory stockout and paid social ad spend contraction while noting growth in existing customers and other categories.",
+          "report_refs": [
+            "summary"
+          ],
+          "evidence_refs": [
+            "ev_1",
+            "ev_3"
+          ]
+        },
+        {
+          "check": "excludes cancelled/returned/test orders",
+          "score": 1,
+          "reason": "The report explicitly states net revenue includes only delivered orders and excludes internal customer accounts, which matches the underlying SQL queries filtering on status = 'delivered' and is_internal = false.",
+          "report_refs": [
+            "summary"
+          ],
+          "evidence_refs": [
+            "ev_1",
+            "ev_2",
+            "ev_3"
+          ]
+        }
+      ],
+      "analysis_dimensions": {
+        "expected_story": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The core finding clearly articulates that March revenue dropped on a daily run-rate basis primarily due to the P01 Trail Shell Jacket stockout and secondarily due to the paid social acquisition cut."
+        },
+        "rule": {
+          "applicable": true,
+          "score": 1,
+          "reason": "Business rules regarding delivered-only net revenue and internal account exclusions are explicitly defined and maintained."
+        },
+        "reason": {
+          "applicable": true,
+          "score": 1,
+          "reason": "Detailed causal logic is provided linking the 25-day stockout to lost jacket volume and the paid social marketing budget reduction to the drop in new customer signups and new customer revenue."
+        },
+        "note": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report includes caveats, notes on offsetting strengths (existing customer growth, backpack/hoodie category growth), and cannot-determine notes regarding prior-year March data and web traffic logs."
+        },
+        "method": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The analytical methodology incorporates day-count normalization (28 days vs 31 days) as well as run-rate counterfactual comparisons against February and March in-stock daily averages."
+        }
+      },
+      "consistency_issues": []
+    },
+    {
+      "qid": "Q06",
+      "analysis_coverage_percent": 100.0,
+      "check_pass_rate_percent": 75.0,
+      "judge_error": null,
+      "checks": [
+        {
+          "check": "at-risk list precision and recall >= 0.8 vs gold set (or equivalent stated rule)",
+          "score": 0,
+          "reason": "The report presents only aggregate customer counts (319 to 345 customers) and does not provide customer IDs or an auditable set comparison to establish customer-level precision and recall.",
+          "report_refs": [
+            "summary",
+            "findings[0]",
+            "findings[1]"
+          ],
+          "evidence_refs": [
+            "ev_1",
+            "ev_3"
+          ]
+        },
+        {
+          "check": "rule is explicit (repeat buyer + overdue vs own gap)",
+          "score": 1,
+          "reason": "The report explicitly defines repeat customer churn risk as customers with delivered orders exceeding 1.5 to 2.0 times their individualized median inter-purchase cadence.",
+          "report_refs": [
+            "summary",
+            "findings[0]"
+          ],
+          "evidence_refs": [
+            "ev_1"
+          ]
+        },
+        {
+          "check": "win-back offer is matched to past categories",
+          "score": 1,
+          "reason": "The report profiles category penetration among at-risk buyers (Tees, Hoodies, Jackets) and recommends win-back messaging focused on replenishment and cross-sells in those exact core categories.",
+          "report_refs": [
+            "summary",
+            "findings[3]",
+            "actions_or_recommendations[0]"
+          ],
+          "evidence_refs": [
+            "ev_2"
+          ]
+        },
+        {
+          "check": "does not default to a deep discount",
+          "score": 1,
+          "reason": "The report explicitly recommends avoiding heavy discounting to prevent training top customers to wait for price cuts, advising non-discount messaging such as care guides, repairability information, and replenishment instead.",
+          "report_refs": [
+            "summary",
+            "actions_or_recommendations[0]"
+          ],
+          "evidence_refs": [
+            "ev_3"
+          ]
+        }
+      ],
+      "analysis_dimensions": {
+        "expected_story": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report clearly identifies repeat buyers whose recency has lapsed significantly past their normal purchase cycle and recommends win-back communications matched to their historical categories."
+        },
+        "rule": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report clearly articulates the rule defining churn risk based on repeat purchase history and days elapsed exceeding individual purchase intervals."
+        },
+        "reason": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report justifies its non-discount win-back strategy using revenue share, customer value decile distribution, realized gross margin, and historical category affinity."
+        },
+        "note": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report includes appropriate limitations, explicitly noting that email engagement/unsubscribes and qualitative churn reasons cannot be determined from order logs alone."
+        },
+        "method": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report specifies the analytical method, including the benchmark date (2025-12-31), median gap calculation per customer, and exclusion of internal accounts and non-delivered orders."
+        }
+      },
+      "consistency_issues": []
+    },
+    {
+      "qid": "Q07",
+      "analysis_coverage_percent": 100.0,
+      "check_pass_rate_percent": 100.0,
+      "judge_error": null,
+      "checks": [
+        {
+          "check": "restricts CAC and value to 2025 signups",
+          "score": 1,
+          "reason": "The report explicitly evaluates the cohort of customers signing up between 2025-01-01 and 2025-09-30.",
+          "report_refs": [
+            "summary",
+            "findings[0]"
+          ],
+          "evidence_refs": [
+            "ev_2"
+          ]
+        },
+        {
+          "check": "uses a fair window (first 90 days) or flags censoring",
+          "score": 1,
+          "reason": "The analysis uses a standardized 90-day observation window from customer signup date and cuts off the cohort at 2025-09-30 to ensure full 90-day maturity.",
+          "report_refs": [
+            "summary",
+            "findings[0]"
+          ],
+          "evidence_refs": [
+            "ev_2"
+          ]
+        },
+        {
+          "check": "identifies paid_social as lowest value and repeat rate",
+          "score": 1,
+          "reason": "The report directly identifies paid_social as having the lowest gross profit per member (62.90 USD), lowest repeat rate (32.01% of paying customers, 28.88% of signups), and lowest efficiency among paid channels.",
+          "report_refs": [
+            "summary",
+            "findings[4]"
+          ],
+          "evidence_refs": [
+            "ev_2"
+          ]
+        },
+        {
+          "check": "recommends shifting budget away from paid_social toward efficient channels with caveats",
+          "score": 1,
+          "reason": "The report recommends gradually reallocating budget away from paid_social toward paid_search and organic/referral initiatives, while explicitly noting caveats regarding channel volume and the need to monitor marginal saturation curves.",
+          "report_refs": [
+            "summary",
+            "actions_or_recommendations[0]",
+            "actions_or_recommendations[2]"
+          ],
+          "evidence_refs": [
+            "ev_2"
+          ]
+        },
+        {
+          "check": "numbers match",
+          "score": 1,
+          "reason": "The report's metrics (e.g., paid_social 62.90 USD gross profit, 1.69 GP/CAC; paid_search 86.01 USD GP, 3.00 GP/CAC; referral 116.97 USD GP, 9.42 GP/CAC) accurately align with captured SQL evidence and benchmark gold figures.",
+          "report_refs": [
+            "summary",
+            "findings[0]",
+            "findings[1]",
+            "findings[3]",
+            "findings[4]",
+            "findings[5]"
+          ],
+          "evidence_refs": [
+            "ev_2"
+          ]
+        }
+      ],
+      "analysis_dimensions": {
+        "expected_story": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report identifies top-performing channels (referral, email_signup, paid_search) and demonstrates that paid_social yields the lowest customer value and retention."
+        },
+        "rule": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report details the cohort bounds (2025-01-01 to 2025-09-30) ensuring an uncensored 90-day observation window and filters out internal customers."
+        },
+        "reason": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report explains paid_social's underperformance via its high return rate (12.74%), low repeat purchase rate (28.88%-32.01%), and low gross profit per CAC dollar (1.69 USD)."
+        },
+        "note": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report highlights that paid_social generates high acquisition volume and warns that marginal saturation curves were not analyzed, advising gradual budget shifts."
+        },
+        "method": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The analytical methodology compares first-90-day gross profit and repeat purchase rate per cohort member and paying customer against marketing CAC."
+        }
+      },
+      "consistency_issues": []
+    },
+    {
+      "qid": "Q08",
+      "analysis_coverage_percent": 100.0,
+      "check_pass_rate_percent": 100.0,
+      "judge_error": null,
+      "checks": [
+        {
+          "check": "reports revenue lift AND gross-profit lift separately",
+          "score": 1,
+          "reason": "The report explicitly breaks out net revenue lift per day (+123.28%) and gross profit lift per day (+75.75%) during the sale window.",
+          "report_refs": [
+            "During the 10-day sale, net revenue per day rose by 123.28% (from 4339.11 to 9688.41) and gross profit per day rose by 75.75% (from 2487.71 to 4372.21), generating 43722.10 in total gross profit."
+          ],
+          "evidence_refs": [
+            "ev_2"
+          ]
+        },
+        {
+          "check": "accounts for discount cost",
+          "score": 1,
+          "reason": "The report accounts for the total discount cost of $29,927.90 during the sale and details how it compressed margins.",
+          "report_refs": [
+            "However, realized margin declined from 57.33% to 45.13%, incurring 29927.90 in list-price discount costs.",
+            "Total discount cost during the 10-day sale was 29927.90 across 1127 delivered orders."
+          ],
+          "evidence_refs": [
+            "ev_2"
+          ]
+        },
+        {
+          "check": "checks the post-sale dip",
+          "score": 1,
+          "reason": "The report analyzes post-sale performance across 14-day, 28-day, and 42-day horizons, identifying the post-sale dip in both orders and gross profit.",
+          "report_refs": [
+            "Following the promotion, a post-sale dip emerged across all measured horizons: gross profit per day fell below baseline by -4.53% across 14 days (-1577.69 incremental gross profit), -8.52% across 28 days (-5932.93 incremental gross profit), and -6.92% across 42 days (-7233.97 incremental gross profit)."
+          ],
+          "evidence_refs": [
+            "ev_2"
+          ]
+        },
+        {
+          "check": "notes most window orders came from existing customers",
+          "score": 1,
+          "reason": "The report explicitly states that existing customers accounted for 79.77% of orders (899 of 1,127) and 78.98% of buyers.",
+          "report_refs": [
+            "Existing customers accounted for 793 of the 1004 buyers (78.98% customer share), 899 of the 1127 orders (79.77% order share), 79005.65 of the 96884.10 net revenue (81.55% revenue share), and 24485.35 of the 29927.90 discount cost (81.81% discount cost share)."
+          ],
+          "evidence_refs": [
+            "ev_3"
+          ]
+        },
+        {
+          "check": "does not declare success on revenue alone",
+          "score": 1,
+          "reason": "The report provides a nuanced evaluation incorporating gross profit lift, margin compression, discount costs, post-sale dips, and pull-forward of existing demand rather than relying on headline revenue.",
+          "report_refs": [
+            "The July Summer Sale generated substantial short-term volume and remained net profitable overall, but heavily subsidized existing customers and induced a post-sale slump.",
+            "Furthermore, existing customers represented 78.98% of buyers (793 of 1004) and absorbed 81.81% of discount costs (24485.35 of 29927.90), showing that the promotion primarily pulled forward existing demand."
+          ],
+          "evidence_refs": [
+            "ev_2",
+            "ev_3"
+          ]
+        }
+      ],
+      "analysis_dimensions": {
+        "expected_story": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report accurately tells the expected story: revenue lift was high (+123.28%), but gross profit lift was lower (+75.75%), heavy discount costs ($29.9k) subsidized existing customers (~79% of orders), and a post-sale dip eroded short-term gains, leaving net profit positive but significantly pulled forward."
+        },
+        "rule": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report specifies baseline length (30 days prior), sale dates (2025-07-11 to 2025-07-20), order filter rules (delivered orders, excluding internal customers), and post-sale evaluation periods."
+        },
+        "reason": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report explains the mechanism behind lower profit performance: realized margins compressed by 12.2 percentage points due to the 25% discount, and 81.81% of the discounts went to existing customers pulling demand forward."
+        },
+        "note": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report notes analytical limitations, including the lack of a randomized holdout group to establish causal incrementality and incomplete long-term LTV data for new buyers."
+        },
+        "method": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report outlines the calculation methodology: normalizing by days (orders, revenue, and gross profit per day) comparing sale and post-sale windows against a 30-day pre-period baseline, and aggregating over a 52-day combined window."
+        }
+      },
+      "consistency_issues": []
+    },
+    {
+      "qid": "Q09",
+      "analysis_coverage_percent": 100.0,
+      "check_pass_rate_percent": 100.0,
+      "judge_error": null,
+      "checks": [
+        {
+          "check": "uses lift (not raw popularity)",
+          "score": 1,
+          "reason": "The report bases candidate identification on lift rather than raw co-occurrence counts, explicitly identifying pairs with lift > 1.0.",
+          "report_refs": [
+            "Market basket analysis across 15267 delivered non-internal orders identified exactly three cross-category product pairs with strong affinity (lift > 1.0)..."
+          ],
+          "evidence_refs": [
+            "ev_1",
+            "ev_2"
+          ]
+        },
+        {
+          "check": "finds the three planted pairs",
+          "score": 1,
+          "reason": "The report correctly identifies all three planted affinity pairs: P12+P14 (Summit Pack 40L + Insulated Bottle 1L), P01+P15 (Trail Shell Jacket + Merino Everyday Sock 3-Pack), and P11+P13 (Commuter Pack 25L + Steel Bottle 750ml).",
+          "report_refs": [
+            "Across 15267 delivered non-internal orders, exactly three product pairs exhibit positive affinity with lift greater than 1.0: Summit Pack 40L (P12) with Insulated Bottle 1L (P14)... Trail Shell Jacket (P01) with Merino Everyday Sock 3-Pack (P15)... and Commuter Pack 25L (P11) with Steel Bottle 750ml (P13)..."
+          ],
+          "evidence_refs": [
+            "ev_1",
+            "ev_2"
+          ]
+        },
+        {
+          "check": "does not recommend a pair with lift < 1 as a bundle",
+          "score": 1,
+          "reason": "The report explicitly limits all bundling and cross-selling recommendations to pairs with lift > 1.0 and does not recommend any pair with lift < 1.",
+          "report_refs": [
+            "Market basket analysis across 15267 delivered non-internal orders identified exactly three cross-category product pairs with strong affinity (lift > 1.0)... Therefore, cross-selling without discounting via cart and product-page recommendations is the recommended primary strategy."
+          ],
+          "evidence_refs": [
+            "ev_1",
+            "ev_2"
+          ]
+        },
+        {
+          "check": "gives a concrete bundle or cross-sell action",
+          "score": 1,
+          "reason": "The report provides specific directional cross-sell recommendations based on confidence and precise bundling discount guidelines (capping discounts at 10% for P12+P14).",
+          "report_refs": [
+            "Target cross-sell prompts directionally where natural basket attachment is lower: suggest Merino Everyday Sock 3-Pack (P15) to Trail Shell Jacket (P01) buyers (current confidence is 26.51%), and suggest Steel Bottle 750ml (P13) to Commuter Pack 25L (P11) buyers (current confidence is 34.59%).",
+            "If testing a bundled offer for Summit Pack 40L (P12) and Insulated Bottle 1L (P14), cap the discount strictly at 10% (price 180.90 USD)..."
+          ],
+          "evidence_refs": [
+            "ev_2",
+            "ev_4",
+            "ev_5"
+          ]
+        }
+      ],
+      "analysis_dimensions": {
+        "expected_story": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The central story of prioritizing pairs by lift rather than raw co-occurrence and managing discount cannibalization is thoroughly articulated."
+        },
+        "rule": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report applies the association rule mining threshold (lift > 1.0), filters for non-internal delivered orders, and evaluates discount rules against catalog margin floors."
+        },
+        "reason": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report clearly explains why discounting is dangerous (existing co-purchase rates mean high cannibalization) and why directional cross-selling is advantageous based on confidence differentials."
+        },
+        "note": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report provides appropriate caveats regarding unobserved customer elasticity, live UI conversion rates, and competitor benchmark absence."
+        },
+        "method": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The analytical methodology across market basket metrics (support, confidence, lift) and financial simulation (incremental profit vs cannibalization) is fully described and verifiable."
+        }
+      },
+      "consistency_issues": []
+    },
+    {
+      "qid": "Q10",
+      "analysis_coverage_percent": 100.0,
+      "check_pass_rate_percent": 100.0,
+      "judge_error": null,
+      "checks": [
+        {
+          "check": "says competitor price data is not available",
+          "score": 1,
+          "reason": "The report explicitly states in the summary, cannot_determine section, and recommendations that competitor price data is not collected or available in internal databases.",
+          "report_refs": [
+            "final_report.summary",
+            "final_report.cannot_determine[0]"
+          ],
+          "evidence_refs": []
+        },
+        {
+          "check": "does not invent competitor prices",
+          "score": 1,
+          "reason": "No competitor prices or external market benchmarks are invented or asserted anywhere in the report.",
+          "report_refs": [
+            "final_report.summary",
+            "final_report.findings"
+          ],
+          "evidence_refs": []
+        },
+        {
+          "check": "may offer own price positioning or what data to collect",
+          "score": 1,
+          "reason": "The report details the brand's internal price architecture and margins across categories and products, and recommends subscribing to external retail price intelligence feeds to collect competitor data.",
+          "report_refs": [
+            "final_report.summary",
+            "final_report.findings[1]",
+            "final_report.actions[0]"
+          ],
+          "evidence_refs": [
+            "ev_2",
+            "ev_3"
+          ]
+        },
+        {
+          "check": "no fabricated citations",
+          "score": 1,
+          "reason": "All cited knowledge base identifiers (KB8, KB12, KB6) are valid inventory references, and all evidence IDs match captured SQL evidence.",
+          "report_refs": [
+            "final_report.knowledge_citations"
+          ],
+          "evidence_refs": [
+            "ev_1",
+            "ev_2",
+            "ev_3"
+          ]
+        }
+      ],
+      "analysis_dimensions": {
+        "expected_story": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report delivers the central required finding: direct competitor price comparison cannot be determined due to lack of external competitor data, accompanied by the brand's internal price ladder."
+        },
+        "rule": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report notes the governance rule filtering out internal accounts and limiting to delivered orders, alongside acknowledging the constraint of having no external pricing data."
+        },
+        "reason": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report explains why comparison is impossible: customer reviews contain only unstructured mentions without systematic benchmarks, and external competitor pricing is not tracked in brand systems."
+        },
+        "note": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report explicitly documents operational limitations and caveats regarding competitor pricing and customer perception benchmarks."
+        },
+        "method": {
+          "applicable": true,
+          "score": 1,
+          "reason": "The report describes the analytical methodology used: keyword analysis across customer reviews and catalog/sales price-ladder analysis computing list vs. realized prices and margins."
+        }
+      },
+      "consistency_issues": []
+    }
+  ],
+  "scoring_definition": {
+    "analysis_coverage": "Covered applicable dimensions / all applicable dimensions across all questions. Each applicable dimension is binary: covered=1, absent/unsupported=0. Not-applicable dimensions are excluded.",
+    "check_pass_rate": "Passed checklist items / all checklist items. Each item is binary: pass=1; otherwise=0. Judge errors are conservatively counted as 0."
+  },
+  "limitations": [
+    "LLM judge results are estimates; manually review a sample before treating them as a release gate.",
+    "Exact numeric/ID checks should also be recomputed deterministically from source rows.",
+    "If judge_failures > 0 or questions_not_yet_judged is non-empty, the aggregate metrics are not a complete evaluation."
+  ]
+}

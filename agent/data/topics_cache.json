@@ -26,5 +26,30 @@
   ],
   "2e8dcedb07625d196ef655dd624baa7acb4c925430b35be80cd4920b39a1d586": [
     "customers_retention"
+  ],
+  "af489f241f30ab62ad7db79f4749fe5635389b998facc5718726d74c4db6f98f": [
+    "customers_retention"
+  ],
+  "21ce722924d3697c112ba5b46957afb31304c3f672bb313481211eb80673eedf": [
+    "promotions_pricing"
+  ],
+  "0ab7fabf44eecfc840af85fae9b6f442d488b31b7bd0ad606aa9c358b96669e3": [
+    "promotions_pricing",
+    "customers_retention",
+    "acquisition_economics"
+  ],
+  "38a050287aa5712d3941529126febd269c7235608271b7512e1f9fdb04438a54": [
+    "customers_retention",
+    "promotions_pricing"
+  ],
+  "5351cd8a6e5d09d930f08be86f85e2c3d72bb546f2f385dd2e705a53358fbf28": [
+    "promotions_pricing"
+  ],
+  "93558958c3a2591a6dd74bbc2719c12a1fbf136c21d3d7e52fe109b8fc7ab004": [
+    "promotions_pricing",
+    "customers_retention"
+  ],
+  "945b1c8425d0106ac9b0ef71d6e5db7826e4cdad35c72e09f481d5a9e0428f2f": [
+    "promotions_pricing"
   ]
 }

@@ -1,0 +1,142 @@
+{
+  "qid": "Q04",
+  "checks": [
+    {
+      "check": "leads with lightweight / packable (customer language)",
+      "passed": true,
+      "reason": "The report explicitly recommends leading product messaging with its lightweight feel and compact packability, matching customer language from reviews.",
+      "report_refs": [
+        "summary",
+        "actions_or_recommendations[0]"
+      ],
+      "evidence_refs": [
+        "ev_4"
+      ]
+    },
+    {
+      "check": "does not use the banned claim 'waterproof'",
+      "passed": true,
+      "reason": "The report does not assert that the product is waterproof; rather, it explicitly instructs avoiding the banned claim 'waterproof'.",
+      "report_refs": [
+        "summary",
+        "actions_or_recommendations[1]"
+      ],
+      "evidence_refs": []
+    },
+    {
+      "check": "mentions light-rain handling only as water resistance",
+      "passed": true,
+      "reason": "The report frames weather capability strictly as light-rain protection and light rain resistance.",
+      "report_refs": [
+        "summary",
+        "actions_or_recommendations[1]"
+      ],
+      "evidence_refs": [
+        "ev_3",
+        "ev_4"
+      ]
+    },
+    {
+      "check": "addresses the pockets objection or avoids contradicting it",
+      "passed": true,
+      "reason": "The report highlights recurring complaints about small pocket size and recommends transparent pocket dimension specs without claiming spacious pockets.",
+      "report_refs": [
+        "summary",
+        "claims_or_findings[3]",
+        "actions_or_recommendations[2]"
+      ],
+      "evidence_refs": [
+        "ev_3",
+        "ev_4"
+      ]
+    },
+    {
+      "check": "grounded in review evidence + brand tone",
+      "passed": true,
+      "reason": "Recommendations are directly substantiated by SQL-derived review sentiment metrics and adhere to brand messaging tone guidelines.",
+      "report_refs": [
+        "summary",
+        "claims_or_findings[1]",
+        "claims_or_findings[2]",
+        "claims_or_findings[3]"
+      ],
+      "evidence_refs": [
+        "ev_2",
+        "ev_3",
+        "ev_4"
+      ]
+    }
+  ],
+  "analysis_dimensions": {
+    "expected_story": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report delivers the core recommended messaging centered on lightweight packability and honest light-weather protection.",
+      "report_refs": [
+        "summary",
+        "actions_or_recommendations[0]"
+      ],
+      "evidence_refs": [
+        "ev_4"
+      ]
+    },
+    "rule": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report identifies and enforces the brand rule prohibiting unsupported claims such as 'waterproof' and superlatives.",
+      "report_refs": [
+        "summary",
+        "actions_or_recommendations[1]"
+      ],
+      "evidence_refs": []
+    },
+    "reason": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report explains that lightweight and packable are the dominant customer-praised themes, while customer reviews only validate light-rain performance.",
+      "report_refs": [
+        "summary",
+        "claims_or_findings[2]"
+      ],
+      "evidence_refs": [
+        "ev_3",
+        "ev_4"
+      ]
+    },
+    "note": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report notes limitations including the inability to benchmark external competitor pricing and notes customer friction points like small pockets and sizing.",
+      "report_refs": [
+        "summary",
+        "cannot_determine_or_notes[0]"
+      ],
+      "evidence_refs": [
+        "ev_3",
+        "ev_4"
+      ]
+    },
+    "method": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report details keyword-based review theme analysis across positive (4-5 star) and critical (2-3 star) review subsets.",
+      "report_refs": [
+        "claims_or_findings[1]",
+        "claims_or_findings[2]",
+        "claims_or_findings[3]"
+      ],
+      "evidence_refs": [
+        "ev_2",
+        "ev_4"
+      ]
+    }
+  },
+  "consistency_issues": [],
+  "judge_usage": {
+    "prompt_tokens": 10435,
+    "completion_tokens": 910,
+    "total_tokens": 11886
+  },
+  "judge_error": null,
+  "judge_model": "gemini-flash-latest"
+}

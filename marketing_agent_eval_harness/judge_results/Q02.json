@@ -1,0 +1,129 @@
+{
+  "qid": "Q02",
+  "checks": [
+    {
+      "check": "names zipper failures as the main theme",
+      "passed": false,
+      "reason": "The report explicitly states in cannot_determine that review text analysis was not completed, listing zipper failures only as a hypothetical example rather than identifying it as the main driver of customer unhappiness.",
+      "report_refs": [
+        "cannot_determine_or_notes[0]"
+      ],
+      "evidence_refs": []
+    },
+    {
+      "check": "isolates product P10 (Alder Daypack 20L)",
+      "passed": true,
+      "reason": "The report clearly identifies that dissatisfaction is overwhelmingly concentrated in product P10 (Alder Daypack 20L), accounting for 123 of the category's 128 negative reviews.",
+      "report_refs": [
+        "summary",
+        "claims_or_findings[1]"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    {
+      "check": "identifies that it started around August 2025",
+      "passed": false,
+      "reason": "The report does not analyze negative reviews or ratings over time and does not mention August 2025 as the onset date.",
+      "report_refs": [],
+      "evidence_refs": []
+    },
+    {
+      "check": "does not blame delivery or the whole category",
+      "passed": true,
+      "reason": "The report demonstrates that other backpack models perform well and shows that on-time orders had higher negative review rates than late orders, concluding fulfillment timing and category-wide factors are not the primary drivers.",
+      "report_refs": [
+        "summary",
+        "claims_or_findings[2]",
+        "claims_or_findings[4]"
+      ],
+      "evidence_refs": [
+        "ev_2",
+        "ev_3"
+      ]
+    },
+    {
+      "check": "numbers match",
+      "passed": true,
+      "reason": "The metrics reported for Backpacks overall and individual products (e.g., 123 negative reviews out of 415 for P10, 5 negative reviews out of 223 for P11, 128 total category negative reviews across 692 reviews) precisely match the evidence and gold reference.",
+      "report_refs": [
+        "summary",
+        "claims_or_findings[0]",
+        "claims_or_findings[1]",
+        "claims_or_findings[2]"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2",
+        "ev_3"
+      ]
+    }
+  ],
+  "analysis_dimensions": {
+    "expected_story": {
+      "applicable": true,
+      "covered": false,
+      "reason": "The expected story requires identifying zipper failures on P10 starting around August 2025; while P10 is isolated, the specific root defect (zippers) and timeline (August 2025) are missing.",
+      "report_refs": [
+        "summary",
+        "cannot_determine_or_notes[0]"
+      ],
+      "evidence_refs": []
+    },
+    "rule": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report details applicable business rules including internal customer exclusion (is_internal = false) and standard fulfilled order status definitions ('delivered' and 'returned').",
+      "report_refs": [
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2"
+      ]
+    },
+    "reason": {
+      "applicable": true,
+      "covered": false,
+      "reason": "The report does not provide the underlying qualitative reason (zipper failure defect) for customer unhappiness, admitting in cannot_determine that text analysis was omitted.",
+      "report_refs": [
+        "cannot_determine_or_notes[0]"
+      ],
+      "evidence_refs": []
+    },
+    "note": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report provides explicit cannot_determine notes explaining that qualitative review text analysis was not completed and stockout events were absent.",
+      "report_refs": [
+        "cannot_determine_or_notes[0]",
+        "cannot_determine_or_notes[1]"
+      ],
+      "evidence_refs": [
+        "ev_4"
+      ]
+    },
+    "method": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The analytical methodology evaluates product-level splits and cross-tabulates delivery punctuality (on-time vs late) with review sentiment.",
+      "report_refs": [
+        "claims_or_findings[1]",
+        "claims_or_findings[4]"
+      ],
+      "evidence_refs": [
+        "ev_2",
+        "ev_3"
+      ]
+    }
+  },
+  "consistency_issues": [],
+  "judge_usage": {
+    "prompt_tokens": 8905,
+    "completion_tokens": 1194,
+    "total_tokens": 11243
+  },
+  "judge_error": null,
+  "judge_model": "gemini-flash-latest"
+}

@@ -1,0 +1,132 @@
+{
+  "qid": "Q08",
+  "checks": [
+    {
+      "check": "reports revenue lift AND gross-profit lift separately",
+      "passed": true,
+      "reason": "The report explicitly breaks out net revenue lift per day (+123.28%) and gross profit lift per day (+75.75%) during the sale window.",
+      "report_refs": [
+        "During the 10-day sale, net revenue per day rose by 123.28% (from 4339.11 to 9688.41) and gross profit per day rose by 75.75% (from 2487.71 to 4372.21), generating 43722.10 in total gross profit."
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    {
+      "check": "accounts for discount cost",
+      "passed": true,
+      "reason": "The report accounts for the total discount cost of $29,927.90 during the sale and details how it compressed margins.",
+      "report_refs": [
+        "However, realized margin declined from 57.33% to 45.13%, incurring 29927.90 in list-price discount costs.",
+        "Total discount cost during the 10-day sale was 29927.90 across 1127 delivered orders."
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    {
+      "check": "checks the post-sale dip",
+      "passed": true,
+      "reason": "The report analyzes post-sale performance across 14-day, 28-day, and 42-day horizons, identifying the post-sale dip in both orders and gross profit.",
+      "report_refs": [
+        "Following the promotion, a post-sale dip emerged across all measured horizons: gross profit per day fell below baseline by -4.53% across 14 days (-1577.69 incremental gross profit), -8.52% across 28 days (-5932.93 incremental gross profit), and -6.92% across 42 days (-7233.97 incremental gross profit)."
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    {
+      "check": "notes most window orders came from existing customers",
+      "passed": true,
+      "reason": "The report explicitly states that existing customers accounted for 79.77% of orders (899 of 1,127) and 78.98% of buyers.",
+      "report_refs": [
+        "Existing customers accounted for 793 of the 1004 buyers (78.98% customer share), 899 of the 1127 orders (79.77% order share), 79005.65 of the 96884.10 net revenue (81.55% revenue share), and 24485.35 of the 29927.90 discount cost (81.81% discount cost share)."
+      ],
+      "evidence_refs": [
+        "ev_3"
+      ]
+    },
+    {
+      "check": "does not declare success on revenue alone",
+      "passed": true,
+      "reason": "The report provides a nuanced evaluation incorporating gross profit lift, margin compression, discount costs, post-sale dips, and pull-forward of existing demand rather than relying on headline revenue.",
+      "report_refs": [
+        "The July Summer Sale generated substantial short-term volume and remained net profitable overall, but heavily subsidized existing customers and induced a post-sale slump.",
+        "Furthermore, existing customers represented 78.98% of buyers (793 of 1004) and absorbed 81.81% of discount costs (24485.35 of 29927.90), showing that the promotion primarily pulled forward existing demand."
+      ],
+      "evidence_refs": [
+        "ev_2",
+        "ev_3"
+      ]
+    }
+  ],
+  "analysis_dimensions": {
+    "expected_story": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report accurately tells the expected story: revenue lift was high (+123.28%), but gross profit lift was lower (+75.75%), heavy discount costs ($29.9k) subsidized existing customers (~79% of orders), and a post-sale dip eroded short-term gains, leaving net profit positive but significantly pulled forward.",
+      "report_refs": [
+        "The July Summer Sale generated substantial short-term volume and remained net profitable overall, but heavily subsidized existing customers and induced a post-sale slump."
+      ],
+      "evidence_refs": [
+        "ev_2",
+        "ev_3"
+      ]
+    },
+    "rule": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report specifies baseline length (30 days prior), sale dates (2025-07-11 to 2025-07-20), order filter rules (delivered orders, excluding internal customers), and post-sale evaluation periods.",
+      "report_refs": [
+        "Assumptions: Baseline window of 30 days (2025-06-11 to 2025-07-10) and post-sale window of 42 days (2025-07-21 to 2025-08-31) were derived from brand analysis settings; 14-day and 28-day post-sale horizons follow standard promotion evaluation methodology."
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2"
+      ]
+    },
+    "reason": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report explains the mechanism behind lower profit performance: realized margins compressed by 12.2 percentage points due to the 25% discount, and 81.81% of the discounts went to existing customers pulling demand forward.",
+      "report_refs": [
+        "However, realized margin declined from 57.33% to 45.13%, incurring 29927.90 in list-price discount costs.",
+        "Furthermore, existing customers represented 78.98% of buyers (793 of 1004) and absorbed 81.81% of discount costs (24485.35 of 29927.90), showing that the promotion primarily pulled forward existing demand."
+      ],
+      "evidence_refs": [
+        "ev_2",
+        "ev_3"
+      ]
+    },
+    "note": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report notes analytical limitations, including the lack of a randomized holdout group to establish causal incrementality and incomplete long-term LTV data for new buyers.",
+      "report_refs": [
+        "True causal incremental lift cannot be definitively established without a randomized holdout group, as baseline comparisons assume demand would have remained at historical averages.",
+        "Longer-term customer lifetime value (LTV) and repurchase rates of the 211 new customers acquired during the sale cannot yet be determined from the available post-sale window."
+      ],
+      "evidence_refs": []
+    },
+    "method": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report outlines the calculation methodology: normalizing by days (orders, revenue, and gross profit per day) comparing sale and post-sale windows against a 30-day pre-period baseline, and aggregating over a 52-day combined window.",
+      "report_refs": [
+        "When combining the sale and the full 42-day post-sale period (52 days total), the net incremental gross profit remained positive at 11611.03, alongside net incremental revenue of 40620.23.",
+        "Assumptions: Baseline window of 30 days (2025-06-11 to 2025-07-10) and post-sale window of 42 days (2025-07-21 to 2025-08-31) were derived from brand analysis settings; 14-day and 28-day post-sale horizons follow standard promotion evaluation methodology."
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    }
+  },
+  "consistency_issues": [],
+  "judge_usage": {
+    "prompt_tokens": 14274,
+    "completion_tokens": 2059,
+    "total_tokens": 17106
+  },
+  "judge_error": null,
+  "judge_model": "gemini-flash-latest"
+}

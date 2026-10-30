@@ -1,0 +1,130 @@
+{
+  "qid": "Q06",
+  "checks": [
+    {
+      "check": "at-risk list precision and recall >= 0.8 vs gold set (or equivalent stated rule)",
+      "passed": false,
+      "reason": "The report presents only aggregate customer counts (319 to 345 customers) and does not provide customer IDs or an auditable set comparison to establish customer-level precision and recall.",
+      "report_refs": [
+        "summary",
+        "findings[0]",
+        "findings[1]"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_3"
+      ]
+    },
+    {
+      "check": "rule is explicit (repeat buyer + overdue vs own gap)",
+      "passed": true,
+      "reason": "The report explicitly defines repeat customer churn risk as customers with delivered orders exceeding 1.5 to 2.0 times their individualized median inter-purchase cadence.",
+      "report_refs": [
+        "summary",
+        "findings[0]"
+      ],
+      "evidence_refs": [
+        "ev_1"
+      ]
+    },
+    {
+      "check": "win-back offer is matched to past categories",
+      "passed": true,
+      "reason": "The report profiles category penetration among at-risk buyers (Tees, Hoodies, Jackets) and recommends win-back messaging focused on replenishment and cross-sells in those exact core categories.",
+      "report_refs": [
+        "summary",
+        "findings[3]",
+        "actions_or_recommendations[0]"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    {
+      "check": "does not default to a deep discount",
+      "passed": true,
+      "reason": "The report explicitly recommends avoiding heavy discounting to prevent training top customers to wait for price cuts, advising non-discount messaging such as care guides, repairability information, and replenishment instead.",
+      "report_refs": [
+        "summary",
+        "actions_or_recommendations[0]"
+      ],
+      "evidence_refs": [
+        "ev_3"
+      ]
+    }
+  ],
+  "analysis_dimensions": {
+    "expected_story": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report clearly identifies repeat buyers whose recency has lapsed significantly past their normal purchase cycle and recommends win-back communications matched to their historical categories.",
+      "report_refs": [
+        "summary",
+        "findings[0]",
+        "findings[3]",
+        "actions_or_recommendations[0]"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2"
+      ]
+    },
+    "rule": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report clearly articulates the rule defining churn risk based on repeat purchase history and days elapsed exceeding individual purchase intervals.",
+      "report_refs": [
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_1"
+      ]
+    },
+    "reason": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report justifies its non-discount win-back strategy using revenue share, customer value decile distribution, realized gross margin, and historical category affinity.",
+      "report_refs": [
+        "summary",
+        "findings[1]",
+        "findings[2]",
+        "findings[3]",
+        "actions_or_recommendations[0]"
+      ],
+      "evidence_refs": [
+        "ev_2",
+        "ev_3"
+      ]
+    },
+    "note": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report includes appropriate limitations, explicitly noting that email engagement/unsubscribes and qualitative churn reasons cannot be determined from order logs alone.",
+      "report_refs": [
+        "cannot_determine_or_notes[0]",
+        "cannot_determine_or_notes[1]"
+      ],
+      "evidence_refs": []
+    },
+    "method": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report specifies the analytical method, including the benchmark date (2025-12-31), median gap calculation per customer, and exclusion of internal accounts and non-delivered orders.",
+      "report_refs": [
+        "summary",
+        "findings[0]"
+      ],
+      "evidence_refs": [
+        "ev_1"
+      ]
+    }
+  },
+  "consistency_issues": [],
+  "judge_usage": {
+    "prompt_tokens": 14139,
+    "completion_tokens": 1091,
+    "total_tokens": 16534
+  },
+  "judge_error": null,
+  "judge_model": "gemini-flash-latest"
+}

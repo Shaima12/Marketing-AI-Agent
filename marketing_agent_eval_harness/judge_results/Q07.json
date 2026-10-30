@@ -1,0 +1,138 @@
+{
+  "qid": "Q07",
+  "checks": [
+    {
+      "check": "restricts CAC and value to 2025 signups",
+      "passed": true,
+      "reason": "The report explicitly evaluates the cohort of customers signing up between 2025-01-01 and 2025-09-30.",
+      "report_refs": [
+        "summary",
+        "findings[0]"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    {
+      "check": "uses a fair window (first 90 days) or flags censoring",
+      "passed": true,
+      "reason": "The analysis uses a standardized 90-day observation window from customer signup date and cuts off the cohort at 2025-09-30 to ensure full 90-day maturity.",
+      "report_refs": [
+        "summary",
+        "findings[0]"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    {
+      "check": "identifies paid_social as lowest value and repeat rate",
+      "passed": true,
+      "reason": "The report directly identifies paid_social as having the lowest gross profit per member (62.90 USD), lowest repeat rate (32.01% of paying customers, 28.88% of signups), and lowest efficiency among paid channels.",
+      "report_refs": [
+        "summary",
+        "findings[4]"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    {
+      "check": "recommends shifting budget away from paid_social toward efficient channels with caveats",
+      "passed": true,
+      "reason": "The report recommends gradually reallocating budget away from paid_social toward paid_search and organic/referral initiatives, while explicitly noting caveats regarding channel volume and the need to monitor marginal saturation curves.",
+      "report_refs": [
+        "summary",
+        "actions_or_recommendations[0]",
+        "actions_or_recommendations[2]"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    {
+      "check": "numbers match",
+      "passed": true,
+      "reason": "The report's metrics (e.g., paid_social 62.90 USD gross profit, 1.69 GP/CAC; paid_search 86.01 USD GP, 3.00 GP/CAC; referral 116.97 USD GP, 9.42 GP/CAC) accurately align with captured SQL evidence and benchmark gold figures.",
+      "report_refs": [
+        "summary",
+        "findings[0]",
+        "findings[1]",
+        "findings[3]",
+        "findings[4]",
+        "findings[5]"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    }
+  ],
+  "analysis_dimensions": {
+    "expected_story": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report identifies top-performing channels (referral, email_signup, paid_search) and demonstrates that paid_social yields the lowest customer value and retention.",
+      "report_refs": [
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    "rule": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report details the cohort bounds (2025-01-01 to 2025-09-30) ensuring an uncensored 90-day observation window and filters out internal customers.",
+      "report_refs": [
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    "reason": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report explains paid_social's underperformance via its high return rate (12.74%), low repeat purchase rate (28.88%-32.01%), and low gross profit per CAC dollar (1.69 USD).",
+      "report_refs": [
+        "summary",
+        "findings[4]"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    "note": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report highlights that paid_social generates high acquisition volume and warns that marginal saturation curves were not analyzed, advising gradual budget shifts.",
+      "report_refs": [
+        "summary",
+        "cannot_determine_or_notes[0]"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    "method": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The analytical methodology compares first-90-day gross profit and repeat purchase rate per cohort member and paying customer against marketing CAC.",
+      "report_refs": [
+        "summary",
+        "findings[6]"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    }
+  },
+  "consistency_issues": [],
+  "judge_usage": {
+    "prompt_tokens": 13190,
+    "completion_tokens": 1264,
+    "total_tokens": 16178
+  },
+  "judge_error": null,
+  "judge_model": "gemini-flash-latest"
+}

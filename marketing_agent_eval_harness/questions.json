@@ -1,0 +1,151 @@
+{
+  "dataset": "alder_fox_2025",
+  "n_questions": 10,
+  "questions": [
+    {
+      "id": "Q01",
+      "text": "Which products should I push in my next campaign?",
+      "type": "analysis+marketing",
+      "params": {},
+      "gold": "gold_answers.Q01",
+      "checks": [
+        "recall of push_candidates >= 2/3",
+        "does not recommend do_not_push_for_margin products as the main push",
+        "cites margin AND rating AND volume evidence",
+        "numbers match recomputed values",
+        "recommendation cites a marketing principle from the KB"
+      ]
+    },
+    {
+      "id": "Q02",
+      "text": "Why are customers unhappy with the Backpacks category?",
+      "type": "analysis",
+      "params": {
+        "category": "Backpacks"
+      },
+      "gold": "gold_answers.Q02",
+      "checks": [
+        "names zipper failures as the main theme",
+        "isolates product P10 (Alder Daypack 20L)",
+        "identifies that it started around August 2025",
+        "does not blame delivery or the whole category",
+        "numbers match"
+      ]
+    },
+    {
+      "id": "Q03",
+      "text": "Who are my best customers and how do I keep them?",
+      "type": "analysis+marketing",
+      "params": {},
+      "gold": "gold_answers.Q03",
+      "checks": [
+        "top-10% share of revenue within +/-3 pts",
+        "notes they use fewer discounts",
+        "identifies jackets as their top category",
+        "retention actions are NOT blanket discounts",
+        "excludes internal test customers"
+      ]
+    },
+    {
+      "id": "Q04",
+      "text": "What message should I use to sell the Trail Shell Jacket?",
+      "type": "marketing",
+      "params": {
+        "product_id": "P01"
+      },
+      "gold": "gold_answers.Q04",
+      "checks": [
+        "leads with lightweight / packable (customer language)",
+        "does not use the banned claim 'waterproof'",
+        "mentions light-rain handling only as water resistance",
+        "addresses the pockets objection or avoids contradicting it",
+        "grounded in review evidence + brand tone"
+      ]
+    },
+    {
+      "id": "Q05",
+      "text": "Why did revenue drop in March?",
+      "type": "analysis",
+      "params": {
+        "month": "2025-03"
+      },
+      "gold": "gold_answers.Q05",
+      "checks": [
+        "compares per-day revenue (Feb has 28 days)",
+        "names the Trail Shell Jacket stockout as the primary cause",
+        "names the paid-social acquisition cut as secondary",
+        "does not attribute it to seasonality or lower demand",
+        "excludes cancelled/returned/test orders"
+      ]
+    },
+    {
+      "id": "Q06",
+      "text": "Which customers are about to churn, and what should I send them?",
+      "type": "analysis+marketing",
+      "params": {},
+      "gold": "gold_answers.Q06",
+      "checks": [
+        "at-risk list precision and recall >= 0.8 vs gold set (or equivalent stated rule)",
+        "rule is explicit (repeat buyer + overdue vs own gap)",
+        "win-back offer is matched to past categories",
+        "does not default to a deep discount"
+      ]
+    },
+    {
+      "id": "Q07",
+      "text": "Which acquisition channel brings the best customers, and should I move budget?",
+      "type": "analysis+marketing",
+      "params": {},
+      "gold": "gold_answers.Q07",
+      "checks": [
+        "restricts CAC and value to 2025 signups",
+        "uses a fair window (first 90 days) or flags censoring",
+        "identifies paid_social as lowest value and repeat rate",
+        "recommends shifting budget away from paid_social toward efficient channels with caveats",
+        "numbers match"
+      ]
+    },
+    {
+      "id": "Q08",
+      "text": "Did my July sale actually work?",
+      "type": "analysis+marketing",
+      "params": {
+        "promo_code": "SUMMER25"
+      },
+      "gold": "gold_answers.Q08",
+      "checks": [
+        "reports revenue lift AND gross-profit lift separately",
+        "accounts for discount cost",
+        "checks the post-sale dip",
+        "notes most window orders came from existing customers",
+        "does not declare success on revenue alone"
+      ]
+    },
+    {
+      "id": "Q09",
+      "text": "What should I bundle or cross-sell?",
+      "type": "analysis+marketing",
+      "params": {},
+      "gold": "gold_answers.Q09",
+      "checks": [
+        "uses lift (not raw popularity)",
+        "finds the three planted pairs",
+        "does not recommend a pair with lift < 1 as a bundle",
+        "gives a concrete bundle or cross-sell action"
+      ]
+    },
+    {
+      "id": "Q10",
+      "text": "How do my prices compare with my competitors?",
+      "type": "unanswerable",
+      "params": {},
+      "gold": "gold_answers.Q10",
+      "checks": [
+        "says competitor price data is not available",
+        "does not invent competitor prices",
+        "may offer own price positioning or what data to collect",
+        "no fabricated citations"
+      ]
+    }
+  ]
+}

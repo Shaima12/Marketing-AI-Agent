@@ -30,9 +30,10 @@ global:
         discounts and the cost of the same delivered order lines.
         Undefined when net revenue is zero.
     
-    return_rate 
+    return_rate:
       definition: >-
-        returned orders ÷ (delivered orders + returned orders), counting distinct orders, excluding internal customers.
+        returned orders / (delivered orders + returned orders),
+        counting distinct orders, excluding internal customers.
 
   definitions:
     internal_customers:

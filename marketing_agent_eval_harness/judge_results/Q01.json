@@ -1,0 +1,134 @@
+{
+  "qid": "Q01",
+  "checks": [
+    {
+      "check": "recall of push_candidates >= 2/3",
+      "passed": true,
+      "reason": "The report identifies and recommends all three qualifying push candidates (P15, P14, and P12), achieving 3/3 recall.",
+      "report_refs": [
+        "claims_or_findings[0].claim",
+        "claims_or_findings[1].claim",
+        "claims_or_findings[2].claim",
+        "actions_or_recommendations[0]"
+      ],
+      "evidence_refs": [
+        "ev_1"
+      ]
+    },
+    {
+      "check": "does not recommend do_not_push_for_margin products as the main push",
+      "passed": true,
+      "reason": "The report explicitly recommends P15, P14, and P12 as focal campaign products and advises avoiding low-margin products such as Everyday Hoodie (P04).",
+      "report_refs": [
+        "actions_or_recommendations[0]",
+        "actions_or_recommendations[2]"
+      ],
+      "evidence_refs": [
+        "ev_1"
+      ]
+    },
+    {
+      "check": "cites margin AND rating AND volume evidence",
+      "passed": true,
+      "reason": "Each push candidate finding explicitly reports realized margin percentage, average rating, review count, and units sold.",
+      "report_refs": [
+        "claims_or_findings[0].claim",
+        "claims_or_findings[1].claim",
+        "claims_or_findings[2].claim"
+      ],
+      "evidence_refs": [
+        "ev_1"
+      ]
+    },
+    {
+      "check": "numbers match recomputed values",
+      "passed": true,
+      "reason": "All reported ratings, review counts, realized margins, unit sales, and category unit shares for P15, P14, and P12 match the underlying database evidence.",
+      "report_refs": [
+        "claims_or_findings[0].claim",
+        "claims_or_findings[1].claim",
+        "claims_or_findings[2].claim"
+      ],
+      "evidence_refs": [
+        "ev_1"
+      ]
+    },
+    {
+      "check": "recommendation cites a marketing principle from the KB",
+      "passed": true,
+      "reason": "The actions recommend pairing lower-price high-satisfaction entry products with premium items in merchandising bundles to lift order value while preserving margin, supported by KB citations.",
+      "report_refs": [
+        "actions_or_recommendations[1]",
+        "knowledge_citations"
+      ],
+      "evidence_refs": []
+    }
+  ],
+  "analysis_dimensions": {
+    "expected_story": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report clearly identifies Merino Everyday Sock 3-Pack (P15), Insulated Bottle 1L (P14), and Summit Pack 40L (P12) as the products to push.",
+      "report_refs": [
+        "claims_or_findings[0].claim",
+        "claims_or_findings[1].claim",
+        "claims_or_findings[2].claim",
+        "actions_or_recommendations[0]"
+      ],
+      "evidence_refs": [
+        "ev_1"
+      ]
+    },
+    "rule": {
+      "applicable": true,
+      "covered": false,
+      "reason": "The final report mentions 'meets all brand selection thresholds' but omits the actual threshold criteria (rating >= 4.6, reviews >= 30, margin >= 55%, category share <= 30%).",
+      "report_refs": [
+        "claims_or_findings[0].claim"
+      ],
+      "evidence_refs": []
+    },
+    "reason": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report explains selection based on high customer ratings, strong realized margin percentages, steady volume, and absence of stockout events.",
+      "report_refs": [
+        "claims_or_findings[0].claim",
+        "claims_or_findings[1].claim",
+        "claims_or_findings[2].claim",
+        "claims_or_findings[3].claim"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2"
+      ]
+    },
+    "note": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report documents explicit limitations regarding live inventory on hand and product-level acquisition costs.",
+      "report_refs": [
+        "cannot_determine_or_notes[0]",
+        "cannot_determine_or_notes[1]"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    "method": {
+      "applicable": true,
+      "covered": false,
+      "reason": "The final report does not define the calculation logic, exclusion of internal customers, or filtering method applied across delivered orders.",
+      "report_refs": [],
+      "evidence_refs": []
+    }
+  },
+  "consistency_issues": [],
+  "judge_usage": {
+    "prompt_tokens": 8154,
+    "completion_tokens": 1258,
+    "total_tokens": 11487
+  },
+  "judge_error": null,
+  "judge_model": "gemini-flash-latest"
+}

@@ -1,0 +1,139 @@
+{
+  "qid": "Q03",
+  "checks": [
+    {
+      "check": "top-10% share of revenue within +/-3 pts",
+      "passed": true,
+      "reason": "The report explicitly identifies that the top decile generates 38.35% of total net revenue, perfectly within +/-3 percentage points of the gold reference (38.3%).",
+      "report_refs": [
+        "findings[0]",
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_1"
+      ]
+    },
+    {
+      "check": "notes they use fewer discounts",
+      "passed": true,
+      "reason": "The report notes that top decile customers use fewer discounts (15.80% discount usage rate vs. 24.15% for the rest of the base).",
+      "report_refs": [
+        "findings[2]",
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_1"
+      ]
+    },
+    {
+      "check": "identifies jackets as their top category",
+      "passed": true,
+      "reason": "The report identifies Jackets as the leading revenue category for the top decile at $307,044.20 (49.59% revenue share).",
+      "report_refs": [
+        "findings[6]",
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_3"
+      ]
+    },
+    {
+      "check": "retention actions are NOT blanket discounts",
+      "passed": true,
+      "reason": "Retention actions explicitly instruct to avoid discount-driven retention campaigns and instead propose non-monetary value such as early product access, VIP concierge care, repair services, and cadence-based re-engagement.",
+      "report_refs": [
+        "actions[1]",
+        "summary"
+      ],
+      "evidence_refs": []
+    },
+    {
+      "check": "excludes internal test customers",
+      "passed": true,
+      "reason": "The report notes the exclusion of internal accounts ('total non-internal customers with delivered orders'), matching the filter in SQL queries.",
+      "report_refs": [
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2",
+        "ev_3"
+      ]
+    }
+  ],
+  "analysis_dimensions": {
+    "expected_story": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report clearly establishes that the top decile generates a disproportionate revenue share (~38.35%), relies less on discounts, heavily buys Jackets, and should be retained through cadence-aligned, non-discount VIP and early access strategies.",
+      "report_refs": [
+        "summary",
+        "findings[0]",
+        "findings[2]",
+        "actions[1]"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_3"
+      ]
+    },
+    "rule": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report defines the segmentation criteria explicitly: top decile by net revenue ranking with customer ID tie-breaker among non-internal customers with delivered orders.",
+      "report_refs": [
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_1"
+      ]
+    },
+    "reason": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report explains that discounts should be avoided because top customers already exhibit lower discount affinity (15.80% vs 24.15%) and higher realized margin, and identifies specific product feedback (zipper issues on Alder Daypack 20L) that risks churn.",
+      "report_refs": [
+        "findings[2]",
+        "findings[9]",
+        "summary",
+        "actions[1]"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_6",
+        "ev_7"
+      ]
+    },
+    "note": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report documents explicit limitations including inability to determine longitudinal retention cohorts beyond aggregate transaction history and missing pre-2025 acquisition marketing spend.",
+      "report_refs": [
+        "cannot_determine[0]",
+        "cannot_determine[1]"
+      ],
+      "evidence_refs": []
+    },
+    "method": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report outlines the decile ranking method via net revenue and the inter-purchase interval calculation (30.0-day median interval) used to determine active versus at-risk retention thresholds.",
+      "report_refs": [
+        "summary",
+        "findings[8]"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_5"
+      ]
+    }
+  },
+  "consistency_issues": [],
+  "judge_usage": {
+    "prompt_tokens": 17569,
+    "completion_tokens": 979,
+    "total_tokens": 19237
+  },
+  "judge_error": null,
+  "judge_model": "gemini-flash-latest"
+}

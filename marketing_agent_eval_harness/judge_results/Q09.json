@@ -1,0 +1,125 @@
+{
+  "qid": "Q09",
+  "checks": [
+    {
+      "check": "uses lift (not raw popularity)",
+      "passed": true,
+      "reason": "The report bases candidate identification on lift rather than raw co-occurrence counts, explicitly identifying pairs with lift > 1.0.",
+      "report_refs": [
+        "Market basket analysis across 15267 delivered non-internal orders identified exactly three cross-category product pairs with strong affinity (lift > 1.0)..."
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2"
+      ]
+    },
+    {
+      "check": "finds the three planted pairs",
+      "passed": true,
+      "reason": "The report correctly identifies all three planted affinity pairs: P12+P14 (Summit Pack 40L + Insulated Bottle 1L), P01+P15 (Trail Shell Jacket + Merino Everyday Sock 3-Pack), and P11+P13 (Commuter Pack 25L + Steel Bottle 750ml).",
+      "report_refs": [
+        "Across 15267 delivered non-internal orders, exactly three product pairs exhibit positive affinity with lift greater than 1.0: Summit Pack 40L (P12) with Insulated Bottle 1L (P14)... Trail Shell Jacket (P01) with Merino Everyday Sock 3-Pack (P15)... and Commuter Pack 25L (P11) with Steel Bottle 750ml (P13)..."
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2"
+      ]
+    },
+    {
+      "check": "does not recommend a pair with lift < 1 as a bundle",
+      "passed": true,
+      "reason": "The report explicitly limits all bundling and cross-selling recommendations to pairs with lift > 1.0 and does not recommend any pair with lift < 1.",
+      "report_refs": [
+        "Market basket analysis across 15267 delivered non-internal orders identified exactly three cross-category product pairs with strong affinity (lift > 1.0)... Therefore, cross-selling without discounting via cart and product-page recommendations is the recommended primary strategy."
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2"
+      ]
+    },
+    {
+      "check": "gives a concrete bundle or cross-sell action",
+      "passed": true,
+      "reason": "The report provides specific directional cross-sell recommendations based on confidence and precise bundling discount guidelines (capping discounts at 10% for P12+P14).",
+      "report_refs": [
+        "Target cross-sell prompts directionally where natural basket attachment is lower: suggest Merino Everyday Sock 3-Pack (P15) to Trail Shell Jacket (P01) buyers (current confidence is 26.51%), and suggest Steel Bottle 750ml (P13) to Commuter Pack 25L (P11) buyers (current confidence is 34.59%).",
+        "If testing a bundled offer for Summit Pack 40L (P12) and Insulated Bottle 1L (P14), cap the discount strictly at 10% (price 180.90 USD)..."
+      ],
+      "evidence_refs": [
+        "ev_2",
+        "ev_4",
+        "ev_5"
+      ]
+    }
+  ],
+  "analysis_dimensions": {
+    "expected_story": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The central story of prioritizing pairs by lift rather than raw co-occurrence and managing discount cannibalization is thoroughly articulated.",
+      "report_refs": [
+        "Market basket analysis across 15267 delivered non-internal orders identified exactly three cross-category product pairs with strong affinity (lift > 1.0)..."
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2"
+      ]
+    },
+    "rule": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report applies the association rule mining threshold (lift > 1.0), filters for non-internal delivered orders, and evaluates discount rules against catalog margin floors.",
+      "report_refs": [
+        "Assumptions: Scope restricted to delivered orders from non-internal customers (customers.is_internal = false, orders.status = 'delivered'). Basket affinity measured via support, confidence, and lift..."
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2",
+        "ev_4"
+      ]
+    },
+    "reason": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report clearly explains why discounting is dangerous (existing co-purchase rates mean high cannibalization) and why directional cross-selling is advantageous based on confidence differentials.",
+      "report_refs": [
+        "Baseline organic attachment rates are already substantial: 32.79% for P12+P14, 26.51% for P01+P15, and 34.59% for P11+P13. A 10% bundle discount yields modest incremental gross profit gains per incremental order... but incurs discount cannibalization of 20.10 USD, 17.70 USD, and 15.10 USD respectively on orders that would have bought both items at full price."
+      ],
+      "evidence_refs": [
+        "ev_2",
+        "ev_5"
+      ]
+    },
+    "note": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report provides appropriate caveats regarding unobserved customer elasticity, live UI conversion rates, and competitor benchmark absence.",
+      "report_refs": [
+        "Customer price elasticity and true conversion incrementality under live cross-sell or bundle UI placements cannot be determined without an active A/B test."
+      ],
+      "evidence_refs": []
+    },
+    "method": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The analytical methodology across market basket metrics (support, confidence, lift) and financial simulation (incremental profit vs cannibalization) is fully described and verifiable.",
+      "report_refs": [
+        "Basket affinity measured via support, confidence, and lift across all distinct multi-item delivered orders. Pair evaluation methodology follows brand analysis settings and catalog margins."
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2",
+        "ev_4",
+        "ev_5"
+      ]
+    }
+  },
+  "consistency_issues": [],
+  "judge_usage": {
+    "prompt_tokens": 35451,
+    "completion_tokens": 1396,
+    "total_tokens": 37769
+  },
+  "judge_error": null,
+  "judge_model": "gemini-flash-latest"
+}

@@ -1,0 +1,149 @@
+{
+  "qid": "Q05",
+  "checks": [
+    {
+      "check": "compares per-day revenue (Feb has 28 days)",
+      "passed": true,
+      "reason": "The report explicitly normalizes revenue on a per-day basis, noting February has 28 days (3,343.44/day) and March has 31 days (3,008.45/day), showing a -10.02% daily drop.",
+      "report_refs": [
+        "findings[0]",
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_3"
+      ]
+    },
+    {
+      "check": "names the Trail Shell Jacket stockout as the primary cause",
+      "passed": true,
+      "reason": "The report identifies the 25-day stockout of the Trail Shell Jacket (P01) as the leading cause, quantifying the product's revenue collapse and estimated counterfactual lost revenue of 20,426.25 to 25,348.75.",
+      "report_refs": [
+        "findings[4]",
+        "findings[5]",
+        "findings[6]",
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_2",
+        "ev_4",
+        "ev_6"
+      ]
+    },
+    {
+      "check": "names the paid-social acquisition cut as secondary",
+      "passed": true,
+      "reason": "The report identifies the 84.52% cut in paid social spend (and the resulting collapse in paid social signups from 66 to 13) as the secondary interacting cause reducing new customer revenue.",
+      "report_refs": [
+        "findings[7]",
+        "findings[8]",
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_7",
+        "ev_8"
+      ]
+    },
+    {
+      "check": "does not attribute it to seasonality or lower demand",
+      "passed": true,
+      "reason": "The report does not claim broader organic seasonality or general market demand drop; it specifically attributes the decline to the specific inventory stockout and paid social ad spend contraction while noting growth in existing customers and other categories.",
+      "report_refs": [
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_3"
+      ]
+    },
+    {
+      "check": "excludes cancelled/returned/test orders",
+      "passed": true,
+      "reason": "The report explicitly states net revenue includes only delivered orders and excludes internal customer accounts, which matches the underlying SQL queries filtering on status = 'delivered' and is_internal = false.",
+      "report_refs": [
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2",
+        "ev_3"
+      ]
+    }
+  ],
+  "analysis_dimensions": {
+    "expected_story": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The core finding clearly articulates that March revenue dropped on a daily run-rate basis primarily due to the P01 Trail Shell Jacket stockout and secondarily due to the paid social acquisition cut.",
+      "report_refs": [
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_3",
+        "ev_4",
+        "ev_7"
+      ]
+    },
+    "rule": {
+      "applicable": true,
+      "covered": true,
+      "reason": "Business rules regarding delivered-only net revenue and internal account exclusions are explicitly defined and maintained.",
+      "report_refs": [
+        "summary"
+      ],
+      "evidence_refs": [
+        "ev_3"
+      ]
+    },
+    "reason": {
+      "applicable": true,
+      "covered": true,
+      "reason": "Detailed causal logic is provided linking the 25-day stockout to lost jacket volume and the paid social marketing budget reduction to the drop in new customer signups and new customer revenue.",
+      "report_refs": [
+        "summary",
+        "findings[6]",
+        "findings[8]"
+      ],
+      "evidence_refs": [
+        "ev_2",
+        "ev_6",
+        "ev_7",
+        "ev_8"
+      ]
+    },
+    "note": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report includes caveats, notes on offsetting strengths (existing customer growth, backpack/hoodie category growth), and cannot-determine notes regarding prior-year March data and web traffic logs.",
+      "report_refs": [
+        "summary",
+        "cannot_determine"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_3"
+      ]
+    },
+    "method": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The analytical methodology incorporates day-count normalization (28 days vs 31 days) as well as run-rate counterfactual comparisons against February and March in-stock daily averages.",
+      "report_refs": [
+        "summary",
+        "findings[0]",
+        "findings[6]"
+      ],
+      "evidence_refs": [
+        "ev_3",
+        "ev_6"
+      ]
+    }
+  },
+  "consistency_issues": [],
+  "judge_usage": {
+    "prompt_tokens": 23686,
+    "completion_tokens": 1292,
+    "total_tokens": 25858
+  },
+  "judge_error": null,
+  "judge_model": "gemini-flash-latest"
+}

@@ -1,0 +1,123 @@
+{
+  "qid": "Q10",
+  "checks": [
+    {
+      "check": "says competitor price data is not available",
+      "passed": true,
+      "reason": "The report explicitly states in the summary, cannot_determine section, and recommendations that competitor price data is not collected or available in internal databases.",
+      "report_refs": [
+        "final_report.summary",
+        "final_report.cannot_determine[0]"
+      ],
+      "evidence_refs": []
+    },
+    {
+      "check": "does not invent competitor prices",
+      "passed": true,
+      "reason": "No competitor prices or external market benchmarks are invented or asserted anywhere in the report.",
+      "report_refs": [
+        "final_report.summary",
+        "final_report.findings"
+      ],
+      "evidence_refs": []
+    },
+    {
+      "check": "may offer own price positioning or what data to collect",
+      "passed": true,
+      "reason": "The report details the brand's internal price architecture and margins across categories and products, and recommends subscribing to external retail price intelligence feeds to collect competitor data.",
+      "report_refs": [
+        "final_report.summary",
+        "final_report.findings[1]",
+        "final_report.actions[0]"
+      ],
+      "evidence_refs": [
+        "ev_2",
+        "ev_3"
+      ]
+    },
+    {
+      "check": "no fabricated citations",
+      "passed": true,
+      "reason": "All cited knowledge base identifiers (KB8, KB12, KB6) are valid inventory references, and all evidence IDs match captured SQL evidence.",
+      "report_refs": [
+        "final_report.knowledge_citations"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2",
+        "ev_3"
+      ]
+    }
+  ],
+  "analysis_dimensions": {
+    "expected_story": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report delivers the central required finding: direct competitor price comparison cannot be determined due to lack of external competitor data, accompanied by the brand's internal price ladder.",
+      "report_refs": [
+        "final_report.summary",
+        "final_report.cannot_determine[0]"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2"
+      ]
+    },
+    "rule": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report notes the governance rule filtering out internal accounts and limiting to delivered orders, alongside acknowledging the constraint of having no external pricing data.",
+      "report_refs": [
+        "final_report.summary",
+        "final_report.cannot_determine[0]"
+      ],
+      "evidence_refs": [
+        "ev_2"
+      ]
+    },
+    "reason": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report explains why comparison is impossible: customer reviews contain only unstructured mentions without systematic benchmarks, and external competitor pricing is not tracked in brand systems.",
+      "report_refs": [
+        "final_report.summary",
+        "final_report.cannot_determine[1]"
+      ],
+      "evidence_refs": [
+        "ev_1"
+      ]
+    },
+    "note": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report explicitly documents operational limitations and caveats regarding competitor pricing and customer perception benchmarks.",
+      "report_refs": [
+        "final_report.cannot_determine[0]",
+        "final_report.cannot_determine[1]"
+      ],
+      "evidence_refs": []
+    },
+    "method": {
+      "applicable": true,
+      "covered": true,
+      "reason": "The report describes the analytical methodology used: keyword analysis across customer reviews and catalog/sales price-ladder analysis computing list vs. realized prices and margins.",
+      "report_refs": [
+        "final_report.findings[0]",
+        "final_report.findings[1]"
+      ],
+      "evidence_refs": [
+        "ev_1",
+        "ev_2",
+        "ev_3"
+      ]
+    }
+  },
+  "consistency_issues": [],
+  "judge_usage": {
+    "prompt_tokens": 9059,
+    "completion_tokens": 1026,
+    "total_tokens": 10543
+  },
+  "judge_error": null,
+  "judge_model": "gemini-flash-latest"
+}
