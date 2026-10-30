@@ -1,38 +1,47 @@
-# Final report evaluator — two metrics, binary scoring
+# Agent Evaluation (LLM-as-Judge)
 
-The evaluator runs **all questions** in `questions.json` by default and judges the final answer using the corresponding gold answer and captured evidence in `results.json`.
+This folder evaluates the marketing agent's final reports on **10 reference questions** using an LLM judge (Gemini).
 
-## The only two aggregate metrics
+## How it works
 
-1. **Analysis coverage (%)**: combined coverage of `expected_story`, `rule`, `reason`, `note`, and `method`. The judge first decides whether each dimension is applicable to that question. Each applicable dimension is binary: covered = 1; missing or unsupported = 0. Not-applicable dimensions are excluded from the denominator.
-2. **Check pass rate (%)**: passed checklist items / all checklist items. Each original checklist item is binary: pass = 1; anything else = 0. There is no partial credit. If the judge call fails, that question's checks are conservatively scored 0 and the error is recorded.
+For each question, the judge receives:
 
-The JSON also keeps per-question binary details and short reasons so results can be audited. It does not introduce additional aggregate scoring metrics.
+- the question and its **checklist** of business requirements,
+- the **gold answer** (the expected result),
+- the agent's **final report**,
+- the **SQL evidence** the agent actually retrieved.
 
-## Run all questions
+The judge checks the report against the checklist and verifies each claim against the SQL data. A claim without supporting evidence does not count. Scoring is **binary** (pass or fail, no partial credit), and a judge error counts as a failure.
 
-Place these three input files beside the script:
-- `questions.json`
-- `gold_answers.json`
-- `results.json`
+## Metrics
 
-Then run:
+| Metric | What it measures | Result |
+|---|---|---|
+| **Check pass rate** | Share of checklist requirements the report satisfies, backed by evidence | **93.6%** (44/47) |
+| **Analysis coverage** | Share of expected analysis elements present in the report | **92%** (46/50) |
 
-```powershell
-pip install -r requirements-judge.txt
-$env:OPENAI_API_KEY = "YOUR_API_KEY"
-python evaluate_report_with_judge.py
+**Check pass rate** = passed checks / total checks.
+Example checks: "identifies the right products", "numbers match the data", "rule is explicit", "does not default to a deep discount".
+
+**Analysis coverage** = covered dimensions / applicable dimensions.
+Five dimensions are checked: the expected conclusion, the business rule, the reason, the caveats, and the method. A dimension counts only if the question expects it and the report explicitly contains it.
+
+Global percentages are computed over all questions pooled together, not averaged per question.
+
+## Usage
+
+```bash
+pip install -U google-genai
+export GEMINI_API_KEY="your_key"      # PowerShell: $env:GEMINI_API_KEY="your_key"
+
+python judge_question.py Q01 Q02      # judge selected questions (one JSON file each)
+python judge_question.py all          # judge all questions
+python aggregate_results.py           # compute the global metrics
 ```
 
-Defaults are already configured for all three filenames, all questions, and output `report_judge_eval.json`. No `--qids` argument is needed. Optional file/model overrides:
+Per-question results are saved in `judge_results/`, and the global report in `report_judge_eval.json`.
 
-```powershell
-python evaluate_report_with_judge.py --questions questions.json --gold gold_answers.json --results results.json --model gpt-4.1-mini --out report_judge_eval.json
-```
+## Limitations
 
-## Notes
-
-- The judge evaluates the claims/findings, report, summary, conclusion (if present), actions, notes and evidence together.
-- Evidence IDs alone do not prove claims; the judge receives captured evidence rows.
-- Exact numeric values and customer-ID set checks should additionally be validated deterministically where possible.
-- LLM judging is probabilistic. Review a sample manually before using these scores as a release gate.
+- The judge is an LLM and has not been validated against human labels, so results are estimates.
+- The sample is small (10 questions).
