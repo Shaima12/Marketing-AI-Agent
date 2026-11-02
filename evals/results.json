@@ -1,0 +1,729 @@
+{
+  "Q08": [
+    {
+      "qid": "Q08",
+      "question": "Did my July sale actually work?",
+      "brand_id": "479e3c12-dda8-453c-b7a0-035983eb38f5",
+      "tag": "glossary_v3",
+      "timestamp": "2026-11-01T11:28:36",
+      "seconds": 8.4,
+      "status": "crashed",
+      "crash": "GoogleAuthenticationError: Error calling model 'gemini-3.8-flash' (UNAUTHENTICATED): 401 UNAUTHENTICATED. {'error': {'code': 401, 'message': 'API key not valid. Please pass a valid API key.', 'status': 'UNAUTHENTICATED', 'details': [{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'ACCESS_TOKEN_TYPE_UNSUPPORTED', 'metadata': {'method': 'google.ai.generativelanguage.v1beta.GenerativeService.GenerateContent', 'service': 'generativelanguage.googleapis.com'}}]}}",
+      "first_plan": null,
+      "plan": {},
+      "evidence": {},
+      "tool_errors": [],
+      "knowledge": {
+        "KB1": "Chapter 4: Pricing, Discounts and Promotions > Worked Example: Evaluating a Seven-Day Sale",
+        "KB2": "Chapter 12: Diagnosing Performance Changes > Worked Example: A Monthly Revenue Shortfall",
+        "KB3": "Chapter 4: Pricing, Discounts and Promotions > Common Misreadings",
+        "KB4": "Chapter 22: Marketplaces and Multichannel Selling > Worked Example: Contribution by Channel",
+        "KB5": "Chapter 4: Pricing, Discounts and Promotions > Worked Example: Realized Margin Under a Standing Discount",
+        "KB6": "Chapter 4: Pricing, Discounts and Promotions > Pull-Forward and Post-Promotion Dips",
+        "KB7": "Chapter 3: Product Portfolios and Merchandising > Worked Example: A Portfolio Review for a Skincare Label",
+        "KB8": "Chapter 18: Email Marketing in Depth > Worked Example: A Welcome Flow",
+        "KB9": "Chapter 4: Pricing, Discounts and Promotions > Markdown Cadence and Clearance",
+        "KB10": "Chapter 23: International Expansion and Localization > Worked Example: Constant-Currency Comparison",
+        "KB11": "Chapter 4: Pricing, Discounts and Promotions > Measuring a Promotion: Baseline, Lift and Incremental Profit",
+        "KB12": "Chapter 22: Marketplaces and Multichannel Selling > How Marketplaces Work",
+        "KB13": "Chapter 14: Experimentation and Causal Inference > Worked Example: Measuring an Email Campaign with a Holdout",
+        "KB14": "Chapter 20: Conversion Rate Optimization and Site Experience > Worked Example: A Checkout Funnel",
+        "KB15": "Chapter 8: Marketing Channels Overview > Worked Example: Comparing Channel Economics",
+        "KB16": "Chapter 3: Product Portfolios and Merchandising > Seasonality in Merchandising",
+        "KB17": "Chapter 4: Pricing, Discounts and Promotions > Why Discounted Best-Sellers Can Mislead",
+        "KB18": "Chapter 9: Acquisition Economics and Attribution > Worked Example: Right-Censoring in Channel Comparison",
+        "KB19": "Chapter 24: Privacy, Consent and Regulation > Worked Example: The Effect of Partial Consent",
+        "KB20": "Chapter 14: Experimentation and Causal Inference > Marketing Mix Modeling",
+        "KB21": "Chapter 13: Basket Analysis, Bundling and Cross-Sell > Cross-Sell Placement",
+        "KB22": "Chapter 12: Diagnosing Performance Changes > Supply-Side Causes: Stockouts and Lost Sales",
+        "KB23": "Chapter 4: Pricing, Discounts and Promotions > Cannibalization and Customer Mix in Promotions",
+        "KB24": "Chapter 15: Competitive Intelligence and the Limits of Internal Data > Worked Example: A Price Ladder From Internal Data",
+        "KB25": "Chapter 4: Pricing, Discounts and Promotions > Discount Mechanics and Their Cost"
+      },
+      "raw_report_call": null,
+      "report": null,
+      "diagnostics": {
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "sql_calls": 0,
+        "report_calls": 0,
+        "report_rejections": 0,
+        "tool_rejections": 0,
+        "replans": 0,
+        "tokens_used_state": 0,
+        "tokens_in": 0,
+        "tokens_out": 0,
+        "investigation_complete": false,
+        "stop_reason": null,
+        "last_error": null
+      }
+    },
+    {
+      "qid": "Q08",
+      "question": "Did my July sale actually work?",
+      "brand_id": "479e3c12-dda8-453c-b7a0-035983eb38f5",
+      "tag": "glossary_v3",
+      "timestamp": "2026-11-01T12:02:13",
+      "seconds": 989.0,
+      "status": "completed",
+      "crash": null,
+      "first_plan": {
+        "plan_version": "1.0",
+        "objective": "Determine whether the July sale worked by evaluating promotional timing, baseline vs. sale vs. post-sale performance across revenue and gross profit, customer mix (new vs. existing), and discount costs according to the brand's promotion analysis settings.",
+        "success_criteria": [
+          "Identify the exact July sale promotion details (code, start_date, end_date, discount_pct).",
+          "Calculate baseline, sale, and post-sale (14-day, 28-day, and brand cadence/42-day) metrics: net revenue, gross profit, realized margin, orders, AOV, per-day rates, and percentage lifts.",
+          "Calculate combined-window performance (sale + post-sale vs. baseline) to evaluate pull-forward effects.",
+          "Analyze customer mix (existing vs. new buyers during the sale) and discount cost incurred.",
+          "Check compliance with brand discount policies (max 20% regular, max 25% sitewide, no more than 2 sitewide sales/year)."
+        ],
+        "execution_limits": {
+          "max_plan_steps": 10,
+          "max_tool_calls": 10,
+          "max_sql_calls": 10,
+          "max_replans": 2,
+          "max_llm_calls": 16
+        },
+        "steps": [
+          {
+            "id": "step_1_promo_lookup",
+            "objective": "Look up the July sale promotion details in the promotions table.",
+            "purpose": "Identify the start date, end date, promo code, and discount percentage for the July sale to set the exact analysis windows.",
+            "tool_candidates": [
+              "run_sql"
+            ],
+            "inputs": {
+              "query": "SELECT promo_code, description, start_date, end_date, discount_pct, (end_date - start_date + 1) AS sale_days FROM public.promotions WHERE (start_date >= '2025-07-01' AND start_date <= '2025-07-31') OR promo_code ILIKE '%july%' ORDER BY start_date;"
+            },
+            "depends_on": [],
+            "output_key": "july_promo_details",
+            "guide_ids": [
+              "KB1",
+              "KB11"
+            ],
+            "status": "pending",
+            "optional": false,
+            "skip_if_data_unavailable": false,
+            "auto_complete_on_success": true
+          },
+          {
+            "id": "step_2_lift_and_post_sale_analysis",
+            "objective": "Evaluate baseline, during-sale, and post-sale performance (revenue lift, gross profit lift, pull-forward dips, and discount cost).",
+            "purpose": "Quantify per-day revenue and profit across baseline (30 days per brand settings), sale period, and post-sale windows (14d, 28d, and 42d cadence), as well as combined windows and total discount cost.",
+            "tool_candidates": [
+              "run_sql"
+            ],
+            "inputs": {
+              "step_ref": "step_1_promo_lookup"
+            },
+            "depends_on": [
+              {
+                "step_id": "step_1_promo_lookup",
+                "output_key": "july_promo_details",
+                "optional": false
+              }
+            ],
+            "output_key": "promotion_lift_and_horizons",
+            "guide_ids": [
+              "KB1",
+              "KB6",
+              "KB11",
+              "KB25"
+            ],
+            "status": "pending",
+            "optional": false,
+            "skip_if_data_unavailable": false,
+            "auto_complete_on_success": false
+          },
+          {
+            "id": "step_3_customer_mix_and_cannibalization",
+            "objective": "Analyze buyer composition (new vs. existing customers) and order behavior during the sale.",
+            "purpose": "Determine whether the promotion primarily brought in new customers or cannibalized existing customer demand, and check repeat purchase behavior where observable.",
+            "tool_candidates": [
+              "run_sql"
+            ],
+            "inputs": {
+              "step_ref": "step_1_promo_lookup"
+            },
+            "depends_on": [
+              {
+                "step_id": "step_1_promo_lookup",
+                "output_key": "july_promo_details",
+                "optional": false
+              }
+            ],
+            "output_key": "customer_mix_results",
+            "guide_ids": [
+              "KB1",
+              "KB23"
+            ],
+            "status": "pending",
+            "optional": false,
+            "skip_if_data_unavailable": false,
+            "auto_complete_on_success": false
+          }
+        ]
+      },
+      "plan": {
+        "plan_version": "1.0",
+        "objective": "Determine whether the July sale worked by evaluating promotional timing, baseline vs. sale vs. post-sale performance across revenue and gross profit, customer mix (new vs. existing), and discount costs according to the brand's promotion analysis settings.",
+        "success_criteria": [
+          "Identify the exact July sale promotion details (code, start_date, end_date, discount_pct).",
+          "Calculate baseline, sale, and post-sale (14-day, 28-day, and brand cadence/42-day) metrics: net revenue, gross profit, realized margin, orders, AOV, per-day rates, and percentage lifts.",
+          "Calculate combined-window performance (sale + post-sale vs. baseline) to evaluate pull-forward effects.",
+          "Analyze customer mix (existing vs. new buyers during the sale) and discount cost incurred.",
+          "Check compliance with brand discount policies (max 20% regular, max 25% sitewide, no more than 2 sitewide sales/year)."
+        ],
+        "execution_limits": {
+          "max_plan_steps": 10,
+          "max_tool_calls": 10,
+          "max_sql_calls": 10,
+          "max_replans": 2,
+          "max_llm_calls": 16
+        },
+        "steps": [
+          {
+            "id": "step_1_promo_lookup",
+            "objective": "Look up the July sale promotion details in the promotions table.",
+            "purpose": "Identify the start date, end date, promo code, and discount percentage for the July sale to set the exact analysis windows.",
+            "tool_candidates": [
+              "run_sql"
+            ],
+            "inputs": {
+              "query": "SELECT promo_code, description, start_date, end_date, discount_pct, (end_date - start_date + 1) AS sale_days FROM public.promotions WHERE (start_date >= '2025-07-01' AND start_date <= '2025-07-31') OR promo_code ILIKE '%july%' ORDER BY start_date;"
+            },
+            "depends_on": [],
+            "output_key": "july_promo_details",
+            "guide_ids": [
+              "KB1",
+              "KB11"
+            ],
+            "status": "completed",
+            "optional": false,
+            "skip_if_data_unavailable": false,
+            "auto_complete_on_success": true
+          },
+          {
+            "id": "step_2_lift_and_post_sale_analysis",
+            "objective": "Evaluate baseline, during-sale, and post-sale performance (revenue lift, gross profit lift, pull-forward dips, and discount cost).",
+            "purpose": "Quantify per-day revenue and profit across baseline (30 days per brand settings), sale period, and post-sale windows (14d, 28d, and 42d cadence), as well as combined windows and total discount cost.",
+            "tool_candidates": [
+              "run_sql"
+            ],
+            "inputs": {
+              "step_ref": "step_1_promo_lookup"
+            },
+            "depends_on": [
+              {
+                "step_id": "step_1_promo_lookup",
+                "output_key": "july_promo_details",
+                "optional": false
+              }
+            ],
+            "output_key": "promotion_lift_and_horizons",
+            "guide_ids": [
+              "KB1",
+              "KB6",
+              "KB11",
+              "KB25"
+            ],
+            "status": "completed",
+            "optional": false,
+            "skip_if_data_unavailable": false,
+            "auto_complete_on_success": false
+          },
+          {
+            "id": "step_3_customer_mix_and_cannibalization",
+            "objective": "Analyze buyer composition (new vs. existing customers) and order behavior during the sale.",
+            "purpose": "Determine whether the promotion primarily brought in new customers or cannibalized existing customer demand, and check repeat purchase behavior where observable.",
+            "tool_candidates": [
+              "run_sql"
+            ],
+            "inputs": {
+              "step_ref": "step_1_promo_lookup"
+            },
+            "depends_on": [
+              {
+                "step_id": "step_1_promo_lookup",
+                "output_key": "july_promo_details",
+                "optional": false
+              }
+            ],
+            "output_key": "customer_mix_results",
+            "guide_ids": [
+              "KB1",
+              "KB23"
+            ],
+            "status": "completed",
+            "optional": false,
+            "skip_if_data_unavailable": false,
+            "auto_complete_on_success": false
+          }
+        ]
+      },
+      "evidence": {
+        "ev_1": {
+          "tool": "run_sql",
+          "input": {
+            "sql": "SELECT promo_code, description, start_date, end_date, discount_pct, (end_date - start_date + 1) AS sale_days FROM public.promotions WHERE (start_date >= '2025-07-01' AND start_date <= '2025-07-31') OR promo_code ILIKE '%july%' ORDER BY start_date;"
+          },
+          "result": {
+            "row_count": 1,
+            "rows": [
+              {
+                "promo_code": "SUMMER25",
+                "description": "Summer Sale site-wide",
+                "start_date": "2025-07-11",
+                "end_date": "2025-07-20",
+                "discount_pct": "25.00",
+                "sale_days": 10
+              }
+            ]
+          },
+          "step_id": "step_1_promo_lookup"
+        },
+        "ev_2": {
+          "tool": "run_sql",
+          "input": {
+            "sql": "WITH promo AS (\n  SELECT '2025-07-11'::date AS sale_start, '2025-07-20'::date AS sale_end\n),\nwindows AS (\n  SELECT\n    'Baseline' AS window_name,\n    1 AS sort_order,\n    (sale_start - INTERVAL '30 days')::date AS start_date,\n    (sale_start - INTERVAL '1 day')::date AS end_date,\n    30 AS day_count\n  FROM promo\n  UNION ALL\n  SELECT\n    'Sale' AS window_name,\n    2 AS sort_order,\n    sale_start AS start_date,\n    sale_end AS end_date,\n    (sale_end - sale_start + 1) AS day_count\n  FROM promo\n  UNION ALL\n  SELECT\n    'Post-Sale 14d' AS window_name,\n    3 AS sort_order,\n    (sale_end + INTERVAL '1 day')::date AS start_date,\n    (sale_end + INTERVAL '14 days')::date AS end_date,\n    14 AS day_count\n  FROM promo\n  UNION ALL\n  SELECT\n    'Post-Sale 28d' AS window_name,\n    4 AS sort_order,\n    (sale_end + INTERVAL '1 day')::date AS start_date,\n    (sale_end + INTERVAL '28 days')::date AS end_date,\n    28 AS day_count\n  FROM promo\n  UNION ALL\n  SELECT\n    'Post-Sale 42d' AS window_name,\n    5 AS sort_order,\n    (sale_end + INTERVAL '1 day')::date AS start_date,\n    (sale_end + INTERVAL '42 days')::date AS end_date,\n    42 AS day_count\n  FROM promo\n  UNION ALL\n  SELECT\n    'Sale + Post-Sale 14d' AS window_name,\n    6 AS sort_order,\n    sale_start AS start_date,\n    (sale_end + INTERVAL '14 days')::date AS end_date,\n    (sale_end - sale_start + 1 + 14) AS day_count\n  FROM promo\n  UNION ALL\n  SELECT\n    'Sale + Post-Sale 28d' AS window_name,\n    7 AS sort_order,\n    sale_start AS start_date,\n    (sale_end + INTERVAL '28 days')::date AS end_date,\n    (sale_end - sale_start + 1 + 28) AS day_count\n  FROM promo\n  UNION ALL\n  SELECT\n    'Sale + Post-Sale 42d' AS window_name,\n    8 AS sort_order,\n    sale_start AS start_date,\n    (sale_end + INTERVAL '42 days')::date AS end_date,\n    (sale_end - sale_start + 1 + 42) AS day_count\n  FROM promo\n),\ndelivered_lines AS (\n  SELECT\n    o.order_id,\n    o.order_date,\n    oi.quantity,\n    oi.unit_price,\n    p.unit_cost,\n    p.list_price,\n    (oi.quantity * oi.unit_price) AS line_net_revenue,\n    (oi.quantity * p.unit_cost) AS line_cost,\n    (oi.quantity * (oi.unit_price - p.unit_cost)) AS line_gross_profit,\n    (oi.quantity * (p.list_price - oi.unit_price)) AS line_discount_cost\n  FROM public.orders o\n  JOIN public.customers c ON o.customer_id = c.customer_id\n  JOIN public.order_items oi ON o.order_id = oi.order_id\n  JOIN public.products p ON oi.product_id = p.product_id\n  WHERE c.is_internal = false\n    AND o.status = 'delivered'\n),\nwindow_metrics AS (\n  SELECT\n    w.window_name,\n    w.sort_order,\n    w.start_date,\n    w.end_date,\n    w.day_count,\n    COUNT(DISTINCT dl.order_id) AS total_orders,\n    COALESCE(SUM(dl.line_net_revenue), 0) AS total_net_revenue,\n    COALESCE(SUM(dl.line_gross_profit), 0) AS total_gross_profit,\n    COALESCE(SUM(dl.line_discount_cost), 0) AS total_discount_cost,\n    ROUND(COUNT(DISTINCT dl.order_id)::numeric / w.day_count, 2) AS orders_per_day,\n    ROUND(COALESCE(SUM(dl.line_net_revenue), 0)::numeric / w.day_count, 2) AS net_revenue_per_day,\n    ROUND(COALESCE(SUM(dl.line_gross_profit), 0)::numeric / w.day_count, 2) AS gross_profit_per_day,\n    ROUND(COALESCE(SUM(dl.line_discount_cost), 0)::numeric / w.day_count, 2) AS discount_cost_per_day,\n    CASE \n      WHEN COUNT(DISTINCT dl.order_id) > 0 \n      THEN ROUND(COALESCE(SUM(dl.line_net_revenue), 0)::numeric / COUNT(DISTINCT dl.order_id), 2)\n      ELSE 0 \n    END AS aov,\n    CASE \n      WHEN COALESCE(SUM(dl.line_net_revenue), 0) > 0 \n      THEN ROUND((COALESCE(SUM(dl.line_gross_profit), 0)::numeric / SUM(dl.line_net_revenue)) * 100, 2)\n      ELSE 0 \n    END AS realized_margin_pct\n  FROM windows w\n  LEFT JOIN delivered_lines dl ON dl.order_date BETWEEN w.start_date AND w.end_date\n  GROUP BY w.window_name, w.sort_order, w.start_date, w.end_date, w.day_count\n),\nbaseline AS (\n  SELECT * FROM window_metrics WHERE window_name = 'Baseline'\n)\nSELECT\n  wm.window_name,\n  wm.start_date,\n  wm.end_date,\n  wm.day_count,\n  wm.total_orders,\n  wm.total_net_revenue,\n  wm.total_gross_profit,\n  wm.total_discount_cost,\n  wm.orders_per_day,\n  wm.net_revenue_per_day,\n  wm.gross_profit_per_day,\n  wm.discount_cost_per_day,\n  wm.aov,\n  wm.realized_margin_pct,\n  -- Per-day lifts vs baseline\n  ROUND(wm.orders_per_day - b.orders_per_day, 2) AS orders_per_day_diff,\n  ROUND(((wm.orders_per_day - b.orders_per_day) / b.orders_per_day) * 100, 2) AS orders_per_day_lift_pct,\n  ROUND(wm.net_revenue_per_day - b.net_revenue_per_day, 2) AS net_revenue_per_day_diff,\n  ROUND(((wm.net_revenue_per_day - b.net_revenue_per_day) / b.net_revenue_per_day) * 100, 2) AS net_revenue_lift_pct,\n  ROUND(wm.gross_profit_per_day - b.gross_profit_per_day, 2) AS gross_profit_per_day_diff,\n  ROUND(((wm.gross_profit_per_day - b.gross_profit_per_day) / b.gross_profit_per_day) * 100, 2) AS gross_profit_lift_pct,\n  -- Window total lifts vs baseline expected total (per_day * day_count)\n  ROUND(wm.total_net_revenue - (b.net_revenue_per_day * wm.day_count), 2) AS incremental_net_revenue,\n  ROUND(wm.total_gross_profit - (b.gross_profit_per_day * wm.day_count), 2) AS incremental_gross_profit\nFROM window_metrics wm\nCROSS JOIN baseline b\nORDER BY wm.sort_order;"
+          },
+          "result": {
+            "row_count": 8,
+            "rows": [
+              {
+                "window_name": "Baseline",
+                "start_date": "2025-06-11",
+                "end_date": "2025-07-10",
+                "day_count": 30,
+                "total_orders": 1227,
+                "total_net_revenue": "130173.40",
+                "total_gross_profit": "74631.40",
+                "total_discount_cost": "3126.60",
+                "orders_per_day": "40.90",
+                "net_revenue_per_day": "4339.11",
+                "gross_profit_per_day": "2487.71",
+                "discount_cost_per_day": "104.22",
+                "aov": "106.09",
+                "realized_margin_pct": "57.33",
+                "orders_per_day_diff": "0.00",
+                "orders_per_day_lift_pct": "0.00",
+                "net_revenue_per_day_diff": "0.00",
+                "net_revenue_lift_pct": "0.00",
+                "gross_profit_per_day_diff": "0.00",
+                "gross_profit_lift_pct": "0.00",
+                "incremental_net_revenue": "0.10",
+                "incremental_gross_profit": "0.10"
+              },
+              {
+                "window_name": "Sale",
+                "start_date": "2025-07-11",
+                "end_date": "2025-07-20",
+                "day_count": 10,
+                "total_orders": 1127,
+                "total_net_revenue": "96884.10",
+                "total_gross_profit": "43722.10",
+                "total_discount_cost": "29927.90",
+                "orders_per_day": "112.70",
+                "net_revenue_per_day": "9688.41",
+                "gross_profit_per_day": "4372.21",
+                "discount_cost_per_day": "2992.79",
+                "aov": "85.97",
+                "realized_margin_pct": "45.13",
+                "orders_per_day_diff": "71.80",
+                "orders_per_day_lift_pct": "175.55",
+                "net_revenue_per_day_diff": "5349.30",
+                "net_revenue_lift_pct": "123.28",
+                "gross_profit_per_day_diff": "1884.50",
+                "gross_profit_lift_pct": "75.75",
+                "incremental_net_revenue": "53493.00",
+                "incremental_gross_profit": "18845.00"
+              },
+              {
+                "window_name": "Post-Sale 14d",
+                "start_date": "2025-07-21",
+                "end_date": "2025-08-03",
+                "day_count": 14,
+                "total_orders": 548,
+                "total_net_revenue": "58009.25",
+                "total_gross_profit": "33250.25",
+                "total_discount_cost": "1346.75",
+                "orders_per_day": "39.14",
+                "net_revenue_per_day": "4143.52",
+                "gross_profit_per_day": "2375.02",
+                "discount_cost_per_day": "96.20",
+                "aov": "105.86",
+                "realized_margin_pct": "57.32",
+                "orders_per_day_diff": "-1.76",
+                "orders_per_day_lift_pct": "-4.30",
+                "net_revenue_per_day_diff": "-195.59",
+                "net_revenue_lift_pct": "-4.51",
+                "gross_profit_per_day_diff": "-112.69",
+                "gross_profit_lift_pct": "-4.53",
+                "incremental_net_revenue": "-2738.29",
+                "incremental_gross_profit": "-1577.69"
+              },
+              {
+                "window_name": "Post-Sale 28d",
+                "start_date": "2025-07-21",
+                "end_date": "2025-08-17",
+                "day_count": 28,
+                "total_orders": 1051,
+                "total_net_revenue": "110887.95",
+                "total_gross_profit": "63722.95",
+                "total_discount_cost": "2402.05",
+                "orders_per_day": "37.54",
+                "net_revenue_per_day": "3960.28",
+                "gross_profit_per_day": "2275.82",
+                "discount_cost_per_day": "85.79",
+                "aov": "105.51",
+                "realized_margin_pct": "57.47",
+                "orders_per_day_diff": "-3.36",
+                "orders_per_day_lift_pct": "-8.22",
+                "net_revenue_per_day_diff": "-378.83",
+                "net_revenue_lift_pct": "-8.73",
+                "gross_profit_per_day_diff": "-211.89",
+                "gross_profit_lift_pct": "-8.52",
+                "incremental_net_revenue": "-10607.13",
+                "incremental_gross_profit": "-5932.93"
+              },
+              {
+                "window_name": "Post-Sale 42d",
+                "start_date": "2025-07-21",
+                "end_date": "2025-08-31",
+                "day_count": 42,
+                "total_orders": 1587,
+                "total_net_revenue": "169369.85",
+                "total_gross_profit": "97249.85",
+                "total_discount_cost": "3588.15",
+                "orders_per_day": "37.79",
+                "net_revenue_per_day": "4032.62",
+                "gross_profit_per_day": "2315.47",
+                "discount_cost_per_day": "85.43",
+                "aov": "106.72",
+                "realized_margin_pct": "57.42",
+                "orders_per_day_diff": "-3.11",
+                "orders_per_day_lift_pct": "-7.60",
+                "net_revenue_per_day_diff": "-306.49",
+                "net_revenue_lift_pct": "-7.06",
+                "gross_profit_per_day_diff": "-172.24",
+                "gross_profit_lift_pct": "-6.92",
+                "incremental_net_revenue": "-12872.77",
+                "incremental_gross_profit": "-7233.97"
+              },
+              {
+                "window_name": "Sale + Post-Sale 14d",
+                "start_date": "2025-07-11",
+                "end_date": "2025-08-03",
+                "day_count": 24,
+                "total_orders": 1675,
+                "total_net_revenue": "154893.35",
+                "total_gross_profit": "76972.35",
+                "total_discount_cost": "31274.65",
+                "orders_per_day": "69.79",
+                "net_revenue_per_day": "6453.89",
+                "gross_profit_per_day": "3207.18",
+                "discount_cost_per_day": "1303.11",
+                "aov": "92.47",
+                "realized_margin_pct": "49.69",
+                "orders_per_day_diff": "28.89",
+                "orders_per_day_lift_pct": "70.64",
+                "net_revenue_per_day_diff": "2114.78",
+                "net_revenue_lift_pct": "48.74",
+                "gross_profit_per_day_diff": "719.47",
+                "gross_profit_lift_pct": "28.92",
+                "incremental_net_revenue": "50754.71",
+                "incremental_gross_profit": "17267.31"
+              },
+              {
+                "window_name": "Sale + Post-Sale 28d",
+                "start_date": "2025-07-11",
+                "end_date": "2025-08-17",
+                "day_count": 38,
+                "total_orders": 2178,
+                "total_net_revenue": "207772.05",
+                "total_gross_profit": "107445.05",
+                "total_discount_cost": "32329.95",
+                "orders_per_day": "57.32",
+                "net_revenue_per_day": "5467.69",
+                "gross_profit_per_day": "2827.50",
+                "discount_cost_per_day": "850.79",
+                "aov": "95.40",
+                "realized_margin_pct": "51.71",
+                "orders_per_day_diff": "16.42",
+                "orders_per_day_lift_pct": "40.15",
+                "net_revenue_per_day_diff": "1128.58",
+                "net_revenue_lift_pct": "26.01",
+                "gross_profit_per_day_diff": "339.79",
+                "gross_profit_lift_pct": "13.66",
+                "incremental_net_revenue": "42885.87",
+                "incremental_gross_profit": "12912.07"
+              },
+              {
+                "window_name": "Sale + Post-Sale 42d",
+                "start_date": "2025-07-11",
+                "end_date": "2025-08-31",
+                "day_count": 52,
+                "total_orders": 2714,
+                "total_net_revenue": "266253.95",
+                "total_gross_profit": "140971.95",
+                "total_discount_cost": "33516.05",
+                "orders_per_day": "52.19",
+                "net_revenue_per_day": "5120.27",
+                "gross_profit_per_day": "2711.00",
+                "discount_cost_per_day": "644.54",
+                "aov": "98.10",
+                "realized_margin_pct": "52.95",
+                "orders_per_day_diff": "11.29",
+                "orders_per_day_lift_pct": "27.60",
+                "net_revenue_per_day_diff": "781.16",
+                "net_revenue_lift_pct": "18.00",
+                "gross_profit_per_day_diff": "223.29",
+                "gross_profit_lift_pct": "8.98",
+                "incremental_net_revenue": "40620.23",
+                "incremental_gross_profit": "11611.03"
+              }
+            ]
+          },
+          "step_id": "step_2_lift_and_post_sale_analysis"
+        },
+        "ev_3": {
+          "tool": "run_sql",
+          "input": {
+            "sql": "WITH first_orders AS (\n    SELECT \n        o.customer_id,\n        MIN(o.order_date) AS first_order_date\n    FROM public.orders o\n    JOIN public.customers c ON o.customer_id = c.customer_id\n    WHERE c.is_internal = false\n      AND o.status = 'delivered'\n    GROUP BY o.customer_id\n),\nsale_orders AS (\n    SELECT \n        o.order_id,\n        o.customer_id,\n        o.order_date,\n        CASE \n            WHEN fo.first_order_date < '2025-07-11' THEN 'existing'\n            ELSE 'new'\n        END AS customer_type,\n        SUM(oi.quantity * oi.unit_price) AS order_net_revenue,\n        SUM(oi.quantity * p.unit_cost) AS order_cogs,\n        SUM(oi.quantity * (p.list_price - oi.unit_price)) AS order_discount_cost\n    FROM public.orders o\n    JOIN public.customers c ON o.customer_id = c.customer_id\n    JOIN public.order_items oi ON o.order_id = oi.order_id\n    JOIN public.products p ON oi.product_id = p.product_id\n    JOIN first_orders fo ON o.customer_id = fo.customer_id\n    WHERE c.is_internal = false\n      AND o.status = 'delivered'\n      AND o.order_date BETWEEN '2025-07-11' AND '2025-07-20'\n    GROUP BY o.order_id, o.customer_id, o.order_date, customer_type\n),\nsale_customers AS (\n    SELECT DISTINCT customer_id, customer_type\n    FROM sale_orders\n),\npost_sale_repeats AS (\n    SELECT \n        sc.customer_type,\n        COUNT(DISTINCT sc.customer_id) AS total_customers,\n        COUNT(DISTINCT CASE WHEN po.order_id IS NOT NULL THEN sc.customer_id END) AS repeat_customers,\n        COUNT(po.order_id) AS post_sale_repeat_orders,\n        COALESCE(SUM(poi.quantity * poi.unit_price), 0) AS post_sale_net_revenue,\n        COALESCE(SUM(poi.quantity * (poi.unit_price - p.unit_cost)), 0) AS post_sale_gross_profit\n    FROM sale_customers sc\n    LEFT JOIN public.orders po \n        ON sc.customer_id = po.customer_id \n        AND po.order_date > '2025-07-20' \n        AND po.status = 'delivered'\n    LEFT JOIN public.order_items poi ON po.order_id = poi.order_id\n    LEFT JOIN public.products p ON poi.product_id = p.product_id\n    GROUP BY sc.customer_type\n)\nSELECT \n    so.customer_type,\n    COUNT(DISTINCT so.customer_id) AS buyer_count,\n    ROUND(COUNT(DISTINCT so.customer_id)::numeric / SUM(COUNT(DISTINCT so.customer_id)) OVER () * 100, 2) AS buyer_share_pct,\n    COUNT(DISTINCT so.order_id) AS order_count,\n    ROUND(COUNT(DISTINCT so.order_id)::numeric / SUM(COUNT(DISTINCT so.order_id)) OVER () * 100, 2) AS order_share_pct,\n    ROUND(SUM(so.order_net_revenue), 2) AS net_revenue,\n    ROUND(SUM(so.order_net_revenue) / SUM(SUM(so.order_net_revenue)) OVER () * 100, 2) AS revenue_share_pct,\n    ROUND(SUM(so.order_net_revenue - so.order_cogs), 2) AS gross_profit,\n    ROUND((SUM(so.order_net_revenue - so.order_cogs) / NULLIF(SUM(so.order_net_revenue), 0)) * 100, 2) AS realized_margin_pct,\n    ROUND(SUM(so.order_discount_cost), 2) AS discount_cost,\n    ROUND(AVG(so.order_net_revenue), 2) AS aov,\n    psr.repeat_customers,\n    ROUND(psr.repeat_customers::numeric / NULLIF(psr.total_customers, 0) * 100, 2) AS repeat_rate_pct,\n    ROUND(psr.post_sale_net_revenue, 2) AS post_sale_revenue,\n    ROUND(psr.post_sale_gross_profit, 2) AS post_sale_gross_profit\nFROM sale_orders so\nJOIN post_sale_repeats psr ON so.customer_type = psr.customer_type\nGROUP BY so.customer_type, psr.repeat_customers, psr.total_customers, psr.post_sale_net_revenue, psr.post_sale_gross_profit;"
+          },
+          "result": {
+            "row_count": 2,
+            "rows": [
+              {
+                "customer_type": "existing",
+                "buyer_count": 793,
+                "buyer_share_pct": "78.98",
+                "order_count": 899,
+                "order_share_pct": "79.77",
+                "net_revenue": "79005.65",
+                "revenue_share_pct": "81.55",
+                "gross_profit": "35649.65",
+                "realized_margin_pct": "45.12",
+                "discount_cost": "24485.35",
+                "aov": "87.88",
+                "repeat_customers": 689,
+                "repeat_rate_pct": "86.89",
+                "post_sale_revenue": "175662.90",
+                "post_sale_gross_profit": "100547.90"
+              },
+              {
+                "customer_type": "new",
+                "buyer_count": 211,
+                "buyer_share_pct": "21.02",
+                "order_count": 228,
+                "order_share_pct": "20.23",
+                "net_revenue": "17878.45",
+                "revenue_share_pct": "18.45",
+                "gross_profit": "8072.45",
+                "realized_margin_pct": "45.15",
+                "discount_cost": "5442.55",
+                "aov": "78.41",
+                "repeat_customers": 130,
+                "repeat_rate_pct": "61.61",
+                "post_sale_revenue": "22801.60",
+                "post_sale_gross_profit": "12740.60"
+              }
+            ]
+          },
+          "step_id": "step_3_customer_mix_and_cannibalization"
+        },
+        "ev_4": {
+          "tool": "run_sql",
+          "input": {
+            "sql": "SELECT \n    COUNT(DISTINCT c.customer_id) AS total_buyers,\n    COUNT(DISTINCT o.order_id) AS total_orders,\n    ROUND(SUM(oi.quantity * oi.unit_price), 2) AS total_net_revenue,\n    ROUND(SUM(oi.quantity * oi.unit_price) - SUM(oi.quantity * p.unit_cost), 2) AS total_gross_profit,\n    ROUND(SUM(oi.quantity * (p.list_price - oi.unit_price)), 2) AS total_discount_cost,\n    ROUND(SUM(oi.quantity * oi.unit_price) / COUNT(DISTINCT o.order_id), 2) AS total_aov\nFROM public.orders o\nJOIN public.customers c ON o.customer_id = c.customer_id\nJOIN public.order_items oi ON o.order_id = oi.order_id\nJOIN public.products p ON oi.product_id = p.product_id\nWHERE c.is_internal = false\n  AND o.status = 'delivered'\n  AND o.order_date BETWEEN '2025-07-11' AND '2025-07-20';"
+          },
+          "result": {
+            "row_count": 1,
+            "rows": [
+              {
+                "total_buyers": 1004,
+                "total_orders": 1127,
+                "total_net_revenue": "96884.10",
+                "total_gross_profit": "43722.10",
+                "total_discount_cost": "29927.90",
+                "total_aov": "85.97"
+              }
+            ]
+          },
+          "step_id": "step_3_customer_mix_and_cannibalization"
+        }
+      },
+      "tool_errors": [],
+      "knowledge": {
+        "KB1": "Chapter 4: Pricing, Discounts and Promotions > Worked Example: Evaluating a Seven-Day Sale",
+        "KB2": "Chapter 12: Diagnosing Performance Changes > Worked Example: A Monthly Revenue Shortfall",
+        "KB3": "Chapter 4: Pricing, Discounts and Promotions > Common Misreadings",
+        "KB4": "Chapter 22: Marketplaces and Multichannel Selling > Worked Example: Contribution by Channel",
+        "KB5": "Chapter 4: Pricing, Discounts and Promotions > Worked Example: Realized Margin Under a Standing Discount",
+        "KB6": "Chapter 4: Pricing, Discounts and Promotions > Pull-Forward and Post-Promotion Dips",
+        "KB7": "Chapter 3: Product Portfolios and Merchandising > Worked Example: A Portfolio Review for a Skincare Label",
+        "KB8": "Chapter 18: Email Marketing in Depth > Worked Example: A Welcome Flow",
+        "KB9": "Chapter 4: Pricing, Discounts and Promotions > Markdown Cadence and Clearance",
+        "KB10": "Chapter 23: International Expansion and Localization > Worked Example: Constant-Currency Comparison",
+        "KB11": "Chapter 4: Pricing, Discounts and Promotions > Measuring a Promotion: Baseline, Lift and Incremental Profit",
+        "KB12": "Chapter 22: Marketplaces and Multichannel Selling > How Marketplaces Work",
+        "KB13": "Chapter 14: Experimentation and Causal Inference > Worked Example: Measuring an Email Campaign with a Holdout",
+        "KB14": "Chapter 20: Conversion Rate Optimization and Site Experience > Worked Example: A Checkout Funnel",
+        "KB15": "Chapter 8: Marketing Channels Overview > Worked Example: Comparing Channel Economics",
+        "KB16": "Chapter 3: Product Portfolios and Merchandising > Seasonality in Merchandising",
+        "KB17": "Chapter 4: Pricing, Discounts and Promotions > Why Discounted Best-Sellers Can Mislead",
+        "KB18": "Chapter 9: Acquisition Economics and Attribution > Worked Example: Right-Censoring in Channel Comparison",
+        "KB19": "Chapter 24: Privacy, Consent and Regulation > Worked Example: The Effect of Partial Consent",
+        "KB20": "Chapter 14: Experimentation and Causal Inference > Marketing Mix Modeling",
+        "KB21": "Chapter 13: Basket Analysis, Bundling and Cross-Sell > Cross-Sell Placement",
+        "KB22": "Chapter 12: Diagnosing Performance Changes > Supply-Side Causes: Stockouts and Lost Sales",
+        "KB23": "Chapter 4: Pricing, Discounts and Promotions > Cannibalization and Customer Mix in Promotions",
+        "KB24": "Chapter 15: Competitive Intelligence and the Limits of Internal Data > Worked Example: A Price Ladder From Internal Data",
+        "KB25": "Chapter 4: Pricing, Discounts and Promotions > Discount Mechanics and Their Cost"
+      },
+      "raw_report_call": {
+        "summary": "The July SUMMER25 promotion (2025-07-11 to 2025-07-20) generated positive net revenue and gross profit lift, but at a substantial discount cost and with significant customer cannibalization. During the 10-day sale, net revenue per day increased by 123.28% (to 9688.41 per day from a 4339.11 baseline) and gross profit per day increased by 75.75% (to 4372.21 per day from a 2487.71 baseline), generating 96884.10 in net revenue and 43722.10 in gross profit across 1127 orders. However, realized margin dropped from 57.33% to 45.13% due to a total discount cost of 29927.90. In the post-sale periods, volume dipped below baseline across all monitored horizons: net revenue per day fell by -4.51% over 14 days, -8.73% over 28 days, and -7.06% over 42 days, while gross profit per day dropped by -4.53% (14d), -8.52% (28d), and -6.92% (42d). Across the full combined Sale + Post-Sale 42d window, the promotion remained cumulatively positive, delivering 40620.23 in incremental net revenue and 11611.03 in incremental gross profit. Crucially, 78.98% of buyers (793 of 1004) and 81.55% of promotional revenue (79005.65) came from existing customers, absorbing 24485.35 of total discounts, whereas new customers represented 211 buyers generating 17878.45 in revenue with 130 repeat buyers post-sale (61.61% repeat rate). Assumptions: Baseline window of 30 days (2025-06-11 to 2025-07-10) and post-sale evaluation window of 42 days (2025-07-21 to 2025-08-31) were sourced from brand analysis_settings; 14-day and 28-day post-sale windows were included per methodology standards.",
+        "knowledge_citations": [
+          "KB1",
+          "KB11",
+          "KB23",
+          "KB25",
+          "KB6"
+        ],
+        "actions": [
+          "Evaluate whether sitewide discounting should be replaced or limited with minimum spend thresholds, given that existing customers captured 79005.65 of the 96884.10 promotional revenue.",
+          "Structure future promotional campaigns to acquire new customers rather than discounting existing customer volume, noting that new customers had a 61.61 repeat rate following the sale.",
+          "Monitor ongoing margin and repeat ordering cadence to verify if demand pull-forward causes prolonged deficits after post-sale day 42."
+        ],
+        "cannot_determine": [
+          "Whether the post-sale volume dip represents temporary demand pull-forward or permanent customer habituation cannot be definitively determined without longer-term cohort tracking.",
+          "Competitor promotional activity and market price benchmarks during the July 11 to July 20 period were not collected and cannot be analyzed."
+        ],
+        "findings": [
+          {
+            "evidence_ids": [
+              "ev_1"
+            ],
+            "claim": "The July promotion ran under code SUMMER25 as a site-wide sale from 2025-07-11 to 2025-07-20 (10 days) offering a 25.00 percent discount."
+          },
+          {
+            "claim": "During the 10-day sale window, delivered orders reached 1127 generating 96884.10 in net revenue and 43722.10 in gross profit, with orders per day lifting by 175.55 percent, net revenue per day lifting by 123.28 percent, and gross profit per day lifting by 75.75 percent relative to the 30-day baseline.",
+            "evidence_ids": [
+              "ev_2"
+            ]
+          },
+          {
+            "claim": "The promotion incurred a total discount cost of 29927.90 during the 10 sale days, reducing realized margin to 45.13 percent compared to 57.33 percent in the baseline period.",
+            "evidence_ids": [
+              "ev_2"
+            ]
+          },
+          {
+            "claim": "Across all three post-sale evaluation windows, performance experienced a dip relative to baseline: 14-day post-sale net revenue per day fell by -4.51 percent and gross profit per day fell by -4.53 percent; 28-day post-sale net revenue per day fell by -8.73 percent and gross profit per day fell by -8.52 percent; and 42-day post-sale net revenue per day fell by -7.06 percent and gross profit per day fell by -6.92 percent.",
+            "evidence_ids": [
+              "ev_2"
+            ]
+          },
+          {
+            "claim": "When accounting for post-sale performance, the combined Sale + Post-Sale 14d window delivered incremental net revenue of 50754.71 and incremental gross profit of 17267.31; the combined Sale + Post-Sale 28d window delivered incremental net revenue of 42885.87 and incremental gross profit of 12912.07; and the combined Sale + Post-Sale 42d window delivered incremental net revenue of 40620.23 and incremental gross profit of 11611.03.",
+            "evidence_ids": [
+              "ev_2"
+            ]
+          },
+          {
+            "evidence_ids": [
+              "ev_3",
+              "ev_4"
+            ],
+            "claim": "Out of 1004 total buyers and 1127 total delivered orders during the sale, existing customers accounted for 793 buyers (78.98 percent) and 899 orders (79.77 percent), generating 79005.65 in net revenue (81.55 percent share) and absorbing 24485.35 of the discount cost."
+          },
+          {
+            "evidence_ids": [
+              "ev_3"
+            ],
+            "claim": "New customers during the sale totaled 211 buyers (21.02 percent share) and 228 orders (20.23 percent share), producing 17878.45 in net revenue (18.45 percent share) with 5442.55 in discount cost, of whom 130 customers repeated post-sale (a 61.61 percent repeat rate)."
+          }
+        ]
+      },
+      "report": {
+        "summary": "The July SUMMER25 promotion (2025-07-11 to 2025-07-20) generated positive net revenue and gross profit lift, but at a substantial discount cost and with significant customer cannibalization. During the 10-day sale, net revenue per day increased by 123.28% (to 9688.41 per day from a 4339.11 baseline) and gross profit per day increased by 75.75% (to 4372.21 per day from a 2487.71 baseline), generating 96884.10 in net revenue and 43722.10 in gross profit across 1127 orders. However, realized margin dropped from 57.33% to 45.13% due to a total discount cost of 29927.90. In the post-sale periods, volume dipped below baseline across all monitored horizons: net revenue per day fell by -4.51% over 14 days, -8.73% over 28 days, and -7.06% over 42 days, while gross profit per day dropped by -4.53% (14d), -8.52% (28d), and -6.92% (42d). Across the full combined Sale + Post-Sale 42d window, the promotion remained cumulatively positive, delivering 40620.23 in incremental net revenue and 11611.03 in incremental gross profit. Crucially, 78.98% of buyers (793 of 1004) and 81.55% of promotional revenue (79005.65) came from existing customers, absorbing 24485.35 of total discounts, whereas new customers represented 211 buyers generating 17878.45 in revenue with 130 repeat buyers post-sale (61.61% repeat rate). Assumptions: Baseline window of 30 days (2025-06-11 to 2025-07-10) and post-sale evaluation window of 42 days (2025-07-21 to 2025-08-31) were sourced from brand analysis_settings; 14-day and 28-day post-sale windows were included per methodology standards.",
+        "findings": [
+          {
+            "claim": "The July promotion ran under code SUMMER25 as a site-wide sale from 2025-07-11 to 2025-07-20 (10 days) offering a 25.00 percent discount.",
+            "evidence_ids": [
+              "ev_1"
+            ]
+          },
+          {
+            "claim": "During the 10-day sale window, delivered orders reached 1127 generating 96884.10 in net revenue and 43722.10 in gross profit, with orders per day lifting by 175.55 percent, net revenue per day lifting by 123.28 percent, and gross profit per day lifting by 75.75 percent relative to the 30-day baseline.",
+            "evidence_ids": [
+              "ev_2"
+            ]
+          },
+          {
+            "claim": "The promotion incurred a total discount cost of 29927.90 during the 10 sale days, reducing realized margin to 45.13 percent compared to 57.33 percent in the baseline period.",
+            "evidence_ids": [
+              "ev_2"
+            ]
+          },
+          {
+            "claim": "Across all three post-sale evaluation windows, performance experienced a dip relative to baseline: 14-day post-sale net revenue per day fell by -4.51 percent and gross profit per day fell by -4.53 percent; 28-day post-sale net revenue per day fell by -8.73 percent and gross profit per day fell by -8.52 percent; and 42-day post-sale net revenue per day fell by -7.06 percent and gross profit per day fell by -6.92 percent.",
+            "evidence_ids": [
+              "ev_2"
+            ]
+          },
+          {
+            "claim": "When accounting for post-sale performance, the combined Sale + Post-Sale 14d window delivered incremental net revenue of 50754.71 and incremental gross profit of 17267.31; the combined Sale + Post-Sale 28d window delivered incremental net revenue of 42885.87 and incremental gross profit of 12912.07; and the combined Sale + Post-Sale 42d window delivered incremental net revenue of 40620.23 and incremental gross profit of 11611.03.",
+            "evidence_ids": [
+              "ev_2"
+            ]
+          },
+          {
+            "claim": "Out of 1004 total buyers and 1127 total delivered orders during the sale, existing customers accounted for 793 buyers (78.98 percent) and 899 orders (79.77 percent), generating 79005.65 in net revenue (81.55 percent share) and absorbing 24485.35 of the discount cost.",
+            "evidence_ids": [
+              "ev_3",
+              "ev_4"
+            ]
+          },
+          {
+            "claim": "New customers during the sale totaled 211 buyers (21.02 percent share) and 228 orders (20.23 percent share), producing 17878.45 in net revenue (18.45 percent share) with 5442.55 in discount cost, of whom 130 customers repeated post-sale (a 61.61 percent repeat rate).",
+            "evidence_ids": [
+              "ev_3"
+            ]
+          }
+        ],
+        "actions": [
+          "Evaluate whether sitewide discounting should be replaced or limited with minimum spend thresholds, given that existing customers captured 79005.65 of the 96884.10 promotional revenue.",
+          "Structure future promotional campaigns to acquire new customers rather than discounting existing customer volume, noting that new customers had a 61.61 repeat rate following the sale.",
+          "Monitor ongoing margin and repeat ordering cadence to verify if demand pull-forward causes prolonged deficits after post-sale day 42."
+        ],
+        "knowledge_citations": [
+          "KB1",
+          "KB11",
+          "KB23",
+          "KB25",
+          "KB6"
+        ],
+        "cannot_determine": [
+          "Whether the post-sale volume dip represents temporary demand pull-forward or permanent customer habituation cannot be definitively determined without longer-term cohort tracking.",
+          "Competitor promotional activity and market price benchmarks during the July 11 to July 20 period were not collected and cannot be analyzed."
+        ]
+      },
+      "diagnostics": {
+        "llm_calls": 7,
+        "tool_calls": 4,
+        "sql_calls": 4,
+        "report_calls": 1,
+        "report_rejections": 0,
+        "tool_rejections": 0,
+        "replans": 0,
+        "tokens_used_state": 68416,
+        "tokens_in": 75860,
+        "tokens_out": 6481,
+        "investigation_complete": true,
+        "stop_reason": null,
+        "last_error": null
+      }
+    }
+  ]
+}

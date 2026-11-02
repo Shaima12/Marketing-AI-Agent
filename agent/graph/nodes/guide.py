@@ -6,7 +6,7 @@ def make_guide_node(search):
     def guide(state):
         if state.get("knowledge"):
             return {"knowledge": state["knowledge"]}
-        question = state["messages"][0].content
+        question = state.get("user_request") or state["messages"][-1].content
         knowledge = {}
         for item in search(question):
             knowledge[f"KB{len(knowledge) + 1}"] = item

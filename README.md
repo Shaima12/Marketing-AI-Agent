@@ -3,7 +3,7 @@
 
 A context-aware marketing intelligence platform that combines brand onboarding and data setup in a Next.js application with a separate Python agent. The agent transforms supported marketing questions into structured investigations using stateful orchestration, general marketing handbook retrieval, approved business data, controlled tool execution, and report evaluation.
 
-The Python agent is designed to go beyond conversational assistance. It combines an agent workflow with a report-evaluation harness to produce analytical reports grounded in available business evidence. The web dashboard assistant is currently a saved-brand-profile lookup; it is not connected to the Python agent or an LLM.
+The Python agent combines an agent workflow with a report-evaluation harness to produce analytical reports grounded in available business evidence. The dashboard assistant now streams the agent's plan, investigation progress, and verified report into saved conversations.
 
 ---
 
@@ -78,8 +78,11 @@ The application separates the user interface, agent orchestration, retrieval inf
 flowchart TD
     U[User] --> FE[Next.js web application]
     FE --> AUTH[Supabase Auth and brand profile]
+    FE --> API[Authenticated Next.js chat route]
+    API -->|spawn NDJSON stream| LG[Python LangGraph agent]
+    API -->|save conversations and messages| DBCHAT[Supabase chat tables]
     FE --> DBSETUP[PostgreSQL connection setup]
-    CLI[Python CLI: brand ID and question] --> LG[LangGraph agent]
+    CLI[Python CLI: brand ID and question] --> LG
     LG --> GUIDE[Handbook retrieval]
     GUIDE --> PC[Pinecone]
     LG --> PLAN[Plan and validate]
@@ -748,6 +751,7 @@ NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
 SUPABASE_SECRET_KEY=
 CREDENTIALS_KEY=
+AGENT_PYTHON_EXECUTABLE=
 
 # Python agent (agent/.env)
 NEXT_PUBLIC_SUPABASE_URL=
@@ -765,13 +769,15 @@ LANGFUSE_SECRET_KEY=
 LANGFUSE_BASE_URL=
 ```
 
+When both Langfuse keys are set, CLI and dashboard runs use the same LangGraph callback. Dashboard traces are tagged `web` and `chat` and share a Langfuse session per saved conversation; each submitted message remains a separate trace. The web runner flushes buffered events before its Python process exits.
+
 Never commit real API keys, database passwords, or service-role credentials.
 
 The service-role key must remain on trusted server-side infrastructure and must never be exposed to the browser.
 
 ### Running the application
 
-From the repository root, install and start the web application with `npm install` and `npm run dev`; this does not start the Python agent. The agent can be run from the repository root with `python -m agent.scripts.ask "<brand-id>" "<question>"`. The agent uses the configured Pinecone handbook index and approved PostgreSQL data; this repository does not require Supabase pgvector initialization for brand-document retrieval.
+From the repository root, install and start the web application with `npm install` and `npm run dev`. The chat route launches `agent/scripts/chat_stream.py` using `python` by default, so the Node server must run on a host with the agent's Python environment and credentials available. Set `AGENT_PYTHON_EXECUTABLE` in the server environment if the correct Python executable is not on `PATH` (for example, the path to the project's virtual-environment Python). The route derives the brand ID from the authenticated Supabase session, stores turns in the existing `conversations` and `messages` tables, and streams plan/progress/report events to the chat. Existing conversations can be resumed, and recent turns are passed to the planner as context. The agent can still be run from the repository root with `python -m agent.scripts.ask "<brand-id>" "<question>"`. Python dependencies are listed in `agent/requirements.txt`, but the checked-in file may not include every package imported by the current runtime; use the same complete environment that runs the CLI. The agent uses the configured Pinecone handbook index and approved PostgreSQL data; this repository does not require Supabase pgvector initialization for brand-document retrieval.
 
 ---
 

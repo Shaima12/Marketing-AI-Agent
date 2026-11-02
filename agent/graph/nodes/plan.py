@@ -51,6 +51,11 @@ def make_plan_node(llm, system, tool_catalog: str):
 
         previous_plan = state.get("plan") or {}
         previous_results = state.get("step_results") or {}
+        history = state.get("conversation_context") or []
+        history_text = "\n".join(
+            f"{item.get('role', 'user')}: {str(item.get('content', ''))[:1200]}"
+            for item in history[-12:]
+        )
 
         result = planner.invoke(
             [
@@ -59,6 +64,9 @@ def make_plan_node(llm, system, tool_catalog: str):
                     content=f"""
 Question:
 {question}
+
+Earlier conversation (context only; answer the latest question above):
+{history_text or "None"}
 
 {guide_block(state.get("knowledge"))}
 

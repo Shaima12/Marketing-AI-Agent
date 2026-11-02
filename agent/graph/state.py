@@ -7,6 +7,7 @@ class AgentState(TypedDict, total=False):
     # Conversation
     messages: Annotated[list, add_messages]
     user_request: str
+    conversation_context: list[dict[str, str]]
 
     # RAG handbook guidance; separate from business evidence
     knowledge: dict[str, Any]
